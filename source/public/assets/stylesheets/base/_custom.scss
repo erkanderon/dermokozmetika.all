@@ -1,0 +1,30 @@
+.hidden {
+  display: none;
+}
+
+.load {
+  &,
+  &ing {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.urunDetayGosterJs {
+  display: none;
+}
+
+#tsoft-eticaret-sistemleri {
+  display: none !important;
+}
+
+p a,
+.menu-link {
+  @include hover-focus {
+    text-decoration: underline;
+  }
+}
+
+p a {
+  text-decoration: underline;
+}

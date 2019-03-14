@@ -1,0 +1,53 @@
+@mixin menu-fill {
+  .menu {
+    &-link {
+      display: block;
+    }
+
+    &-item {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+  }
+}
+
+@mixin menu-justified {
+  .menu-item {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
+@mixin menu-pills {
+  @include bg-variant(
+    '.menu-link.active, .menu-item.show > .menu-link',
+    $menu-pills-link-active-background-color
+  );
+
+  @include text-emphasis-variant(
+    '.menu-link.active, .menu-item.show > .menu-link',
+    $menu-pills-link-active-color
+  );
+
+  margin: 0;
+
+  .menu {
+    &-link {
+      @include border-radius($menu-pills-link-border-radius);
+      @include transition;
+    }
+
+    &-link.active,
+    &-item.show > .menu-link {
+      text-decoration: inherit;
+
+      @include hover-focus {
+        text-decoration: inherit;
+      }
+    }
+  }
+}
+
+@mixin menu-tabs {
+  // TODO
+}

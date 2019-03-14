@@ -1,0 +1,7 @@
+.block-cart.block-section {
+  form:not(.show) {
+    @include media-breakpoint-down(xs) {
+      display: none
+    }
+  }
+}

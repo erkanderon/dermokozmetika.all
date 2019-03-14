@@ -1,0 +1,45 @@
+.block-privileges.block-widget {
+  .card {
+    @include card-variant(
+      $gray-lightest,
+      $gray-lightest
+    );
+
+    &-text {
+      @include media-breakpoint-down(xs) {
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+      }
+    }
+
+    &-title {
+      margin-bottom: $card-spacer-y * .5;
+      margin-top: $card-spacer-y * .25;
+    }
+
+    @include media-breakpoint-down(sm) {
+      border-width: $card-border-width * 0;
+
+      &-text {
+        @include text-truncate;
+      }
+
+      &-title,
+      &-icon {
+        display: none;
+      }
+
+      &-block {
+        padding: $card-spacer-y * .5 $card-spacer-x * .75;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    text-align: center;
+
+    .card-text strong {
+      font-weight: inherit;
+    }
+  }
+}

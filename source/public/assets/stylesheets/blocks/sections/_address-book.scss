@@ -1,0 +1,32 @@
+.block-address-book.block-section .block {
+  &-table,
+  &-footer {
+    text-align: right;
+  }
+
+  &-table {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &-link {
+    @extend .btn-lg, .btn-primary;
+  }
+
+  &-footer {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &-title {
+      margin-bottom: 0;
+    }
+
+    &-header .block-link {
+      display: none;
+    }
+  }
+}

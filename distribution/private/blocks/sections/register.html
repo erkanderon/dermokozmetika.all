@@ -1,0 +1,160 @@
+
+<div class="block block-section" id="register-section-block">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="block-title h3">
+        {if $IS_MEMBER_LOGGED_IN}
+        {#title_edit#}
+        {else}
+        {$BLOCK_TITLE}
+        {/if}
+      </div>
+    </div>
+    <form class="block-body" id="register-section-block-form">
+      <div class="block-subtitle h5">{#personal_informations#}</div>{foreach $CUSTOMER_FIELDS as $item}
+      {if $item.KEY == "name" || $item.KEY == "surname"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-input">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" required=""/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}"/>{/if}
+      </div>{/if}
+      {if $item.KEY == "birthdate"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-day-select">{#birthdate#}</label>
+        <div class="row">
+          <div class="col">{if $item.IS_REQUIRED}
+            <select class="custom-select form-control" id="register-section-block-{$item.KEY}-day-select" name="day" required="">
+              <option disabled="" selected="">{#day#}</option>{for $index = 1 to 31}
+              <option value="{if $index < 10}0{/if}{$index}">{$index}</option>{/for}
+            </select>{else}
+            <select class="custom-select form-control" id="register-section-block-{$item.KEY}-day-select" name="day">
+              <option disabled="" selected="">{#day#}</option>{for $index = 1 to 31}
+              <option value="{if $index < 10}0{/if}{$index}">{$index}</option>{/for}
+            </select>{/if}
+          </div>
+          <div class="col">{if $item.IS_REQUIRED}
+            <select class="custom-select form-control" name="month" required="">
+              <option disabled="" selected="">{#month#}</option>{for $index = 1 to 12}
+              <option value="{if $index < 10}0{/if}{$index}">{$index}</option>{/for}
+            </select>{else}
+            <select class="custom-select form-control" name="month">
+              <option disabled="" selected="">{#month#}</option>{for $index = 1 to 12}
+              <option value="{if $index < 10}0{/if}{$index}">{$index}</option>{/for}
+            </select>{/if}
+          </div>
+          <div class="col">{if $item.IS_REQUIRED}
+            <select class="custom-select form-control" name="year" required="">
+              <option disabled="" selected="">{#year#}</option>{for $index = $NEXT_YEAR - 101 to $NEXT_YEAR}
+              <option value="{$index}">{$index}</option>{/for}
+            </select>{else}
+            <select class="custom-select form-control" name="year">
+              <option disabled="" selected="">{#year#}</option>{for $index = $NEXT_YEAR - 101 to $NEXT_YEAR}
+              <option value="{$index}">{$index}</option>{/for}
+            </select>{/if}
+          </div>
+        </div>
+      </div>{/if}
+      {if $item.KEY == "gender"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-select">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <select class="custom-select form-control" id="register-section-block-{$item.KEY}-select" name="{$item.KEY}" required="">
+          <option disabled="" selected="">{#select_gender#}</option>
+          <option value="1">{#man#}</option>
+          <option value="0">{#woman#}</option>
+        </select>{else}
+        <select class="custom-select form-control" id="register-section-block-{$item.KEY}-select" name="{$item.KEY}">
+          <option selected="">{#select_gender#}</option>
+          <option value="1">{#man#}</option>
+          <option value="0">{#woman#}</option>
+        </select>{/if}
+      </div>{/if}
+      {if $item.KEY|substr:0: 5== "field"}
+      {if $item.TYPE == "CHECK_BOX"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-select">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <select class="form-control" id="register-section-block-{$item.KEY}-select" multiple="" name="{$item.KEY}" required="">{foreach ";"|explode:$item.OPTIONS as $item_child}
+          <option value="{$item_child}">{$item_child}</option>{/foreach}
+        </select>{else}
+        <select class="form-control" id="register-section-block-{$item.KEY}-select" multiple="" name="{$item.KEY}">{foreach ";"|explode:$item.OPTIONS as $item_child}
+          <option value="{$item_child}">{$item_child}</option>{/foreach}
+        </select>{/if}
+      </div>{/if}
+      {if $item.TYPE == "INPUT"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-input">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" required=""/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}"/>{/if}
+      </div>{/if}
+      {if $item.TYPE == "SELECT_BOX"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-select">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <select class="custom-select form-control" id="register-section-block-{$item.KEY}-select" name="{$item.KEY}" required="">
+          <option disabled="" selected="">--</option>{foreach $item.OPTIONS as $item_child}
+          <option value="{$item_child}">{$item_child}</option>{/foreach}
+        </select>{else}
+        <select class="custom-select form-control" id="register-section-block-{$item.KEY}-select" name="{$item.KEY}">
+          <option selected="">--</option>{foreach $item.OPTIONS as $item_child}
+          <option value="{$item_child}">{$item_child}</option>{/foreach}
+        </select>{/if}
+      </div>{/if}
+      {if $item.TYPE == "TEXTAREA"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-textarea">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <textarea class="form-control" id="register-section-block-{$item.KEY}-textarea" name="{$item.KEY}" required=""></textarea>{else}
+        <textarea class="form-control" id="register-section-block-{$item.KEY}-textarea" name="{$item.KEY}"></textarea>{/if}
+      </div>{/if}
+      {/if}
+      {/foreach}
+      <div class="block-subtitle h5">{#contact_info#}</div>{foreach $CUSTOMER_FIELDS as $item}
+      {if $item.KEY == "home_phone" || $item.KEY == "mobile_phone" || $item.KEY == "office_phone"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-input">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" required="" type="tel"/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" type="tel"/>{/if}
+      </div>{/if}
+      {if $item.KEY == "email"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-input">{$item.TITLE}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" required="" type="email"/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" type="email"/>{/if}
+      </div>{/if}
+      {/foreach}
+      <div class="block-subtitle h5">{#member_info#}</div>{foreach $CUSTOMER_FIELDS as $item}
+      {if $item.KEY == "password"}
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-input">{#password#}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" required="" type="password"/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-input" name="{$item.KEY}" type="password"/>{/if}
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="register-section-block-{$item.KEY}-again-input">{#password_again#}</label>{if $item.IS_REQUIRED}
+        <input class="form-control" id="register-section-block-{$item.KEY}-again-input" name="{$item.KEY}_again" required="" type="password"/>{else}
+        <input class="form-control" id="register-section-block-{$item.KEY}-again-input" name="{$item.KEY}_again" type="password"/>{/if}
+      </div>{/if}
+      {/foreach}
+      <div class="form-check">
+        <label class="custom-checkbox custom-control">
+          <input class="custom-control-input" checked="" name="mail_notify" type="checkbox" value="1"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#info_message#}</span>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="custom-checkbox custom-control">
+          <input class="custom-control-input" checked="" name="sms_notify" type="checkbox" value="1"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#info_sms#}</span>
+        </label>
+      </div>{if $DISPLAY_PRIVACY}
+      <div class="form-check">
+        <label class="custom-checkbox custom-control">
+          <input class="custom-control-input" name="privacy" required="" type="checkbox" value="1"/><span class="custom-control-indicator"></span><span class="custom-control-description"><a class="font-weight-bold" href="/gizlilik-ve-guvenlik-politikasi.shtm" target="_blank">Gizlilik & Güvenlik Politikası</a>'nı ve&nbsp;<a class="font-weight-bold" href="/kisisel-veriler-politikasi.shtm" target="_blank">Kişisel Veriler Politikası</a>'nı&nbsp;okudum ve kabul ediyorum.</span>
+        </label>
+      </div>{/if}
+      {if $IS_MEMBER_LOGGED_IN}
+      <button class="btn btn-primary" id="register-section-block-btn" title="{#update#}">{#update#}</button>{else}
+      <button class="btn btn-primary" id="register-section-block-btn" title="{#save#}">{#save#}</button>{/if}
+    </form>
+  </div>
+  <script id="register-section-block-data" type="application/json">
+    {
+      "is_logged": {if $IS_MEMBER_LOGGED_IN}true{else}false{/if}
+    }
+  </script>
+</div>

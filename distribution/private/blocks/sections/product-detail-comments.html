@@ -1,0 +1,51 @@
+
+<div class="block-content">
+  <div class="block-header">
+    <div class="block-title h2">{#tab_comments#}<span html-if="TOTAL">&nbsp;<span class="font-weight-normal">({{TOTAL}})</span></span></div>
+  </div>
+  <div class="block-body" html-if="COMMENTS.length">
+    <div class="card card-comment" html-repeat="item in COMMENTS">
+      <div class="card-header"><span class="text-pink" html-if="item.RATE < 60 && item.RATE >= 50"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></span><span class="text-pink" html-if="item.RATE < 70 && item.RATE >= 60"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span></span><span class="text-pink" html-if="item.RATE < 80 && item.RATE >= 70"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span><span class="ion-ios-star-outline"></span></span><span class="text-pink" html-if="item.RATE < 90 && item.RATE >= 80"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span></span><span class="text-pink" html-if="item.RATE < 100 && item.RATE >= 90"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span></span><span class="text-pink" html-if="item.RATE == 100"><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span></span><strong html-if="item.IS_NAME_DISPLAYED">&nbsp;{{item.NAME}}&nbsp;{{item.SURNAME}}<span html-if="item.AGE &gt; 0">&nbsp;({{item.AGE}})</span></strong><span class="text-muted" html-if="item.CITY &amp;&amp; item.TOWN">&nbsp;{{item.TOWN}}/{{item.CITY}}</span></div>
+      <div class="card-block">
+        <div class="card-title h5" html-if="item.TITLE">{{item.TITLE}}</div>
+        <p class="card-text">{{item.COMMENT}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="block-body" html-if="!COMMENTS.length">
+    <div class="alert alert-warning">{#no_comments#}</div>
+  </div>
+</div>
+<div class="block-content" html-if="IS_MEMBER_LOGGED_IN">
+  <div class="block-header">
+    <div class="block-title h2">{#write_comment#}</div>
+  </div>
+  <form class="block-body" id="product-detail-section-block-3-form">
+    <div class="form-group">
+      <label class="form-control-label" for="product-detail-middle-block-review-form-title-input">{#comment_title#}</label>
+      <input class="form-control form-control-lg" id="product-detail-middle-block-review-form-title-input" data-i18n="[placeholder]enter-your-review-title" name="title" required="" type="text"/>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label" for="product-detail-middle-block-review-form-review-input">{#comment#}</label>
+      <textarea class="form-control form-control-lg" id="product-detail-middle-block-review-form-review-input" data-i18n="[placeholder]enter-your-review" name="text" required="" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="custom-control custom-radio">
+        <input class="custom-control-input" name="rate" type="radio" value="1"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#vote_worst#}</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input class="custom-control-input" name="rate" type="radio" value="2"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#vote_soso#}</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input class="custom-control-input" name="rate" type="radio" value="3"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#vote_good#}</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input class="custom-control-input" name="rate" type="radio" value="4"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#vote_great#}</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input class="custom-control-input" checked="" name="rate" type="radio" value="5"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#vote_best#}</span>
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary" title="{#gonder_buton#}">{#gonder_buton#}</button>
+  </form>
+</div>

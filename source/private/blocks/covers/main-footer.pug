@@ -1,0 +1,58 @@
+#main-footer-cover-block.block.block-cover.block-extended.block-fluid.block-main-footer
+  .block-header
+    .container
+      .row
+        .col-lg.mb-12.mb-lg-0
+          .block-title.h5 {#newsletter_title#}
+          p.block-text {#newsletter_description#}
+          form#main-footer-cover-block-form
+            .no-gutters.row
+              .col-sm
+                .form-group.mb-2.mb-sm-0
+                  input.form-control.form-control-lg(name='email', placeholder='{#enter_mail#}', required='', type='email')
+              .col.col-sm-auto
+                button#main-footer-cover-block-btn.block-link.btn(data-i18n='subscribe', data-placement='bottom', data-toggle='tooltip')
+            small.form-text.text-muted(data-i18n='we-will-never-share-your-email-address-with-anyone-else')
+        .col-lg
+          .block-title.h5(data-i18n='follow-us-on-social-media')
+          nav.mb-2.menu
+            a.menu-link(href='//www.facebook.com/dermokozmetika', rel='nofollow', target='_blank', title='Facebook')
+              span.fa-2x.ion-social-facebook
+            a.menu-link(href='//plus.google.com/+Dermokozmetika/posts', rel='nofollow', target='_blank', title='Google+')
+              span.fa-2x.ion-social-googleplus
+            a.menu-link(href='//instagram.com/dermokozmetika', rel='nofollow', target='_blank', title='Instagram')
+              span.fa-2x.ion-social-instagram
+            a.menu-link(href='//www.pinterest.com/dermokozmetika/', rel='nofollow', target='_blank', title='Pinterest')
+              span.fa-2x.ion-social-pinterest
+            a.menu-link(href='//twitter.com/dermo_kozmetika', rel='nofollow', target='_blank', title='Twitter')
+              span.fa-2x.ion-social-twitter
+            a.menu-link(href='//www.youtube.com/channel/UCQxivSVWwpR8FBUJFrASsyg', rel='nofollow', target='_blank', title='Youtube')
+              span.fa-2x.ion-social-youtube
+          nav.menu
+            a.menu-link(data-i18n='[title]download-on-the-app-store', href='//itunes.apple.com/tr/app/dermokozmetika/id1229114308?mt=8', rel='nofollow', target='_blank')
+              div.bg-lazy(data-background='//media.dermokozmetika.com.tr/images/download-on-the-app-store.png', style='background-size: cover; height: 40px; width: 134px;')
+            a.menu-link(data-i18n='[title]android-app-on-google-play', href='//play.google.com/store/apps/details?id=com.tsoft.dermokozmetika', rel='nofollow', target='_blank')
+              div.bg-lazy(data-background='//media.dermokozmetika.com.tr/images/android-app-on-google-play.png', style='background-size: cover; height: 40px; width: 122px;')
+  | {if $MENU.0.CHILDREN}
+  nav.block-body
+    ul.menu
+      | {foreach $MENU.0.CHILDREN as $item}
+      li.menu-item
+        a.menu-link(href='{$item.URL}', target='{if $item.IS_TARGET_BLANK}_blank{/if}', title='{$item.NAME}') {$item.NAME}
+      | {/foreach}
+  | {/if}
+  .block-footer
+    p.block-text
+      span(data-i18n='[html]copyright-#date#-#name#-all-rights-reserved', data-i18n-options='{ "date": "2013 - {$smarty.now|date_format:\'%Y\'}" }')
+      | &nbsp;
+      a(href='//www.tsoft.com.tr', rel='nofollow', target='_blank', title='T-Soft E-ticaret Sistemleri') T-Soft®
+      | &nbsp;
+      a(href='//www.tsoft.com.tr', rel='nofollow', target='_blank', title='e-ticaret eticaret') e-ticaret
+      | &nbsp;sistemleriyle hazırlanmıştır.
+    | {if $MENU.1.CHILDREN}
+    ul.menu
+      | {foreach $MENU.1.CHILDREN as $item}
+      li.menu-item
+        a.menu-link(href='{$item.URL}', target='{if $item.IS_TARGET_BLANK}_blank{/if}', title='{$item.NAME}') {$item.NAME}
+      | {/foreach}
+    | {/if}

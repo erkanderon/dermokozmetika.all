@@ -1,0 +1,27 @@
+.cart-page {
+  #header {
+    margin-bottom: 1rem;
+  }
+
+  .block:not(.block-fluid),
+  #content {
+    @include media-breakpoint-up(lg) {
+      width: map-get($container-max-widths, lg);
+    }
+  }
+
+  .contentWrapper#twoCol {
+    @include media-breakpoint-only(md) {
+      #right,
+      #left {
+        &Column {
+          @include make-col(4);
+        }
+      }
+
+      #mainColumn {
+        @include make-col(8);
+      }
+    }
+  }
+}

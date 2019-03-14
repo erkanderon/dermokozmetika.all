@@ -1,0 +1,32 @@
+| {if $HEADER == 1}
+#recent-blogs-cover-block.block.block-attached.block-cover.block-extended.block-fluid.block-recent-blogs.load
+  .block-content
+    .block-header
+      .container
+        .block-title.h2 {$BLOCK_TITLE}
+        .block-subtitle.h6 {#recently_added#}
+        p.block-text Cilt ve vücut bakımından tutun da bebeğinizin bakımındaki olmazsa olmaz ürünler ve tüm bakım tüyoları burada!
+    .block-body
+      .container
+        #recent-blogs-cover-block-swiper.swiper.swiper-outside-navigation.swiper-outside-pagination
+          .swiper-container
+            .swiper-wrapper
+              .swiper-slide(html-if='item.format == "image" || item.format == "standard"', html-repeat='item in data')
+                | {literal}
+                a.card(href='{{item.link}}', title='{{item.title.rendered}}')
+                  .card-showcase-top.swiper-lazy(data-background='{{item._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url}}')
+                  .card-block
+                    .card-title.h4 {{item.title.rendered}}
+                    p.card-text {{item.excerpt.rendered}}...
+                | {/literal}
+              | {/if}
+              | {if $FOOTER == 1}
+            .swiper-pagination
+          .swiper-button-prev
+          .swiper-button-next
+    .block-footer
+      a.block-link.btn(
+        href='//mag.dermokozmetika.com.tr'
+        title='{#view_all#}'
+      ) {#view_all#}
+| {/if}

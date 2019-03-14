@@ -1,0 +1,24 @@
+.swiper {
+  &-pagination {
+    @extend .swiper-pagination-black;
+  }
+
+  &-button {
+    &-next,
+    &-prev {
+      @extend .swiper-button-black;
+
+      @media (max-width: 960px) { display: none; }
+    }
+  }
+
+  &-outside-pagination & {
+    &-pagination { bottom: 0; }
+    &-container { padding-bottom: 2rem; }
+  }
+
+  &-outside-navigation &-button {
+    &-prev { left: -37px; }
+    &-next { right: -37px; }
+  }
+}

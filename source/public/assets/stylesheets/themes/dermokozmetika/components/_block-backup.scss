@@ -1,0 +1,60 @@
+.block {
+  margin-bottom: map-get(map-get($spacers, 16), y);
+
+  &-footer,
+  &-header {
+    padding-bottom: map-get(map-get($spacers, 0), y);
+    padding-top: map-get(map-get($spacers, 0), y);
+  }
+
+  &.fluid-block + .fluid-block { margin-top: map-get(map-get($spacers, -16), y); }
+
+  &.middle-block,
+  &.sidebar-block {
+    .block-footer { margin-top: map-get(map-get($spacers, 4), y); }
+    .block-content + .block-content { margin-top: map-get(map-get($spacers, 4), y); }
+    .block-header { margin-bottom: map-get(map-get($spacers, 4), y); }
+  }
+
+  &.header-block {
+    @include align-center;
+    @include make-container;
+    @include make-container-max-widths;
+
+    .block-text {
+      margin-left: auto;
+      margin-right: auto;
+
+      max-width: 40rem;
+    }
+
+    .block-footer { margin-top: map-get(map-get($spacers, 8), y); }
+    .block-content + .block-content { margin-top: map-get(map-get($spacers, 8), y); }
+    .block-header { margin-bottom: map-get(map-get($spacers, 8), y); }
+
+    &.fluid-block {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &.middle-block,
+    &.sidebar-block {
+      @include align-center;
+
+      .block-text {
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 40rem;
+      }
+
+      .block-footer { margin-top: map-get(map-get($spacers, 8), y); }
+      .block-content + .block-content { margin-top: map-get(map-get($spacers, 8), y); }
+      .block-header { margin-bottom: map-get(map-get($spacers, 8), y); }
+    }
+  }
+
+  &.fixed-block { position: fixed; }
+}

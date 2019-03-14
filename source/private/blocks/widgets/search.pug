@@ -1,0 +1,23 @@
+#search-widget-block.block.block-search.block-widget
+  .block-content
+    .block-header
+      .h4.block-title {$BLOCK_TITLE}
+      p.block-text(data-i18n='find-your-product-with-fast-search-enter-some-keyword-such-as-tshirt-sweatshirt-polo-etc')
+    form#search-sidebar-block-form.block-body(action='/{$PAGE_LINK.SEARCH}', autocomplete='off')
+      .row
+        .col.col-md-12
+          .form-group
+            input.form-control.form-control-lg(name='q', placeholder='{#aranacak_kelime#}', required='', value='{if $ARAMA_KELIMESI}{$ARAMA_KELIMESI}{/if}')
+        .col.col-md-12
+          .form-group
+            select.custom-select.form-control.form-control-lg(name='Kid')
+              option(disabled='', selected='') {#tum_kategoriler#}
+              | {foreach $Arama as $item}
+              | {if $item.id == $ARAMA_KATEGORISI}
+              option(selected='', value='{$item.id}') {$item.katadi}
+              | {else}
+              option(value='{$item.id}') {$item.katadi}
+              | {/if}
+              | {/foreach}
+        .col-md
+          button.block-link.btn(title='{#ara#}') {#ara#}

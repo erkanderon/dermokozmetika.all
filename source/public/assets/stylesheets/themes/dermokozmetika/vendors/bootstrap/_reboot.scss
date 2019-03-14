@@ -1,0 +1,9 @@
+th, td {
+  text-align: inherit;
+}
+
+@if not $enable-rounded {
+  button {
+    border-radius: 0;
+  }
+}

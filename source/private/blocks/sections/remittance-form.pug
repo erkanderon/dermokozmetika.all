@@ -1,0 +1,33 @@
+#remittance-form-section-block.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3 {#havale_bildirim#}
+    | {if $orders}
+    form#remittance-form-section-block-form.align-sm-left.block-body
+      .form-group.row
+        label.col-lg-3.col-sm-4.form-control-label(for='remittance-form-section-block-order-id-select') {#siparis#}
+        .col-lg-9.col-sm-8
+          select#remittance-form-section-block-order-id-select.custom-select.form-control(autofocus='', name='siparisNo', required='')
+            option(disabled='', selected='') Sipariş seçiniz
+            | {foreach $orders as $item}
+            option(value='{$item.id}') {$item.siparisNo}
+            | {/foreach}
+      .form-group.row
+        label.col-lg-3.col-sm-4.form-control-label(for='remittance-form-section-block-bank-account-select') {#odeme_yapilan_banka_hesabi#}
+        .col-lg-9.col-sm-8
+          select#remittance-form-section-block-bank-account-select.custom-select.form-control(name='banka', required='')
+            option(disabled='', selected='') Banka hesabı seçiniz
+            | {foreach $bankList as $item}
+            option(value='{$item.ad}') {$item.ad}
+            | {/foreach}
+      .form-group.row
+        label.col-lg-3.col-sm-4.form-control-label(for='remittance-form-section-block-information-textarea') {#bilgi#}
+        .col-lg-9.col-sm-8
+          textarea#remittance-form-section-block-information-textarea.form-control(name='bilgi')
+      .form-group.row
+        .col-lg-9.col-sm-8.offset-lg-3.offset-sm-4
+          button#remittance-form-section-block-btn.block-link.btn.btn-lg.btn-primary(title='{#gonder#}') {#gonder#}
+    | {else}
+    .block-body
+      .alert.alert-warning {#havale_siparis_bulunamadi#}
+    | {/if}

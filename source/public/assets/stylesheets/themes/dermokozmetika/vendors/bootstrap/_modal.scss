@@ -1,0 +1,43 @@
+.modal {
+  &-open {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  &-footer,
+  &-body,
+  &-header {
+    > :last-child { margin-bottom: 0; }
+  }
+
+  &-footer,
+  &-header { background-color: $modal-content-bg; }
+
+  &-content { margin: $modal-dialog-margin; }
+
+  @include media-breakpoint-down(xs) {
+    &-content,
+    &-dialog { margin: 0; }
+
+    &-content {
+      border-width: 0;
+      min-height: 100%;
+    }
+
+    &-dialog { height: 100%; }
+
+    &.show .modal {
+      &-footer,
+      &-header { position: sticky; }
+
+      &-footer { bottom: 0; }
+
+      &-header {
+        top: 0;
+        z-index: 1;
+      }
+    }
+  }
+}

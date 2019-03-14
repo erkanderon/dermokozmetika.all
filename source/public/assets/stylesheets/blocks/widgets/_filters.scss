@@ -1,0 +1,110 @@
+.block-filters.block-widget {
+  .custom-control {
+    margin-bottom: 0;
+
+    &-description {
+      @include transition;
+
+      color: $gray-dark;
+      text-transform: lowercase;
+
+      &::first-letter { text-transform: uppercase; }
+    }
+
+    @include hover-focus {
+      .custom-control-description { color: inherit; }
+    }
+  }
+
+  .row {
+    @extend .no-gutters;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    margin-bottom: 0;
+
+    .col {
+      @include text-truncate;
+    }
+  }
+
+  .list-unstyled {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 0;
+    margin-left: - $custom-control-gutter;
+
+    max-height: 8 * ($font-size-base * $line-height-base + $menu-link-padding * 2);
+    overflow: hidden;
+    position: relative;
+
+    li {
+      margin-bottom: $menu-link-padding;
+      margin-top: $menu-link-padding;
+    }
+  }
+
+  .collapse,
+  .collapsing {
+    margin-top: .5rem;
+
+    &:not(#filters-widget-block-categories-collapse) {
+      padding-left: $custom-control-gutter;
+    }
+  }
+
+  .block {
+    &-subtitle,
+    &-menu {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    &-menu {
+      .menu-link {
+        padding-bottom: $menu-link-padding-y * .75;
+        padding-top: $menu-link-padding-y * .75;
+      }
+
+      &, .menu {
+        flex-direction: column;
+      }
+    }
+
+    &-link {
+      display: block;
+      padding-left: $custom-control-gutter;
+      position: relative;
+
+      &::before {
+        @include transition;
+
+        border-left: .3125rem solid transparent;
+        border-right: .3125rem solid transparent;
+        border-top: .25rem solid;
+
+        content: '';
+        left: 0;
+
+        margin-left: ($custom-control-indicator-size - .625rem) / 2;
+        margin-top: -.125rem;
+
+        position: absolute;
+        top: 50%;
+      }
+
+      @include hover-focus { text-decoration: inherit; }
+
+      &.collapsed::before {
+        @include if-supports-3d-transforms { transform: rotate(-90deg); }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) { display: none; }
+}
+
+#filters-widget-block-mm-menu .btn.btn-primary {
+  color: $brand-inverse;
+} // TODO: Bug

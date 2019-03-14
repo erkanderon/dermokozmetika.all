@@ -1,0 +1,32 @@
+
+<div class="block block-search block-widget" id="search-widget-block">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="h4 block-title">{$BLOCK_TITLE}</div>
+      <p class="block-text" data-i18n="find-your-product-with-fast-search-enter-some-keyword-such-as-tshirt-sweatshirt-polo-etc"></p>
+    </div>
+    <form class="block-body" id="search-sidebar-block-form" action="/{$PAGE_LINK.SEARCH}" autocomplete="off">
+      <div class="row">
+        <div class="col col-md-12">
+          <div class="form-group">
+            <input class="form-control form-control-lg" name="q" placeholder="{#aranacak_kelime#}" required="" value="{if $ARAMA_KELIMESI}{$ARAMA_KELIMESI}{/if}"/>
+          </div>
+        </div>
+        <div class="col col-md-12">
+          <div class="form-group">
+            <select class="custom-select form-control form-control-lg" name="Kid">
+              <option disabled="" selected="">{#tum_kategoriler#}</option>{foreach $Arama as $item}
+              {if $item.id == $ARAMA_KATEGORISI}
+              <option selected="" value="{$item.id}">{$item.katadi}</option>{else}
+              <option value="{$item.id}">{$item.katadi}</option>{/if}
+              {/foreach}
+            </select>
+          </div>
+        </div>
+        <div class="col-md">
+          <button class="block-link btn" title="{#ara#}">{#ara#}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

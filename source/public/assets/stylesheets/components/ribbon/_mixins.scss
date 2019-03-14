@@ -1,0 +1,80 @@
+@mixin ribbon-size(
+  $border-radius,
+  $font-size,
+  $padding-x,
+  $padding-y
+) {
+  @include border-radius($border-radius);
+
+  font-size: $font-size;
+  padding: $padding-y $padding-x;
+}
+
+@mixin ribbon-variant(
+  $background-color,
+  $border-color,
+  $color
+) {
+  @include box-shadow($ribbon-box-shadow);
+
+  background-color: $background-color;
+  border-color: $border-color;
+  color: $color;
+
+  &[href] {
+    @include hover {
+      background-color: darken($background-color, 10%);
+      border-color: darken($border-color, 12%);
+      color: $color;
+    }
+
+    &:active,
+    &.active {
+      @include box-shadow($ribbon-active-box-shadow);
+
+      background-color: darken($background-color, 10%);
+      border-color: darken($border-color, 12%);
+      color: $color;
+    }
+
+    &:focus,
+    &.focus {
+      @if $enable-shadows { box-shadow: $ribbon-focus-box-shadow, 0 0 0 2px rgba($border-color, .5); }
+      @else { box-shadow: 0 0 0 2px rgba($border-color, .5); }
+    }
+  }
+
+  &.disabled {
+    background-color: $background-color;
+    border-color: $border-color;
+  }
+}
+
+@mixin ribbon-outline-variant($color, $hover-color: #fff) {
+  background-color: transparent;
+  border-color: $color;
+  color: $color;
+
+  &[href] {
+    @include hover {
+      background-color: $color;
+      border-color: $color;
+      color: $hover-color;
+    }
+
+    &:active,
+    &.active {
+      background-color: $color;
+      border-color: $color;
+      color: $hover-color;
+    }
+
+    &:focus,
+    &.focus { box-shadow: 0 0 0 2px rgba($color, .5); }
+  }
+
+  &.disabled {
+    background-color: transparent;
+    color: $color;
+  }
+}

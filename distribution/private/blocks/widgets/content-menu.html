@@ -1,0 +1,17 @@
+
+<div class="block block-widget">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="h4 block-title">{$BLOCK_TITLE}</div>
+    </div>
+    <nav class="block-body">
+      <ul class="flex-column menu">{foreach $CONTENT_LIST as $item}
+        <li class="menu-item"><a class="menu-link" href="/{$item.URL}" title="{$item.TITLE}">{$item.TITLE}</a>{if $item.CHILDREN}
+          <ul class="flex-column menu">{foreach $item.CHILDREN as $item_child}
+            <li class="menu-item"><a class="menu-link" href="/{$item_child.URL}" title="{$item_child.TITLE}">{$item_child.TITLE}</a></li>{/foreach}
+          </ul>{/if}
+        </li>{/foreach}
+      </ul>
+    </nav>
+  </div>
+</div>

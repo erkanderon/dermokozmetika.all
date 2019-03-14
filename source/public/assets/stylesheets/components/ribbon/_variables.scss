@@ -1,0 +1,48 @@
+$ribbon-border-width: $border-width !default;
+
+$ribbon-border-radius: $border-radius !default;
+$ribbon-border-radius-lg: $border-radius-lg !default;
+$ribbon-border-radius-sm: $border-radius-sm !default;
+
+$ribbon-font-weight: $font-weight-normal !default;
+$ribbon-line-height: 1.25 !default;
+
+$ribbon-padding-x: .4em !default;
+$ribbon-padding-y: .25em !default;
+
+$ribbon-padding-x-lg: .6em !default;
+$ribbon-padding-y-lg: .375em !default;
+
+$ribbon-padding-x-sm: .2em !default;
+$ribbon-padding-y-sm: .125em !default;
+
+$ribbon-pill-border-radius: 10rem !default;
+$ribbon-pill-padding-x: .6em !default;
+
+$ribbon-box-shadow: inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
+$ribbon-active-box-shadow: inset 0 3px 5px rgba($black,.125) !default;
+$ribbon-focus-box-shadow: 0 0 0 2px rgba($brand-primary, .25) !default;
+
+$ribbon-danger-bg: $brand-danger !default;
+$ribbon-danger-border: $ribbon-danger-bg !default;
+$ribbon-danger-color: $white !default;
+
+$ribbon-default-bg: $gray-light !default;
+$ribbon-default-border: $ribbon-default-bg !default;
+$ribbon-default-color: $white !default;
+
+$ribbon-info-bg: $brand-info !default;
+$ribbon-info-border: $ribbon-info-bg !default;
+$ribbon-info-color: $white !default;
+
+$ribbon-primary-bg: $brand-primary !default;
+$ribbon-primary-border: $ribbon-primary-bg !default;
+$ribbon-primary-color: $white !default;
+
+$ribbon-success-bg: $brand-success !default;
+$ribbon-success-border: $ribbon-success-bg !default;
+$ribbon-success-color: $white !default;
+
+$ribbon-warning-bg: $brand-warning !default;
+$ribbon-warning-border: $ribbon-warning-bg !default;
+$ribbon-warning-color: $white !default;

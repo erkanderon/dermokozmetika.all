@@ -1,0 +1,50 @@
+@mixin catalog-variant(
+  $background-color,
+  $border-color
+) {
+  background-color: $background-color;
+  border-color: $border-color;
+
+  .catalog {
+    &-footer,
+    &-header {
+      background-color: inherit;
+    }
+  }
+}
+
+@mixin catalog-inverse {
+  color: rgba($catalog-inverse-color, .75);
+
+  .catalog {
+    &-link {
+      color: inherit;
+
+      @include hover-focus {
+        color: $catalog-inverse-color;
+      }
+    }
+
+    &-subtitle,
+    &-title {
+      color: $catalog-inverse-color;
+    }
+
+    &-footer,
+    &-header {
+      border-color: rgba($catalog-inverse-color, .25);
+    }
+  }
+}
+
+@mixin catalog-outline-variant($value) {
+  background-color: transparent;
+  border-color: $value;
+
+  .catalog {
+    &-footer,
+    &-header {
+      background-color: inherit;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+//	Opt in CSS
+$mm_css_vertical	: true; // ok
+$mm_css_buttons		: true; // ok
+$mm_css_navbars		: true; // ok
+$mm_css_listviews	: true; // ok
+
+//	Animations
+$mm_transitionDuration: 0.25s !default; // ok
+$mm_transitionFunction: ease-in-out !default; // ok
+
+//	Colors
+$mm_backgroundColor				: #f5f5f5 !default; // ok
+$mm_borderColor					: #e5e5e5 !default; // ok
+$mm_dimmedTextColor				: #848484 !default; // ok
+$mm_emphasizedBackgroundColor	: rgba(#3a3a3a, .075) !default; // ok
+$mm_highlightedBackgroundColor	: rgba(#3a3a3a, .05) !default; // ok
+$mm_navbarColor					: #777 !default; // ok
+$mm_textColor					: #3a3a3a !default; // ok
+
+//	Sizes
+$mm_menuWidth		: .825 !default; // ok
+$mm_menuMinWidth	: 280px !default; // ok
+$mm_menuMaxWidth	: 320px !default; // ok
+
+$mm_menuHeight		: .825 !default; // ok
+$mm_menuMinHeight	: 160px !default; // ok
+$mm_menuMaxHeight	: 320px !default; // ok
+
+$mm_padding			: 12px !default; // ok
+
+$mm_btnSize			: 44px !default; // ok
+$mm_fontSize		: 16px !default; // ok
+$mm_listitemIndent	: 32px !default; // ok
+$mm_listitemPadding	: 12px !default; // ok
+$mm_panelPadding	: 24px !default; // ?
+$mm_subopenWidth	: 45px !default; // ?
+$mm_subpanelOffset	: 25% !default; // ?
+
+
+//	Addons and Extensions
+$mm_toggleCheckedColor	: #3fb34f !default; // ok
+$mm_toggleHeight		: 32px !default; // ok
+$mm_toggleWidth			: 48px !default; // ok
+$mm_checkHeight			: 32px !default; // ok
+$mm_checkWidth			: 32px !default; // ok
+
+$mm_counterWidth		: 32px !default; // ok
+
+$mm_dividerFontSize		: 16px !default; // ok
+$mm_dividerHeight		: 32px !default; // ok
+
+$mm_dropdownShadow		: 0 0 8px 8px rgba(#3a3a3a, .1) !default; // ok
+$mm_dropdownTipX		: 32px !default; // ok
+$mm_dropdownTipY		: 8px !default; // ok
+
+$mm_iconbarWidth		: $mm_btnSize + $mm_padding * 2 !default; // ?
+$mm_iconpanelWidth		: 32px !default; // ok
+
+$mm_inputBackgroundColor: #fff !default; // ok
+
+$mm_listitemSmallPadding: 8px !default; // ok
+$mm_listitemLargePadding: 16px !default; // ok
+$mm_listitemHugePadding : 20px !default; // ok
+
+$mm_navbarHeight		: 62px !default; // ok
+$mm_breadcrumbPadding	: 8px !default; // ok
+
+$mm_pagedimOpacity 		: .5 !default; // ok
+$mm_pageShadow			: 0 0 4px 4px rgba(#3a3a3a, .05) !default; // ok
+$mm_panelShadow			: 0 0 4px 4px rgba(#3a3a3a, .05) !default; // ok
+$mm_popupShadow			: 0 0 8px 8px rgba(#3a3a3a, .1) !default; // ok
+
+$mm_sectionIndexerWidth	: 24px !default; // ok
+
+$mm_zoomScaleDown		: .75 !default; // ok
+$mm_zoomScaleUp			: 1.5 !default; // ok

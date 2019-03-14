@@ -1,0 +1,9 @@
+.block.block-widget
+  .block-content
+    .block-header
+      .h4.block-title {$BLOCK_TITLE}
+    .block-body
+      nav.flex-column.menu
+        | {foreach $CATEGORIES as $item}
+        a.menu-link(href='/index.php?B=MusteriHizmetleri&kategori={$item.ID}', title='{$item.NAME}') {$item.NAME}
+        | {/foreach}

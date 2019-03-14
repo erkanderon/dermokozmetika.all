@@ -1,0 +1,167 @@
+@import 'mixins';
+@import 'variables';
+
+.catalog {
+  @include border-radius($catalog-border-radius);
+
+  background-color: $catalog-background-color;
+  border: $catalog-border-width $catalog-border-style $catalog-border-color;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &-link {
+    & + & {
+      margin-left: $catalog-spacer-x;
+    }
+  }
+
+  &-text,
+  &-subtitle,
+  &-title {
+    margin-bottom: $catalog-spacer-y;
+
+    .catalog-link + & {
+      margin-top: $catalog-spacer-y;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-subtitle {
+    & + &,
+    .catalog-title + & {
+      margin-top: $catalog-spacer-y / -2;
+    }
+  }
+
+  &-footer,
+  &-header {
+    background-color: $catalog-cap-background-color;
+    padding: $catalog-spacer-y $catalog-spacer-x;
+
+    &:not(:first-child) {
+      border-top: inherit;
+    }
+
+    &:not(:last-child) {
+      border-bottom: inherit;
+    }
+
+    & + & {
+      margin-top: - $catalog-border-width;
+    }
+  }
+
+  &-body {
+    flex: 1 1 auto;
+    padding: $catalog-spacer-y $catalog-spacer-x;
+  }
+
+  &-img {
+    &,
+    &-overlay {
+      @include border-radius(
+        calc(#{$catalog-border-radius} - #{$catalog-border-width})
+      );
+    }
+
+    &-overlay {
+      bottom: 0;
+      left: 0;
+      padding: $catalog-img-overlay-padding;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  > {
+    :last-child {
+      @include border-bottom-radius(
+        calc(#{$catalog-border-radius} - #{$catalog-border-width})
+      );
+    }
+
+    :first-child {
+      @include border-top-radius(
+        calc(#{$catalog-border-radius} - #{$catalog-border-width})
+      );
+    }
+  }
+
+  &-columns {
+    // TODO
+  }
+
+  &-danger {
+    @include catalog-variant(
+      $brand-danger,
+      $brand-danger
+    );
+  }
+
+  &-info {
+    @include catalog-variant(
+      $brand-info,
+      $brand-info
+    );
+  }
+
+  &-primary {
+    @include catalog-variant(
+      $brand-primary,
+      $brand-primary
+    );
+  }
+
+  &-success {
+    @include catalog-variant(
+      $brand-success,
+      $brand-success
+    );
+  }
+
+  &-warning {
+    @include catalog-variant(
+      $brand-warning,
+      $brand-warning
+    );
+  }
+
+  &-deck {
+    // TODO
+  }
+
+  &-group {
+    // TODO
+  }
+
+  &-inverse {
+    @include catalog-inverse;
+  }
+
+  &-outline {
+    &-danger {
+      @include catalog-outline-variant($brand-danger);
+    }
+
+    &-info {
+      @include catalog-outline-variant($brand-info);
+    }
+
+    &-primary {
+      @include catalog-outline-variant($brand-primary);
+    }
+
+    &-success {
+      @include catalog-outline-variant($brand-success);
+    }
+
+    &-warning {
+      @include catalog-outline-variant($brand-warning);
+    }
+  }
+}

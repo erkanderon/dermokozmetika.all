@@ -1,0 +1,103 @@
+.block-product-detail.block-section {
+  .card {
+    &-campaign {
+      background-color: transparent;
+      border-color: transparent;
+
+      .card-block {
+        padding: $card-spacer-x * 0;
+      }
+    }
+
+    &-comment {
+      border-width: 0;
+      margin-bottom: map-get(map-get($spacers, 8), y);
+
+      .card-block { background-color: $gray-lightest; }
+
+      .card-header {
+        background-color: transparent;
+        border-bottom-width: 0;
+        margin-bottom: map-get(map-get($spacers, 2), y);
+        padding: map-get(map-get($spacers, 0), x);
+      }
+    }
+  }
+
+  .block {
+    &-subtitle {
+      font-weight: inherit;
+    }
+
+    &-footer,
+    &-body,
+    &-header {
+      padding-bottom: $block-spacer-y * 1.75;
+      padding-top: $block-spacer-y * 1.75;
+    }
+
+    &-img {
+      align-self: center;
+
+      max-height: 30rem;
+      max-width: 100%;
+    }
+  }
+
+  .nav-tabs {
+    border-bottom-width: 0;
+
+    .nav {
+      &-link {
+        color: $text-muted;
+        font-weight: $font-weight-normal;
+        line-height: $headings-line-height;
+
+        &.active {
+          background-color: $secondary-bg;
+          border-color: $secondary-bg;
+          color: inherit;
+
+          font-weight: $font-weight-bold;
+        }
+
+        @include media-breakpoint-down(xs) {
+          font-size: $font-size-h5;
+        }
+
+        @include media-breakpoint-up(sm) {
+          font-size: $font-size-h2;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    background-color: $secondary-bg;
+    padding: $spacer * 2;
+  }
+
+  .img-thumbnail {
+    border: $border-width solid $border-color;
+
+    @include media-breakpoint-up(md) {
+      box-sizing: border-box;
+      padding: 1rem;
+    }
+  }
+
+  .product-detail * {
+    color: $body-color !important;
+    font-family: $font-family-sans-serif !important;
+    font-size: $font-size-base !important;
+  }
+
+  .product-detail iframe,
+  .product-detail img {
+    width: 100%;
+  }
+
+  .ribbon-clickable {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,44 @@
+.block-coupons.block-section {
+  .col {
+    @include make-col(12);
+
+    &-minimum-price,
+    &-type {
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+    }
+
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+  }
+
+  .row {
+    margin-top: $spacer-y;
+  }
+
+  .table {
+    text-align: center;
+    white-space: nowrap;
+
+    &-date,
+    &-amount {
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
+    }
+
+    &-minimum-price,
+    &-type {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    &-description {
+      text-align: left;
+      white-space: normal;
+    }
+  }
+}

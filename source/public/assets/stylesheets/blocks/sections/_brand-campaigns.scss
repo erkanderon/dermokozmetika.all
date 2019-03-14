@@ -1,0 +1,15 @@
+.block-brand-campaigns.block-section {
+  .card {
+    border-color: transparent;
+    &-title {
+      margin-bottom: $card-spacer-y * 0;
+    }
+    &-block {
+      padding: $card-spacer-x * 0;
+      text-align: left;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    width: map-get($container-max-widths, lg);
+  }
+}

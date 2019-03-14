@@ -1,0 +1,105 @@
+#cart-section-block.block.block-cart.block-section.load
+  .block-content(html-if='PRODUCTS.length')
+    .block-header
+      .block-title.h3
+        | Sepetinizde&nbsp;
+        span {{PRODUCTS.length}}
+        | &nbsp;adet ürün var.
+    .block-body
+      table.table.table-hover.text-center
+        tbody
+          tr(html-repeat='item in PRODUCTS')
+            td.text-left
+              .row
+                .col.col-auto
+                  a(
+                    href='{{item.URL}}'
+                    title='{{item.TITLE}}'
+                  )
+                    img.block-img.img-thumbnail(
+                      alt='{{item.TITLE}}'
+                      src='{{item.IMAGE.SMALL}}'
+                      title='{{item.TITLE}}'
+                      width='100'
+                    )
+                  button.block-link.btn.btn-block.btn-link.btn-sm.cart-section-block-btn.hidden-sm-up(
+                    data-id='{{item.CART_ID}}'
+                    title='{#delete#}'
+                    type='button'
+                  ) {#delete#}
+                .col
+                  .block-title.h5 {{item.BRAND}}
+                  div {{item.TITLE}}
+                  small.mt-4.text-danger(html-if='item.CAMPAIGN_PERCENT > 0') {{item.CAMPAIGN_NAME}}
+                  .hidden-sm-up.mt-4
+                    select.cart-section-block-select.custom-select.mr-4(data-quantity='{{item.COUNT}}', data-id='{{item.CART_ID}}')
+                      option(
+                        html-repeat='value in item.STOCK'
+                        value='{{value}}'
+                      ) {{value}} x
+                    | {{item.TARGET_CURRENCY}}&nbsp;{{item.PRICE_TOTAL|toFixed:2}}
+            td.hidden-xs-down
+              select.cart-section-block-select.custom-select(data-quantity='{{item.COUNT}}', data-id='{{item.CART_ID}}')
+                  option(
+                    html-repeat='value in item.STOCK'
+                    value='{{value}}'
+                  ) {{value}} x
+              button.block-link.btn.btn-block.btn-link.btn-sm.cart-section-block-btn(
+                data-id='{{item.CART_ID}}'
+                title='{#delete#}'
+                type='button'
+              ) {#delete#}
+            td.hidden-xs-down {{item.TARGET_CURRENCY}}&nbsp;{{item.PRICE_TOTAL|toFixed:2}}
+    .block-body
+      dl.h4.mb-0.row
+        dt.col-6.text-left {#cart_total_price#}
+        dd.col-6.font-weight-normal.mb-4.text-right {{TARGET_CURRENCY}}&nbsp;{{PRICE_CART|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_PERSONALIZATION > 0') {#price_personalization#}
+        dd.col-6.font-weight-normal.mb-4.text-right(html-if='PRICE_PERSONALIZATION > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_PERSONALIZATION|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_GIFT_PACKAGE > 0') {#gift_package_price#}
+        dd.col-6.font-weight-normal.mb-4.text-right(html-if='PRICE_GIFT_PACKAGE > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_GIFT_PACKAGE|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_COUPON > 0') {#coupon_discount#}
+        dd.col-6.font-weight-normal.mb-4.text-right(html-if='PRICE_COUPON > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_COUPON|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_CAMPAIGN > 0') {#campaign_discount#}
+        dd.col-6.font-weight-normal.mb-4.text-right(html-if='PRICE_CAMPAIGN > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_CAMPAIGN|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_CARGO > 0') {#shipping_price#}
+        dd.col-6.font-weight-normal.mb-4.text-right(html-if='PRICE_CARGO > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_CARGO|toFixed:2}}
+        dt.col-6.text-left(html-if='PRICE_GENERAL > 0') {#total_price#}
+        dd.col-6.font-weight-normal.mb-0.text-right(html-if='PRICE_GENERAL > 0') {{TARGET_CURRENCY}}&nbsp;{{PRICE_GENERAL|toFixed:2}}
+  .block-content(html-if='PRODUCTS.length && campaigns.length', style='background-color: #f5f5f5; padding: 16px 32px 32px;')
+    .block-header
+      .block-title.h3 {#campaigns#}
+    .align-left.block-body
+      ul.list-group
+        li.list-group-item(html-class='item.SELECTED ? "active" : ""', html-repeat='item in campaigns')
+          label.custom-control.custom-radio
+            input.cart-section-block-input.custom-control-input(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='item.SELECTED', checked='', type='radio', value='{{item.ID}}')
+            input.cart-section-block-input.custom-control-input(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='!item.SELECTED', type='radio', value='{{item.ID}}')
+            span.custom-control-indicator
+            .custom-control-description
+              .list-group-item-heading.h5 {{item.TITLE}}
+              span.list-group-item-text {{item.DESCRIPTION}}
+  .block-content(html-if='PRODUCTS.length')
+    .block-body
+      a.block-link.d-block.dropdown-toggle.hidden-sm-up.mb-4(data-toggle='collapse', href='#cart-section-block-form')
+        strong Kupon kodunuz mu var?
+      form#cart-section-block-form
+        .row
+          .col
+            .form-group
+              input.form-control(
+              data-i18n='[placeholder]enter-your-coupon-code'
+              name='code'
+              required=''
+              )
+          .col.col-auto
+            button.block-link.btn.btn-secondary(title='{#apply#}') {#apply#}
+  .block-content(html-if='!PRODUCTS.length')
+    .block-header
+      .block-title.h3 {#no_products#}
+    .block-body
+      .alert.alert-warning {#cart_empty#}
+  script#cart-section-block-data(type='application/json').
+    {
+      "title": "{#step_cart#}"
+    }

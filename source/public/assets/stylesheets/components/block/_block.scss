@@ -1,0 +1,347 @@
+@import 'mixins';
+@import 'variables';
+
+.block {
+  @if $enable-grid-classes {
+    @include make-container;
+    @include make-container-max-widths;
+  }
+
+  &-link {
+    & + & {
+      margin-left: $block-spacer-x;
+    }
+  }
+
+  &-text,
+  &-subtitle,
+  &-title {
+    margin-bottom: $block-spacer-y;
+
+    .block-link + & {
+      margin-top: $block-spacer-y;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-subtitle {
+    & + &,
+    .block-title + & {
+      margin-top: $block-spacer-y / -2;
+    }
+  }
+
+  &-footer,
+  &-header {
+    background-color: $block-cap-background-color;
+    padding: $block-spacer-y $block-spacer-x;
+
+    &:not(:first-child) {
+      border-top: inherit;
+    }
+
+    &:not(:last-child) {
+      border-bottom: inherit;
+    }
+
+    & + & {
+      margin-top: - $block-border-width;
+    }
+  }
+
+  &-body {
+    flex: 1 1 auto;
+    padding: $block-spacer-y $block-spacer-x;
+  }
+
+  &-img {
+    &,
+    &-overlay {
+      @include border-radius(
+        calc(#{$block-border-radius} - #{$block-border-width})
+      );
+    }
+
+    &-overlay {
+      bottom: 0;
+      left: 0;
+      padding: $block-img-overlay-padding;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &-content {
+    @include border-radius($block-border-radius);
+
+    background-color: $block-background-color;
+    border: $block-border-width $block-border-style $block-border-color;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    > {
+      :last-child {
+        @include border-bottom-radius(
+          calc(#{$block-border-radius} - #{$block-border-width})
+        );
+      }
+
+      :first-child {
+        @include border-top-radius(
+          calc(#{$block-border-radius} - #{$block-border-width})
+        );
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $block-margin-bottom;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $block-margin-bottom;
+  }
+
+  &-attached {
+    &:not(:last-child).block {
+      &-content,
+      .block-content:last-child {
+        @include border-bottom-radius(0);
+
+        .block-img {
+          &,
+          &-overlay {
+            @include border-bottom-radius(inherit);
+          }
+        }
+
+        > :last-child {
+          @include border-bottom-radius(inherit);
+        }
+      }
+    }
+
+    + .block {
+      &-attached {
+        margin-top: calc(#{- $block-margin-bottom} + #{- $block-border-width});
+      }
+
+      &-content,
+      .block-content:first-child {
+        @include border-top-radius(0);
+
+        .block-img {
+          &,
+          &-overlay {
+            @include border-top-radius(inherit);
+          }
+        }
+
+        > :first-child {
+          @include border-top-radius(inherit);
+        }
+      }
+    }
+  }
+
+  &-columns {
+    // TODO
+  }
+
+  &-danger {
+    @include block-variant(
+      $brand-danger,
+      $brand-danger
+    );
+  }
+
+  &-info {
+    @include block-variant(
+      $brand-info,
+      $brand-info
+    );
+  }
+
+  &-primary {
+    @include block-variant(
+      $brand-primary,
+      $brand-primary
+    );
+  }
+
+  &-success {
+    @include block-variant(
+      $brand-success,
+      $brand-success
+    );
+  }
+
+  &-warning {
+    @include block-variant(
+      $brand-warning,
+      $brand-warning
+    );
+  }
+
+  &-deck {
+    // TODO
+  }
+
+  @if $enable-grid-classes {
+    &-extended.block {
+      padding-left: 0;
+      padding-right: 0;
+
+      &-content {
+        .block-fluid & {
+          @include border-radius(0);
+
+          .block-img {
+            &,
+            &-overlay {
+              @include border-radius(inherit);
+            }
+          }
+
+          > {
+            :last-child {
+              @include border-bottom-radius(inherit);
+            }
+
+            :first-child {
+              @include border-top-radius(inherit);
+            }
+          }
+        }
+
+        @each $key, $value in $grid-gutter-widths {
+          @include media-breakpoint-only($key) {
+            margin-left: $value / -2;
+            margin-right: $value / -2;
+
+            .block-fluid & {
+              margin-left: calc(#{$value / -2} + #{- $block-border-width});
+              margin-right: calc(#{$value / -2} + #{- $block-border-width});
+            }
+          }
+        }
+      }
+
+      &-fluid {
+        .block {
+          &-img {
+            &,
+            &-overlay {
+              @include border-radius(inherit);
+            }
+          }
+
+          &-content {
+            @include border-radius(0);
+
+            margin-left: - $block-border-width;
+            margin-right: - $block-border-width;
+
+            > {
+              :last-child {
+                @include border-bottom-radius(inherit);
+              }
+
+              :first-child {
+                @include border-top-radius(inherit);
+              }
+            }
+          }
+        }
+
+        &.block-fixed {
+          &,
+          &-bottom,
+          &-top {
+            margin-bottom: - $block-border-width;
+            margin-top: - $block-border-width;
+          }
+        }
+      }
+    }
+
+    &-fluid {
+      overflow: hidden;
+      width: auto;
+    }
+  }
+
+  &-fixed {
+    &,
+    &-bottom,
+    &-top {
+      position: fixed;
+      z-index: $zindex-fixed;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      @if $enable-grid-classes {
+        &.block-extended.block-fluid {
+          padding-bottom: 0;
+          padding-top: 0;
+        }
+
+        @each $key, $value in $grid-gutter-widths {
+          @include media-breakpoint-only($key) {
+            padding-bottom: $value / 2;
+            padding-top: $value / 2;
+          }
+        }
+      }
+    }
+
+    &-bottom {
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &-top {
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &-group {
+    // TODO
+  }
+
+  &-inverse {
+    @include block-inverse;
+  }
+
+  &-outline {
+    &-danger {
+      @include block-outline-variant($brand-danger);
+    }
+
+    &-info {
+      @include block-outline-variant($brand-info);
+    }
+
+    &-primary {
+      @include block-outline-variant($brand-primary);
+    }
+
+    &-success {
+      @include block-outline-variant($brand-success);
+    }
+
+    &-warning {
+      @include block-outline-variant($brand-warning);
+    }
+  }
+}

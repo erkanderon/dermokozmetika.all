@@ -1,0 +1,42 @@
+.block-brand-list.block-widget {
+  .menu {
+    flex-direction: column;
+
+    margin-bottom: $menu-link-padding * 0;
+    margin-top: $menu-link-padding * 0;
+
+    max-height: 10 * ($font-size-base * $line-height-base + 2 * $menu-link-padding);
+  }
+
+  .input-group {
+    background-color: $secondary-bg;
+    margin-bottom: .75rem;
+
+    .form-control,
+    &-addon {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    .form-control {
+      @include box-shadow(none);
+
+      &:focus + .input-group-addon {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    &-addon {
+      @include transition($transition-fade);
+
+      opacity: .25;
+    }
+
+    @include hover {
+      .input-group-addon {
+        opacity: .75;
+      }
+    }
+  }
+}

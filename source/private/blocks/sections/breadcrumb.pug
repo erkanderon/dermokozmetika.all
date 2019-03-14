@@ -1,0 +1,54 @@
+| {if $NAVIGATION_LIST[0].ID == 450}
+| {include assign = "data" file = "theme/v4/Blok/Html_Blok/Orta/user_brand-button-data.tpl"}
+| {include assign = "brands" file = "theme/v4/Blok/DataListele/Orta/user_brand-list-data.tpl"}
+| {foreach $data|json_decode as $item key = key}
+| {if $key == $NAVIGATION_LIST[1].ID}
+| {foreach $brands|json_decode as $brand_item}
+| {if $item == $brand_item->id}
+| {assign value = $brand_item var = "brand"}
+| {/if}
+| {/foreach}
+| {/if}
+| {/foreach}
+| {/if}
+| {if $PAGE_ID == 2 || $PAGE_ID == 31}
+.block.block-attached.block-section
+  .block-body.pb-0
+    h1.block-title {foreach $NAVIGATION_LIST as $item name = breadcrumb}{if $smarty.foreach.breadcrumb.last}{$item.TITLE}{/if}{/foreach}
+| {/if}
+.block.block-attached.block-section
+  .block-body
+    nav.breadcrumb
+      a.breadcrumb-item(href='/', title='Dermokozmetika') Dermokozmetika
+      | {foreach $NAVIGATION_LIST as $item name = breadcrumb}
+      | {if $smarty.foreach.breadcrumb.last}
+      span.active.breadcrumb-item {$item.TITLE}
+      | {else}
+      | {if $brand}
+      a.breadcrumb-item(href!='{$brand->SeoLink}', title!='{$brand->Ad}') {$brand->Ad}
+      | {else}
+      a.breadcrumb-item(href='/{$item.LINK}', title='{$item.TITLE}') {$item.TITLE}
+      | {/if}
+      | {/if}
+      | {/foreach}
+  script(type='application/ld+json').
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@id": "{$SITE}",
+          "@type": "ListItem",
+          "item": { "name": "Dermokozmetika" },
+          "position": 1
+        }
+        {foreach $NAVIGATION_LIST as $item name = breadcrumb}
+        , {
+          "@id": "{$SITE}{$item.LINK}",
+          "@type": "ListItem",
+          "item": { "name": "{$item.TITLE}" },
+          "position": {$smarty.foreach.breadcrumb.iteration + 1}
+        }
+        {/foreach}
+      ]
+    }

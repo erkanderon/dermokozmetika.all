@@ -1,0 +1,17 @@
+.block.block-widget
+  .block-content
+    .block-header
+      .h4.block-title {$BLOCK_TITLE}
+    nav.block-body
+      ul.flex-column.menu
+        | {foreach $CONTENT_LIST as $item}
+        li.menu-item
+          a.menu-link(href='/{$item.URL}', title='{$item.TITLE}') {$item.TITLE}
+          | {if $item.CHILDREN}
+          ul.flex-column.menu
+            | {foreach $item.CHILDREN as $item_child}
+            li.menu-item
+              a.menu-link(href='/{$item_child.URL}', title='{$item_child.TITLE}') {$item_child.TITLE}
+            | {/foreach}
+          | {/if}
+        | {/foreach}

@@ -1,0 +1,147 @@
+#filters-widget-block.block.block-filters.block-widget.load
+  .block-content
+    .block-header
+      .h4.block-title {#filter#}
+    .block-body(html-if='CATEGORIES.length')
+      a.block-link(data-toggle='collapse', href='#filters-widget-block-categories-collapse', title='{#categories#}')
+        .block-subtitle.h6 {#categories#}
+      nav#filters-widget-block-categories-collapse.collapse.show
+        ul.block-menu.menu
+          li.menu-item(html-class='item.CHILDREN ? "show" : ""', html-repeat='item in CATEGORIES')
+            a.menu-link(href='{{item.URL}}', html-class='item.SELECTED ? "active" : ""', title='{{item.NAME}}')
+              | {{item.NAME}}&nbsp;
+              span.text-muted ({{item.COUNT}})
+            ul.menu(html-if='item.CHILDREN')
+              li.menu-item(html-repeat='item_child in item.CHILDREN')
+                a.menu-link(href='{{item_child.URL}}', html-class='item_child.SELECTED ? "active" : ""', title='{{item_child.NAME}}')
+                  | {{item_child.NAME}}&nbsp;
+                  span.text-muted ({{item_child.COUNT}})
+    .block-body(html-if='BRANDS.length')
+      a.block-link(data-toggle='collapse', href='#filters-widget-block-brands-collapse', title='{#brands#}')
+        .block-subtitle.h6 {#brands#}
+      nav#filters-widget-block-brands-collapse.collapse.show
+        ul.filters-widget-block-list-unstyled.list-unstyled(data-key='brand')
+          li(html-repeat='item in BRANDS')
+            label.custom-checkbox.custom-control.filters-widget-block-custom-control
+              input.custom-control-input(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+              input.custom-control-input(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+              span.custom-control-indicator
+              span.custom-control-description
+                span(lang='en') {{item.NAME}}
+                | &nbsp;
+                span.text-muted ({{item.COUNT}})
+    .block-body(html-repeat='(key, item) in FILTERS')
+      a.block-link(data-toggle='collapse', href='#filters-widget-block-filters-{{item.ID}}-collapse', title='{{item.NAME}}')
+        .block-subtitle.h6 {{item.NAME}}
+      nav.collapse.show(id='filters-widget-block-filters-{{item.ID}}-collapse')
+        ul.filters-widget-block-list-unstyled.list-unstyled(data-key='multi', html-if='item.TYPE == "0"')
+          li(html-repeat='item_child in item.VALUES')
+            label.custom-checkbox.custom-control.filters-widget-block-custom-control
+              input.custom-control-input(checked='', html-if='item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+              input.custom-control-input(html-if='!item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+              span.custom-control-indicator
+              span.custom-control-description
+                | {{item_child.NAME}}&nbsp;
+                span.text-muted ({{item_child.COUNT}})
+        ul.filters-widget-block-list-unstyled.list-unstyled(data-key='single', html-if='item.TYPE == "1"')
+          li(html-repeat='item_child in item.VALUES')
+            label.custom-checkbox.custom-control.filters-widget-block-custom-control
+              input.custom-control-input(checked='', html-if='item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+              input.custom-control-input(html-if='!item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+              span.custom-control-indicator
+              span.custom-control-description
+                | {{item_child.NAME}}&nbsp;
+                span.text-muted ({{item_child.COUNT}})
+    .block-body(html-if='VARIANTS.TYPE1_LIST.length')
+      a.block-link(data-toggle='collapse', href='#filters-widget-block-colors-collapse', title='{#color#}')
+        .block-subtitle.h6 {#color#}
+      nav#filters-widget-block-colors-collapse.collapse.show
+        ul.filters-widget-block-list-unstyled.list-unstyled(data-key='type1')
+          li(html-repeat='item in VARIANTS.TYPE1_LIST')
+            label.custom-checkbox.custom-control.filters-widget-block-custom-control
+              input.custom-control-input(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+              input.custom-control-input(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+              span.custom-control-indicator
+              span.custom-control-description
+                | {{item.NAME}}&nbsp;
+                span.text-muted ({{item.COUNT}})
+    .block-body(html-if='VARIANTS.TYPE2_LIST.length')
+      a.block-link(data-toggle='collapse', href='#filters-widget-block-sizes-collapse', title='{#size#}')
+        .block-subtitle.h6 {#size#}
+      nav#filters-widget-block-sizes-collapse.collapse.show
+        ul.filters-widget-block-list-unstyled.list-unstyled(data-key='type2')
+          li(html-repeat='item in VARIANTS.TYPE2_LIST')
+            label.custom-checkbox.custom-control.filters-widget-block-custom-control
+              input.custom-control-input(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+              input.custom-control-input(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+              span.custom-control-indicator
+              span.custom-control-description
+                | {{item.NAME}}&nbsp;
+                span.text-muted ({{item.COUNT}})
+    .block-body
+      a.block-link.collapsed(data-toggle='collapse', href='#filters-widget-block-price-range-collapse', title='{#price#}')
+        .block-subtitle.h6 {#price#}
+      #filters-widget-block-price-range-collapse.collapse
+        dl.row
+          dt.col.col-auto {{TARGET_CURRENCY}}&nbsp;{{PRICE.MIN}}
+          dd#filters-widget-block-dt.col.text-center {{PRICE.MIN_SELECTED}}&nbsp;-&nbsp;{{PRICE.MAX_SELECTED}}
+          dt.col.col-auto {{TARGET_CURRENCY}}&nbsp;{{PRICE.MAX}}
+        input#filters-widget-block-price-range-input(data-slider-max='{{PRICE.MAX}}', data-slider-min='{{PRICE.MIN}}', data-slider-step='1', data-slider-value='[{{PRICE.MIN_SELECTED}}, {{PRICE.MAX_SELECTED}}]', type='number')
+      nav#filters-widget-block-mm-menu.mm-menu.mm-offcanvas
+        ul
+          li(html-if='CATEGORIES.length')
+            span {#categories#}
+            ul
+              li(html-repeat='item in CATEGORIES')
+                span(html-if='item.CHILDREN.length') {{item.NAME}}
+                ul(html-if='item.CHILDREN.length')
+                  li(html-repeat='item_child in item.CHILDREN')
+                    a(href='/{{item_child.URL}}', title='{{item_child.NAME}}')
+                      | {{item_child.NAME}}
+                      em.Counter ({{item_child.COUNT}})
+                a(href='{{item.URL}}', html-if='!item.CHILDREN.length', title='{{item.NAME}}') {{item.NAME}}
+                em.Counter(html-if='!item.CHILDREN.length') {{item.COUNT}}
+          li(html-if='BRANDS.length')
+            span {#brands#}
+            ul#filters-widget-block-brands-mm-listview(data-key='brand')
+              li(html-repeat='item in BRANDS')
+                input.Toggle(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+                input.Toggle(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+                em.Counter {{item.COUNT}}
+                span {{item.NAME}}
+          li(html-repeat='item in FILTERS')
+            span {{item.NAME}}
+            ul(data-key='multi', html-if='item.TYPE == "0"')
+              li(html-repeat='item_child in item.VALUES')
+                input.Toggle(checked='', html-if='item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+                input.Toggle(html-if='!item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+                em.Counter {{item_child.COUNT}}
+                span {{item_child.NAME}}
+            ul(data-key='single', html-if='item.TYPE == "1"')
+              li(html-repeat='item_child in item.VALUES')
+                input.Toggle(checked='', html-if='item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+                input.Toggle(html-if='!item_child.SELECTED', type='checkbox', value='{{item.ID}}-{{item_child.ID}}')
+                em.Counter {{item_child.COUNT}}
+                span {{item_child.NAME}}
+          li(html-if='VARIANTS.TYPE1_LIST.length')
+            span {#color#}
+            ul#filters-widget-block-colors-mm-listview(data-key='type1')
+              li(html-repeat='item in VARIANTS.TYPE1_LIST')
+                input.Toggle(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+                input.Toggle(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+                em.Counter {{item.COUNT}}
+                span {{item.NAME}}
+          li(html-if='VARIANTS.TYPE2_LIST.length')
+            span {#size#}
+            ul(data-key='type2')
+              li(html-repeat='item in VARIANTS.TYPE2_LIST')
+                input.Toggle(checked='', html-if='item.SELECTED', type='checkbox', value='{{item.ID}}')
+                input.Toggle(html-if='!item.SELECTED', type='checkbox', value='{{item.ID}}')
+                em.Counter {{item.COUNT}}
+                span {{item.NAME}}
+    script#filters-widget-block-data(type='application/json').
+      {
+        "mmenu": {
+          "navbar": { "title": "{#filter#}" }
+        }
+      }

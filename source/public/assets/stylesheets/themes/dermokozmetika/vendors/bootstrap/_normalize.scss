@@ -1,0 +1,20 @@
+::selection { background-color: $gray-lighter; }
+
+*:focus { outline-width: 0; }
+
+a { user-select: none; }
+button, input, optgroup, select, textarea { font-family: $font-family-base; }
+
+button {
+  background-color: transparent;
+  color: inherit;
+}
+
+hr { width: 100%; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+}
+
+html { font-size: 16px; }

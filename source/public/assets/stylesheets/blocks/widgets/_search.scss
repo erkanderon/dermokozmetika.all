@@ -1,0 +1,50 @@
+.block-search.block-widget {
+  $grid-gutter-widths: $grid-gutter-widths;
+
+  @each $key in map-keys($grid-gutter-widths) {
+    $grid-gutter-widths: map-set(
+      $grid-gutter-widths,
+      $key,
+      map-get(
+        $grid-gutter-widths,
+        $key
+      ) / 2
+    );
+  }
+
+  .block-link {
+    @extend .btn-block, .btn-lg, .btn-primary;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include media-breakpoint-up(md) { text-align: inherit; }
+  }
+
+  .form-group { margin-bottom: 0; }
+
+  .row {
+    @include make-row($grid-gutter-widths);
+
+    [class*='col-'] {
+      @include make-gutters($grid-gutter-widths);
+    }
+
+    @each $key in map-keys($grid-gutter-widths) {
+      $value: map-get(
+        $grid-gutter-widths,
+        $key
+      ) / 2;
+
+      @include media-breakpoint-only($key) {
+        margin-bottom: - $value;
+        margin-top: - $value;
+
+        [class*='col-'] {
+          padding-bottom: $value;
+          padding-top: $value;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.contact-page #content {
+  @include media-breakpoint-up(md) {
+    width: map-get($container-max-widths, md);
+  }
+}

@@ -1,0 +1,49 @@
+.card {
+  overflow: hidden;
+
+  &-title,
+  &-subtitle {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-text,
+  &-subtitle {
+    margin-bottom: $card-spacer-y;
+  }
+
+  &-footer,
+  &-block,
+  &-header,
+  &-img-overlay {
+    > :last-child { margin-bottom: 0; }
+  }
+
+  &-img {
+    &-overlay {
+      display: flex;
+      flex-direction: column;
+      pointer-events: none;
+
+      .card-link { pointer-events: all; }
+    }
+  }
+
+  &-showcase-top {
+    @include text-hide;
+
+    background-position: center;
+    background-size: cover;
+
+    height: 0;
+  }
+}
+
+a.card {
+  text-decoration: inherit;
+
+  @include hover-focus {
+    .card-title { text-decoration: $link-hover-decoration; }
+  }
+}

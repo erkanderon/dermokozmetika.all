@@ -1,0 +1,22 @@
+{
+  "api": "//service.dermokozmetika.com.tr/",
+  "vendors": {
+    "bootstrap": {
+      "grid-breakpoints": {
+        "xs": 0,
+        "sm": 480,
+        "md": 720,
+        "lg": 960,
+        "xl": 1280
+      },
+      "grid-gutter-width-base": 32,
+      "grid-gutter-widths": {
+        "xs": 32,
+        "sm": 32,
+        "md": 32,
+        "lg": 32,
+        "xl": 32
+      }
+    }
+  }
+}

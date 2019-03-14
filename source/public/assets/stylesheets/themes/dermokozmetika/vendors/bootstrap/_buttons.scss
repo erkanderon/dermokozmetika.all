@@ -1,0 +1,41 @@
+.btn {
+  &:not(&-sm) { font-size: $font-size-lg; }
+
+  &-primary,
+  &-secondary,
+  &-outline-primary,
+  &-outline-secondary { font-weight: $font-weight-semi-bold; }
+
+  &-facebook {
+    @include button-variant(
+      #fff,
+      #4267b2,
+      #4267b2
+    );
+  }
+
+  &-twitter {
+    @include button-variant(
+      #fff,
+      #1da1f2,
+      #1da1f2
+    );
+  }
+
+  &-outline {
+    &-facebook {
+      @include button-outline-variant(#4267b2);
+    }
+
+    &-twitter {
+      @include button-outline-variant(#1da1f2);
+    }
+  }
+
+  &-inline-group {
+    display: inline-block;
+    margin: - $btn-block-spacing-y / 2;
+
+    .btn { margin: $btn-block-spacing-y / 2; }
+  }
+}

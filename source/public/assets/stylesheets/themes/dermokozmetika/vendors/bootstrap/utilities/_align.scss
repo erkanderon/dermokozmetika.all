@@ -1,0 +1,17 @@
+@each $value in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($value) {
+    .align#{breakpoint-infix($value, $grid-breakpoints)} {
+      &-center {
+        @include align-center;
+      }
+
+      &-left {
+        @include align-left;
+      }
+
+      &-right {
+        @include align-right;
+      }
+    }
+  }
+}

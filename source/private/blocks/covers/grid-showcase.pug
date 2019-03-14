@@ -1,0 +1,8 @@
+.block.block-attached.block-cover.block-extended.block-fluid.block-grid-showcase
+  .block-body
+    .row
+      | {if $LANGUAGE}
+      | {include file = "theme/v4/Blok/Html_Blok/UstAlt/user_grid-showcase-$LANGUAGE.tpl"}
+      | {else}
+      | {include file = "theme/v4/Blok/Html_Blok/UstAlt/user_grid-showcase-tr.tpl"}
+      | {/if}

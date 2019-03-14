@@ -1,0 +1,23 @@
+#login-without-membership-section-block.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3 {$BLOCK_TITLE}
+    form#login-without-membership-section-block-form.block-body
+        input(name='quick',type='hidden', value='1')
+        .row
+          .col
+            .form-group
+              label.form-control-label(for='login-without-membership-section-block-firstname-input') {#name#}
+              input#login-without-membership-section-block-firstname-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-firstname', name='name', required='')
+          .col
+            .form-group
+              label.form-control-label(for='login-without-membership-section-block-lastname-input') {#surname#}
+              input#login-without-membership-section-block-lastname-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-lastname', name='surname', required='')
+        .form-group
+          label.form-control-label(for='login-without-membership-section-block-email-address-input') {#email#}&nbsp;
+            span.fa.fa-question-circle(data-content='{#why_email_description#}', data-toggle='popover', title='{#why_email#}')
+          input#login-without-membership-section-block-email-address-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-email-address', name='email', required='', type='email')
+        .form-group
+          label.form-control-label(for='login-without-membership-section-block-phone-number-input') {#mobile_phone#}
+          input#login-without-membership-section-block-phone-number-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-phone-number', maxlength='11', minlength='10', name='mobile_phone', required='', type='tel')
+        button#login-without-membership-section-block-btn.btn.btn-lg.btn-primary(title='Devam et') Devam et

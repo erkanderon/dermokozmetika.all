@@ -1,0 +1,173 @@
+#address-book-section-block.block.block-address-book.block-section.load
+  .block-content
+    .block-header
+      .block-title.h3
+        | {#address_title#}
+        span(html-if='ADDRESSES.length')
+          | &nbsp;
+          small ({{ADDRESSES.length}})
+      button.block-link.btn.btn-new(title='{#add_address#}', type='button') {#add_address#}
+    .block-body
+      table.table.table-hover.text-left(html-if='ADDRESSES.length')
+        thead.thead-default
+          tr
+            th(data-i18n='title', width='125')
+            th {#address#}
+            th.hidden-md-down
+        tbody
+          tr(html-repeat='item in ADDRESSES')
+            th {{item.TITLE}}
+            td
+              address.mb-lg-0
+                | {{item.ADDRESS}}
+                br
+                | {{item.DISTRICT}},&nbsp;{{item.CITY}}
+                br
+                span.flag-icon(class='flag-icon-{{item.COUNTRY_CODE|toLowerCase}}')
+                | &nbsp;{{item.COUNTRY}}
+                br
+                br
+                abbr(title='{#phone#}') {#phone#}
+                | &nbsp;{{item.MOBILE_PHONE}}
+              .btn-group.hidden-lg-up
+                button.btn.btn-edit.btn-secondary.btn-sm(data-id='{{item.ID}}', title='{#edit#}', type='button') {#edit#}
+                a.btn.btn-delete.btn-danger.btn-sm(data-id='{{item.ID}}', title='{#delete#}', type='button') {#delete#}
+            td.block-table
+              .btn-group
+                button.btn.btn-edit.btn-secondary.btn-sm(data-id='{{item.ID}}', title='{#edit#}', type='button') {#edit#}
+                button.btn.btn-delete.btn-danger.btn-sm(data-id='{{item.ID}}', title='{#delete#}', type='button') {#delete#}
+      .alert.alert-warning(data-i18n='your-account-does-not-have-any-address', html-if='!ADDRESSES.length')
+    .block-footer
+      button.block-link.btn.btn-new(href='#', title='{#add_address#}', type='button') {#add_address#}
+#create-update-address-modal.modal.fade
+  .modal-dialog
+    form#create-update-address-form.modal-content(data-id='{{ADDRESS_ID}}')
+      .modal-header
+        .modal-title.h4
+          span(html-if='ADDRESS_ID') {#update_address#}
+          span(html-if='!ADDRESS_ID') {#add_address#}
+        button.close.ml-4(data-dismiss='modal', type='button')
+          span.fa.fa-close
+      .modal-body
+        .form-group
+          label.form-control-label(for='create-update-address-modal-address-type-select') Adres tipi
+          select.custom-select.form-control(id='create-update-address-modal-address-type-select', name='is_company_active', required='')
+            option(selected='', value='0') {#individual_address#}
+            option(value='1') {#corporate_address#}
+        .form-group
+          label.form-control-label(for='create-update-address-modal-address-title-input') {#address_placeholder#}
+          input#create-update-address-modal-address-title-input.form-control(name='title', placeholder='Adres başlığını yazınız', required='', value='{{TITLE}}')
+        .form-group
+          label.form-control-label(for='create-update-address-modal-fullname-input') {#fullname#}
+          input#create-update-address-modal-fullname-input.form-control(name='fullname', placeholder='Adınızı ve soyadınızı yazınız', required='', value='{{FULLNAME}}')
+        div#create-update-address-modal-area(html-class='!IS_COMPANY_ACTIVE ? "hidden" : ""')
+          .form-group
+            label.form-control-label(for='create-update-address-modal-company-name-input') {#company#}
+            input#create-update-address-modal-company-name-input.form-control(name='company', placeholder='Firma adını yazınız', required='', value='{{COMPANY}}')
+          .form-group
+            label.form-control-label(for='create-update-address-modal-tax-office-name-input') {#tax_office#}
+            input#create-update-address-modal-tax-office-name-input.form-control(name='tax_office', placeholder='Vergi dairesini yazınız', required='', value='{{TAX_OFFICE}}')
+          .form-group
+            label.form-control-label(for='create-update-address-modal-tax-number-input') {#tax_number#}
+            input#create-update-address-modal-tax-number-input.form-control(name='tax_number', placeholder='Vergi numaranızı yazınız', required='', value='{{TAX_NUMBER}}')
+        .form-group
+          label.form-control-label(for='create-update-address-modal-address-textarea') {#address#}
+          textarea#create-update-address-modal-address-textarea.form-control(minlength='10', name='address', placeholder='Adresinizi yazınız', required='') {{ADDRESS}}
+        .form-group
+          label.form-control-label(for='create-update-address-modal-city-select') {#city#}
+          select.custom-select.form-control(id='create-update-address-modal-city-select', name='city_code', required='')
+            option(disabled='', selected='') {#select_city#}
+            option(value='1') Adana
+            option(value='2') Adıyaman
+            option(value='3') Afyonkarahisar
+            option(value='4') Ağrı
+            option(value='5') Amasya
+            option(value='6') Ankara
+            option(value='7') Antalya
+            option(value='8') Artvin
+            option(value='9') Aydın
+            option(value='10') Balıkesir
+            option(value='11') Bilecik
+            option(value='12') Bingöl
+            option(value='13') Bitlis
+            option(value='14') Bolu
+            option(value='15') Burdur
+            option(value='16') Bursa
+            option(value='17') Çanakkale
+            option(value='18') Çankırı
+            option(value='19') Çorum
+            option(value='20') Denizli
+            option(value='21') Diyarbakır
+            option(value='22') Edirne
+            option(value='23') Elazığ
+            option(value='24') Erzincan
+            option(value='25') Erzurum
+            option(value='26') Eskişehir
+            option(value='27') Gaziantep
+            option(value='28') Giresun
+            option(value='29') Gümüşhane
+            option(value='30') Hakkâri
+            option(value='31') Hatay
+            option(value='32') Isparta
+            option(value='33') Mersin
+            option(value='34') İstanbul
+            option(value='35') İzmir
+            option(value='36') Kars
+            option(value='37') Kastamonu
+            option(value='38') Kayseri
+            option(value='39') Kırklareli
+            option(value='40') Kırşehir
+            option(value='41') Kocaeli
+            option(value='42') Konya
+            option(value='43') Kütahya
+            option(value='44') Malatya
+            option(value='45') Manisa
+            option(value='46') Kahramanmaraş
+            option(value='47') Mardin
+            option(value='48') Muğla
+            option(value='49') Muş
+            option(value='50') Nevşehir
+            option(value='51') Niğde
+            option(value='52') Ordu
+            option(value='53') Rize
+            option(value='54') Sakarya
+            option(value='55') Samsun
+            option(value='56') Siirt
+            option(value='57') Sinop
+            option(value='58') Sivas
+            option(value='59') Tekirdağ
+            option(value='60') Tokat
+            option(value='61') Trabzon
+            option(value='62') Tunceli
+            option(value='63') Şanlıurfa
+            option(value='64') Uşak
+            option(value='65') Van
+            option(value='66') Yozgat
+            option(value='67') Zonguldak
+            option(value='68') Aksaray
+            option(value='69') Bayburt
+            option(value='70') Karaman
+            option(value='71') Kırıkkale
+            option(value='72') Batman
+            option(value='73') Şırnak
+            option(value='74') Bartın
+            option(value='75') Ardahan
+            option(value='76') Iğdır
+            option(value='77') Yalova
+            option(value='78') Karabük
+            option(value='79') Kilis
+            option(value='80') Osmaniye
+            option(value='81') Düzce
+        .form-group
+          label.form-control-label(for='create-update-address-modal-town-select') {#town#}
+          select.custom-select.form-control(disabled='', id='create-update-address-modal-town-select', name='town_code', required='')
+            option(disabled='', selected='') {#select_town#}
+        .form-group
+          label.form-control-label(for='create-update-address-modal-district-input') {#district#}
+          input#create-update-address-modal-district-input.form-control(name='district', placeholder='Semtinizi yazınız', required='', value='{{DISTRICT}}')
+        .form-group
+          label.form-control-label(for='create-update-address-modal-phone-number-input') {#mobile_phone#}
+          input#create-update-address-modal-phone-number-input.form-control(name='mobile_phone', placeholder='Telefon numaranızı yazınız', required='', type='tel', value='{{MOBILE_PHONE}}')
+      .modal-footer
+        button.btn.btn-primary(title='Kaydet') Kaydet
+        button.btn.btn-secondary(data-dismiss='modal', title='Kapat', type='button') Kapat

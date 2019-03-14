@@ -1,0 +1,9 @@
+#campaign-showcase-cover-block.block.block-attached.block-campaign-showcase.block-cover.block-extended.block-fluid
+  #campaign-showcase-cover-block-swiper.swiper
+    .swiper-container
+      .swiper-wrapper
+        | {if $LANGUAGE}
+        | {include file = "theme/v4/Blok/Html_Blok/UstAlt/user_campaign-showcase-$LANGUAGE.tpl"}
+        | {else}
+        | {include file = "theme/v4/Blok/Html_Blok/UstAlt/user_campaign-showcase-tr.tpl"}
+        | {/if}

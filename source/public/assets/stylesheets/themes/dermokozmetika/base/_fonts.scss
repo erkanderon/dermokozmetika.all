@@ -1,0 +1,23 @@
+@include font-face(
+  woff woff2,
+  'Avenir Next',
+  normal,
+  normal,
+ '../fonts/avenir-next-regular'
+);
+
+@include font-face(
+  woff woff2,
+  'Avenir Next',
+  normal,
+  500,
+ '../fonts/avenir-next-semibold'
+);
+
+@include font-face(
+  woff woff2,
+  'Avenir Next',
+  normal,
+  bold,
+ '../fonts/avenir-next-bold'
+);

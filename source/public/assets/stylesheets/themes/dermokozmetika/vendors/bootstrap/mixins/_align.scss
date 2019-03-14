@@ -1,0 +1,32 @@
+@mixin align-center {
+  justify-content: center;
+  text-align: center;
+
+  .form-control { text-align: center; }
+
+  *:not(.swiper-wrapper) { justify-content: center; }
+
+  select.form-control { text-align-last: center; }
+}
+
+@mixin align-left {
+  justify-content: flex-start;
+  text-align: left;
+
+  .form-control { text-align: left; }
+
+  *:not(.swiper-wrapper) { justify-content: flex-start; }
+
+  select.form-control { text-align-last: left; }
+}
+
+@mixin align-right {
+  justify-content: flex-end;
+  text-align: right;
+
+  .form-control { text-align: right; }
+
+  *:not(.swiper-wrapper) { justify-content: flex-end; }
+
+  select.form-control { text-align-last: right; }
+}

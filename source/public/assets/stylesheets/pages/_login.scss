@@ -1,0 +1,22 @@
+.login-page {
+  .block {
+    &-section,
+    &-widget {
+      .block-title {
+        font-size: $font-size-h2;
+      }
+    }
+  }
+
+  .contentWrapper#threeCol {
+    @include media-breakpoint-up(lg) {
+      #right,
+      #main,
+      #left {
+        &Column {
+          @include make-col(4);
+        }
+      }
+    }
+  }
+}

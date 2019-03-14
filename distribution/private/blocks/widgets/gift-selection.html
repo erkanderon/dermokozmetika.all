@@ -1,0 +1,45 @@
+
+<div class="block block-widget load" id="gift-selection-widget-block" html-if="CAMPAIGN_LIST.length">
+  <div class="bg-gray-lightest block-content text-center">
+    <div class="block-header">
+      <div class="h3 block-title">{$BLOCK_TITLE}</div>
+    </div>
+    <div class="block-header">
+      <div class="h6 block-subtitle">50 TL üzeri alışverişlerde</div>
+    </div>
+    <div class="block-body px-4">
+      <div class="m--1 row">
+        <div class="col-4 p-1" html-if="item.GROUP == 50" html-repeat="item in CAMPAIGN_LIST">{literal}
+          <div class="mb-4"><a data-content="{{item.DESCRIPTION}}" data-placement="top" data-toggle="popover" href="javascript:;" title="{{item.TITLE}}"><img class="block-img img-thumbnail" src="//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg"/></a></div>
+          <button class="btn btn-block btn-outline-secondary btn-sm gift-selection-widget-block-add-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="!item.SELECTED" title="Ekle" type="button">Ekle</button>
+          <button class="btn btn-block btn-outline-primary btn-sm gift-selection-widget-block-remove-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="item.SELECTED" title="Sil" type="button">Sil</button>{/literal}
+        </div>
+      </div>
+    </div>
+    <div class="block-header">
+      <div class="h6 block-subtitle">150 TL üzeri alışverişlerde</div>
+    </div>
+    <div class="block-body px-4">
+      <div class="m--1 row">
+        <div class="col-4 p-1" html-if="item.GROUP == 150" html-repeat="item in CAMPAIGN_LIST">{literal}
+          <div class="mb-4"><a data-content="{{item.DESCRIPTION}}" data-placement="top" data-toggle="popover" href="javascript:;" title="{{item.TITLE}}"><img class="block-img img-thumbnail" src="//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg"/></a></div>
+          <button class="btn btn-block btn-outline-secondary btn-sm gift-selection-widget-block-add-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="!item.SELECTED" title="Ekle" type="button">Ekle</button>
+          <button class="btn btn-block btn-outline-primary btn-sm gift-selection-widget-block-remove-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="item.SELECTED" title="Sil" type="button">Sil</button>{/literal}
+        </div>
+      </div>
+    </div>
+    <div class="block-header">
+      <div class="h6 block-subtitle">250 TL üzeri alışverişlerde</div>
+    </div>
+    <div class="block-body px-4">
+      <div class="m--1 row">
+        <div class="col-4 p-1" html-if="item.GROUP == 250" html-repeat="item in CAMPAIGN_LIST">{literal}
+          <div class="mb-4"><a data-content="{{item.DESCRIPTION}}" data-placement="top" data-toggle="popover" href="javascript:;" title="{{item.TITLE}}"><img class="block-img img-thumbnail" src="//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg"/></a></div>
+          <button class="btn btn-block btn-outline-secondary btn-sm gift-selection-widget-block-add-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="!item.SELECTED" title="Ekle" type="button">Ekle</button>
+          <button class="btn btn-block btn-outline-primary btn-sm gift-selection-widget-block-remove-btn px-2 py-1" data-group="{{item.GROUP}}" data-id="{{item.ID}}" html-if="item.SELECTED" title="Sil" type="button">Sil</button>{/literal}
+        </div>
+      </div>
+    </div>
+    <div class="block-body pb-0"><a class="block-link btn btn-block btn-success" href="/{$PAGE_LINK.ORDER}" title="Siparişi tamamla">Siparişi tamamla</a></div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+
+<div class="block block-orders block-section load" id="orders-section-block">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="block-title h3">Geçmiş siparişlerim</div>
+    </div>
+    <div class="block-body">
+      <table class="table table-orders">
+        <thead>
+          <tr>
+            <th class="table-details">Detay</th>
+            <th class="table-id">Sipariş numarası</th>
+            <th class="table-date">Tarih</th>
+            <th class="table-price">Fiyat</th>
+            <th class="table-status">Durum</th>
+            <th class="table-actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr html-repeat="order in ORDERS">
+            <td class="table-details">{{order.ORDER_NUMBER}}
+              <dl class="row row-details">
+                <dt class="col col-date">Tarih</dt>
+                <dd class="col col-date" html-html="order.DATE"></dd>
+                <dt class="col col-price">Tutar</dt>
+                <dd class="col col-price">{{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}</dd>
+                <dt class="col col-status">Durum</dt>
+                <dd class="col col-status">{{order.STATUS_TEXT}}</dd>
+              </dl>
+            </td>
+            <td class="table-id">{{order.ORDER_NUMBER}}</td>
+            <td class="table-date" html-html="order.DATE"></td>
+            <td class="table-price">{{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}</td>
+            <td class="table-status">{{order.STATUS_TEXT}}</td>
+            <td class="table-actions">
+              <button class="btn" data-target="#orders-section-block-{{order.ID}}-modal" data-toggle="modal" title="Detay" type="button">Detay</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="modal fade" html-repeat="order in ORDERS" id="orders-section-block-{{order.ID}}-modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title h3">Sipariş detayı (#{{order.ORDER_NUMBER}})</div>
+              <button class="close" data-dismiss="modal" title="Kapat" type="button">× Kapat</button>
+            </div>
+            <div class="modal-body modal-body-informations">
+              <div class="row row-informations">
+                <div class="col col-address-informations">
+                  <div class="h5">Adres bilgileri</div>
+                  <dl class="row">
+                    <dt class="col-12">Teslimat adresi</dt>
+                    <dd class="col-12">{{order.DELIVERY_ADDRESS}}</dd>
+                    <dt class="col-12">Fatura adresi</dt>
+                    <dd class="col-12">{{order.INVOICE_ADDRESS}}</dd>
+                  </dl>
+                </div>
+                <div class="col col-order-informations">
+                  <div class="h5">Sipariş bilgileri</div>
+                  <dl class="row">
+                    <dt class="col-12">Sipariş numarası</dt>
+                    <dd class="col-12">{{order.ORDER_NUMBER}}</dd>
+                    <dt class="col-12">Tarih</dt>
+                    <dd class="col-12" html-html="order.DATE"></dd>
+                    <dt class="col-12">Ödeme şekli</dt>
+                    <dd class="col-12">{{order.PAYMENT_METHOD}}</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body modal-body-products">
+              <table class="table table-products">
+                <tbody>
+                  <tr html-repeat="product in order.PRODUCT_LIST">
+                    <td class="table-product-image"><a href="{{product.URL}}" title="{{product.TITLE}}"><img class="img-thumbnail" alt="{{product.TITLE}}" src="{{product.IMAGE}}" title="{{product.TITLE}}"/></a></td>
+                    <td class="table-product-title">{{product.TITLE}}<br/><small class="text-muted">{{product.COUNT}} adet</small></td>
+                    <td class="table-product-price" html-if="product.PRICE_SELL &gt; 0">{{product.CURRENCY}}&nbsp;{{product.PRICE_SELL}}</td>
+                    <td class="table-product-price" html-if="product.PRICE_SELL == 0">Hediye</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-body modal-body-totals">
+              <dl class="row row-totals">
+                <dt class="col col-shipping-fee">Kargo ücreti</dt>
+                <dd class="col col-shipping-fee">{{order.CURRENCY}}&nbsp;{{order.KARGOFIYAT}}</dd>
+                <dt class="col col-service-fee">Servis bedeli</dt>
+                <dd class="col col-service-fee">{{order.CURRENCY}}&nbsp;{{order.SERVISFIYAT}}</dd>
+                <dt class="col col-total">Toplam</dt>
+                <dd class="col col-total">{{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert" html-if="TOTAL &lt; 1">{#no_orders#}</div>
+    </div>
+  </div>
+</div>

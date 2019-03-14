@@ -1,0 +1,48 @@
+.block-cover.block-interactive-showcase {
+  .card {
+    border-width: $card-border-width * 0;
+    opacity: 0;
+    visibility: hidden;
+
+    &-link {
+      font-size: inherit;
+      letter-spacing: 1.125px;
+      text-transform: uppercase;
+    }
+
+    &-img {
+      @include img-fluid;
+
+      @include if-supports-3d-transforms {
+        @keyframes interactive-showcase-cover-block-card-img {
+          50% {
+            transform: scale(1.5);
+          }
+        }
+
+        animation: interactive-showcase-cover-block-card-img 120s linear infinite;
+      }
+
+      &-overlay {
+        padding: $card-img-overlay-padding * 0;
+      }
+    }
+  }
+
+  .swiper-link {
+    $value: 40%;
+
+    @each $key in map-keys($grid-breakpoints) {
+      @include media-breakpoint-only($key) {
+        padding-top: $value;
+      }
+
+      $value: $value + 20%;
+    }
+  }
+
+  .swiper-slide-active .card {
+    opacity: 1;
+    visibility: visible;
+  }
+}

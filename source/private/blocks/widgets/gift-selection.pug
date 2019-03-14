@@ -1,0 +1,42 @@
+#gift-selection-widget-block.block.block-widget.load(html-if='CAMPAIGN_LIST.length')
+  .bg-gray-lightest.block-content.text-center
+    .block-header
+      .h3.block-title {$BLOCK_TITLE}
+    .block-header
+      .h6.block-subtitle 50 TL üzeri alışverişlerde
+    .block-body.px-4
+      .m--1.row
+        .col-4.p-1(html-if='item.GROUP == 50', html-repeat='item in CAMPAIGN_LIST')
+          | {literal}
+          .mb-4
+            a(data-content='{{item.DESCRIPTION}}', data-placement='top', data-toggle='popover', href='javascript:;', title='{{item.TITLE}}')
+              img.block-img.img-thumbnail(src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg')
+          button.btn.btn-block.btn-outline-secondary.btn-sm.gift-selection-widget-block-add-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='!item.SELECTED', title='Ekle', type='button') Ekle
+          button.btn.btn-block.btn-outline-primary.btn-sm.gift-selection-widget-block-remove-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='item.SELECTED', title='Sil', type='button') Sil
+          | {/literal}
+    .block-header
+      .h6.block-subtitle 150 TL üzeri alışverişlerde
+    .block-body.px-4
+      .m--1.row
+        .col-4.p-1(html-if='item.GROUP == 150', html-repeat='item in CAMPAIGN_LIST')
+          | {literal}
+          .mb-4
+            a(data-content='{{item.DESCRIPTION}}', data-placement='top', data-toggle='popover', href='javascript:;', title='{{item.TITLE}}')
+              img.block-img.img-thumbnail(src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg')
+          button.btn.btn-block.btn-outline-secondary.btn-sm.gift-selection-widget-block-add-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='!item.SELECTED', title='Ekle', type='button') Ekle
+          button.btn.btn-block.btn-outline-primary.btn-sm.gift-selection-widget-block-remove-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='item.SELECTED', title='Sil', type='button') Sil
+          | {/literal}
+    .block-header
+      .h6.block-subtitle 250 TL üzeri alışverişlerde
+    .block-body.px-4
+      .m--1.row
+        .col-4.p-1(html-if='item.GROUP == 250', html-repeat='item in CAMPAIGN_LIST')
+          | {literal}
+          .mb-4
+            a(data-content='{{item.DESCRIPTION}}', data-placement='top', data-toggle='popover', href='javascript:;', title='{{item.TITLE}}')
+              img.block-img.img-thumbnail(src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg')
+          button.btn.btn-block.btn-outline-secondary.btn-sm.gift-selection-widget-block-add-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='!item.SELECTED', title='Ekle', type='button') Ekle
+          button.btn.btn-block.btn-outline-primary.btn-sm.gift-selection-widget-block-remove-btn.px-2.py-1(data-group='{{item.GROUP}}', data-id='{{item.ID}}', html-if='item.SELECTED', title='Sil', type='button') Sil
+          | {/literal}
+    .block-body.pb-0
+      a.block-link.btn.btn-block.btn-success(href='/{$PAGE_LINK.ORDER}', title='Siparişi tamamla') Siparişi tamamla

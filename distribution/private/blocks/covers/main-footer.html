@@ -1,0 +1,43 @@
+
+<div class="block block-cover block-extended block-fluid block-main-footer" id="main-footer-cover-block">
+  <div class="block-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg mb-12 mb-lg-0">
+          <div class="block-title h5">{#newsletter_title#}</div>
+          <p class="block-text">{#newsletter_description#}</p>
+          <form id="main-footer-cover-block-form">
+            <div class="no-gutters row">
+              <div class="col-sm">
+                <div class="form-group mb-2 mb-sm-0">
+                  <input class="form-control form-control-lg" name="email" placeholder="{#enter_mail#}" required="" type="email"/>
+                </div>
+              </div>
+              <div class="col col-sm-auto">
+                <button class="block-link btn" id="main-footer-cover-block-btn" data-i18n="subscribe" data-placement="bottom" data-toggle="tooltip"></button>
+              </div>
+            </div><small class="form-text text-muted" data-i18n="we-will-never-share-your-email-address-with-anyone-else"></small>
+          </form>
+        </div>
+        <div class="col-lg">
+          <div class="block-title h5" data-i18n="follow-us-on-social-media"></div>
+          <nav class="mb-2 menu"><a class="menu-link" href="//www.facebook.com/dermokozmetika" rel="nofollow" target="_blank" title="Facebook"><span class="fa-2x ion-social-facebook"></span></a><a class="menu-link" href="//plus.google.com/+Dermokozmetika/posts" rel="nofollow" target="_blank" title="Google+"><span class="fa-2x ion-social-googleplus"></span></a><a class="menu-link" href="//instagram.com/dermokozmetika" rel="nofollow" target="_blank" title="Instagram"><span class="fa-2x ion-social-instagram"></span></a><a class="menu-link" href="//www.pinterest.com/dermokozmetika/" rel="nofollow" target="_blank" title="Pinterest"><span class="fa-2x ion-social-pinterest"></span></a><a class="menu-link" href="//twitter.com/dermo_kozmetika" rel="nofollow" target="_blank" title="Twitter"><span class="fa-2x ion-social-twitter"></span></a><a class="menu-link" href="//www.youtube.com/channel/UCQxivSVWwpR8FBUJFrASsyg" rel="nofollow" target="_blank" title="Youtube"><span class="fa-2x ion-social-youtube"></span></a></nav>
+          <nav class="menu"><a class="menu-link" data-i18n="[title]download-on-the-app-store" href="//itunes.apple.com/tr/app/dermokozmetika/id1229114308?mt=8" rel="nofollow" target="_blank">
+              <div class="bg-lazy" data-background="//media.dermokozmetika.com.tr/images/download-on-the-app-store.png" style="background-size: cover; height: 40px; width: 134px;"></div></a><a class="menu-link" data-i18n="[title]android-app-on-google-play" href="//play.google.com/store/apps/details?id=com.tsoft.dermokozmetika" rel="nofollow" target="_blank">
+              <div class="bg-lazy" data-background="//media.dermokozmetika.com.tr/images/android-app-on-google-play.png" style="background-size: cover; height: 40px; width: 122px;"></div></a></nav>
+        </div>
+      </div>
+    </div>
+  </div>{if $MENU.0.CHILDREN}
+  <nav class="block-body">
+    <ul class="menu">{foreach $MENU.0.CHILDREN as $item}
+      <li class="menu-item"><a class="menu-link" href="{$item.URL}" target="{if $item.IS_TARGET_BLANK}_blank{/if}" title="{$item.NAME}">{$item.NAME}</a></li>{/foreach}
+    </ul>
+  </nav>{/if}
+  <div class="block-footer">
+    <p class="block-text"><span data-i18n="[html]copyright-#date#-#name#-all-rights-reserved" data-i18n-options="{ &quot;date&quot;: &quot;2013 - {$smarty.now|date_format:'%Y'}&quot; }"></span>&nbsp;<a href="//www.tsoft.com.tr" rel="nofollow" target="_blank" title="T-Soft E-ticaret Sistemleri">T-Soft®</a>&nbsp;<a href="//www.tsoft.com.tr" rel="nofollow" target="_blank" title="e-ticaret eticaret">e-ticaret</a>&nbsp;sistemleriyle hazırlanmıştır.</p>{if $MENU.1.CHILDREN}
+    <ul class="menu">{foreach $MENU.1.CHILDREN as $item}
+      <li class="menu-item"><a class="menu-link" href="{$item.URL}" target="{if $item.IS_TARGET_BLANK}_blank{/if}" title="{$item.NAME}">{$item.NAME}</a></li>{/foreach}
+    </ul>{/if}
+  </div>
+</div>

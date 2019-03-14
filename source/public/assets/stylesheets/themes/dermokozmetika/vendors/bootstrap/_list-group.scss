@@ -1,0 +1,12 @@
+.list-group {
+  margin: - $spacer-x / 4;
+
+  &-item {
+    margin: $spacer-x / 4;
+
+    &-text,
+    &-heading { margin-bottom: $spacer-x / 2; }
+
+    > :last-child { margin-bottom: 0; }
+  }
+}

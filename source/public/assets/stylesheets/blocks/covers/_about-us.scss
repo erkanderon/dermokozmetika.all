@@ -1,0 +1,14 @@
+.block-about-us.block-cover {
+  font-size: $font-size-xs;
+  line-height: $line-height-sm;
+  text-align: justify;
+  .block-body {
+    h1, h2, h3, h4, h5, h6, p, ul {
+      margin-bottom: $font-size-xs * $line-height-sm * .5;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-size: $font-size-xs;
+      line-height: $line-height-sm;
+    }
+  }
+}

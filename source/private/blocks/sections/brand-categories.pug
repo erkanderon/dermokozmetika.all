@@ -1,0 +1,21 @@
+| {if $CATEGORIES[7].CHILDREN}
+.block.block-attached.block-brand-categories.block-section
+    .block-content
+        .block-body
+            nav.hidden-xs-down.menu
+                | {foreach $CATEGORIES[7].CHILDREN as $item}
+                | {if $item.NAME|lower|replace:($NAVIGATION_LIST.0.TITLE|cat:" "|lower):""|count_characters != $item.NAME|count_characters}
+                a.menu-link(href='{$item.URL}', title='{$item.NAME}') {$item.NAME}
+                | {/if}
+                | {/foreach}
+            .dropdown.hidden-sm-up
+                button.btn.btn-block.btn-outline-primary.dropdown-toggle(data-toggle='dropdown') Marka serileri
+                .dropdown-menu.text-center.w-100
+                    | {foreach $CATEGORIES[7].CHILDREN as $item}
+                    | {if $item.NAME|lower|replace:($NAVIGATION_LIST.0.TITLE|cat:" "|lower):""|count_characters != $item.NAME|count_characters}
+                    a.dropdown-item(href='{$item.URL}', title='{$item.NAME}') {$item.NAME}
+                    | {/if}
+                    | {/foreach}
+| {/if}
+script#brand-campaigns-section-block-data(type='application/json').
+    { "id": "{$BRAND_ID}" }

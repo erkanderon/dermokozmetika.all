@@ -1,0 +1,17 @@
+.block-popular-categories.block-cover {
+  .btn {
+    @extend .btn-block, .btn-lg;
+    background-color: $gray-lightest;
+    font-weight: normal;
+  }
+  @each $key, $value in $grid-gutter-widths {
+    @include media-breakpoint-only($key) {
+      .row {
+        margin: - $value * .5;
+        [class*='col-'] {
+          padding: $value * .5 / 2;
+        }
+      }
+    }
+  }
+}

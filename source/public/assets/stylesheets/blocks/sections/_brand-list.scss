@@ -1,0 +1,83 @@
+.block-brand-list.block-section {
+  @include align-center;
+
+  h6 {
+    border-bottom: $border-width solid $border-color;
+    color: $text-muted;
+
+    font-family: $font-family-serif;
+    font-size: $display1-size;
+    font-style: italic;
+    font-weight: $font-weight-normal;
+  }
+
+  .brand-list-link {
+    @include hover-focus {
+      text-decoration: inherit;
+
+      h6 {
+        border-bottom-color: $gray-light;
+        color: $gray-dark;
+      }
+    }
+
+    &.collapsed h6 { color: $gray-light; }
+  }
+
+  .brand-list-row { @include align-left; }
+
+  .brand-list-featured-brands-list-inline {
+    margin: -.5rem;
+
+    .list-inline {
+      &-link {
+        @include size(
+          5rem,
+          2.5rem
+        );
+
+        @include text-hide;
+        @include transition;
+
+        background: no-repeat center;
+        background-size: contain;
+
+        display: block;
+        filter: grayscale(100%);
+        opacity: .5;
+
+        @include hover-focus {
+          filter: none;
+          opacity: 1;
+        }
+
+        &.bg-lazy { background-image: url('#{$media-path}/middles/brand-list/lazy.gif'); }
+      }
+
+      &-item { margin: .5rem; }
+    }
+  }
+
+  .block {
+    &-link {
+      @extend .btn-primary;
+
+      @include button-size(
+        .5rem,
+        1rem,
+        $font-size-base,
+        $border-radius-sm
+      );
+
+      @include button-variant(
+        $gray-dark,
+        $gray-lightest,
+        $gray-lightest
+      );
+
+      @include box-shadow(inherit);
+    }
+
+    &-title { font-size: $font-size-h1 !important; }
+  }
+}

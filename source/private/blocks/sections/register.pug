@@ -1,0 +1,206 @@
+#register-section-block.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3
+        | {if $IS_MEMBER_LOGGED_IN}
+        | {#title_edit#}
+        | {else}
+        | {$BLOCK_TITLE}
+        | {/if}
+    form#register-section-block-form.block-body
+      .block-subtitle.h5 {#personal_informations#}
+      | {foreach $CUSTOMER_FIELDS as $item}
+      | {if $item.KEY == "name" || $item.KEY == "surname"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-input') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', required='')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}')
+        | {/if}
+      | {/if}
+      | {if $item.KEY == "birthdate"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-day-select') {#birthdate#}
+        .row
+          .col
+            | {if $item.IS_REQUIRED}
+            select.custom-select.form-control(id='register-section-block-{$item.KEY}-day-select', name='day', required='')
+              option(disabled='', selected='') {#day#}
+              | {for $index = 1 to 31}
+              option(value!='{if $index < 10}0{/if}{$index}') {$index}
+              | {/for}
+            | {else}
+            select.custom-select.form-control(id='register-section-block-{$item.KEY}-day-select', name='day')
+              option(disabled='', selected='') {#day#}
+              | {for $index = 1 to 31}
+              option(value!='{if $index < 10}0{/if}{$index}') {$index}
+              | {/for}
+            | {/if}
+          .col
+            | {if $item.IS_REQUIRED}
+            select.custom-select.form-control(name='month', required='')
+              option(disabled='', selected='') {#month#}
+              | {for $index = 1 to 12}
+              option(value!='{if $index < 10}0{/if}{$index}') {$index}
+              | {/for}
+            | {else}
+            select.custom-select.form-control(name='month')
+              option(disabled='', selected='') {#month#}
+              | {for $index = 1 to 12}
+              option(value!='{if $index < 10}0{/if}{$index}') {$index}
+              | {/for}
+            | {/if}
+          .col
+            | {if $item.IS_REQUIRED}
+            select.custom-select.form-control(name='year', required='')
+              option(disabled='', selected='') {#year#}
+              | {for $index = $NEXT_YEAR - 101 to $NEXT_YEAR}
+              option(value='{$index}') {$index}
+              | {/for}
+            | {else}
+            select.custom-select.form-control(name='year')
+              option(disabled='', selected='') {#year#}
+              | {for $index = $NEXT_YEAR - 101 to $NEXT_YEAR}
+              option(value='{$index}') {$index}
+              | {/for}
+            | {/if}
+      | {/if}
+      | {if $item.KEY == "gender"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-select') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        select.custom-select.form-control(id='register-section-block-{$item.KEY}-select', name='{$item.KEY}', required='')
+          option(disabled='', selected='') {#select_gender#}
+          option(value='1') {#man#}
+          option(value='0') {#woman#}
+        | {else}
+        select.custom-select.form-control(id='register-section-block-{$item.KEY}-select', name='{$item.KEY}')
+          option(selected='') {#select_gender#}
+          option(value='1') {#man#}
+          option(value='0') {#woman#}
+        | {/if}
+      | {/if}
+      | {if $item.KEY|substr:0: 5== "field"}
+      | {if $item.TYPE == "CHECK_BOX"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-select') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        select.form-control(id='register-section-block-{$item.KEY}-select', multiple='', name='{$item.KEY}', required='')
+          | {foreach ";"|explode:$item.OPTIONS as $item_child}
+          option(value='{$item_child}') {$item_child}
+          | {/foreach}
+        | {else}
+        select.form-control(id='register-section-block-{$item.KEY}-select', multiple='', name='{$item.KEY}')
+          | {foreach ";"|explode:$item.OPTIONS as $item_child}
+          option(value='{$item_child}') {$item_child}
+          | {/foreach}
+        | {/if}
+      | {/if}
+      | {if $item.TYPE == "INPUT"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-input') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', required='')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}')
+        | {/if}
+      | {/if}
+      | {if $item.TYPE == "SELECT_BOX"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-select') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        select.custom-select.form-control(id='register-section-block-{$item.KEY}-select', name='{$item.KEY}', required='')
+          option(disabled='', selected='') --
+          | {foreach $item.OPTIONS as $item_child}
+          option(value='{$item_child}') {$item_child}
+          | {/foreach}
+        | {else}
+        select.custom-select.form-control(id='register-section-block-{$item.KEY}-select', name='{$item.KEY}')
+          option(selected='') --
+          | {foreach $item.OPTIONS as $item_child}
+          option(value='{$item_child}') {$item_child}
+          | {/foreach}
+        | {/if}
+      | {/if}
+      | {if $item.TYPE == "TEXTAREA"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-textarea') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        textarea.form-control(id='register-section-block-{$item.KEY}-textarea', name='{$item.KEY}', required='')
+        | {else}
+        textarea.form-control(id='register-section-block-{$item.KEY}-textarea', name='{$item.KEY}')
+        | {/if}
+      | {/if}
+      | {/if}
+      | {/foreach}
+      .block-subtitle.h5 {#contact_info#}
+      | {foreach $CUSTOMER_FIELDS as $item}
+      | {if $item.KEY == "home_phone" || $item.KEY == "mobile_phone" || $item.KEY == "office_phone"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-input') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', required='', type='tel')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', type='tel')
+        | {/if}
+      | {/if}
+      | {if $item.KEY == "email"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-input') {$item.TITLE}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', required='', type='email')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', type='email')
+        | {/if}
+      | {/if}
+      | {/foreach}
+      .block-subtitle.h5 {#member_info#}
+      | {foreach $CUSTOMER_FIELDS as $item}
+      | {if $item.KEY == "password"}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-input') {#password#}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', required='', type='password')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-input', name='{$item.KEY}', type='password')
+        | {/if}
+      .form-group
+        label.form-control-label(for='register-section-block-{$item.KEY}-again-input') {#password_again#}
+        | {if $item.IS_REQUIRED}
+        input.form-control(id='register-section-block-{$item.KEY}-again-input', name='{$item.KEY}_again', required='', type='password')
+        | {else}
+        input.form-control(id='register-section-block-{$item.KEY}-again-input', name='{$item.KEY}_again', type='password')
+        | {/if}
+      | {/if}
+      | {/foreach}
+      .form-check
+        label.custom-checkbox.custom-control
+          input.custom-control-input(checked='', name='mail_notify', type='checkbox', value='1')
+          span.custom-control-indicator
+          span.custom-control-description {#info_message#}
+      .form-check
+        label.custom-checkbox.custom-control
+          input.custom-control-input(checked='', name='sms_notify', type='checkbox', value='1')
+          span.custom-control-indicator
+          span.custom-control-description {#info_sms#}
+      | {if $DISPLAY_PRIVACY}
+      .form-check
+        label.custom-checkbox.custom-control
+          input.custom-control-input(name='privacy', required='', type='checkbox', value='1')
+          span.custom-control-indicator
+          span.custom-control-description
+            a.font-weight-bold(href='/gizlilik-ve-guvenlik-politikasi.shtm', target='_blank') Gizlilik & Güvenlik Politikası
+            | 'nı ve&nbsp;
+            a.font-weight-bold(href='/kisisel-veriler-politikasi.shtm', target='_blank') Kişisel Veriler Politikası
+            | 'nı&nbsp;okudum ve kabul ediyorum.
+      | {/if}
+      | {if $IS_MEMBER_LOGGED_IN}
+      button#register-section-block-btn.btn.btn-primary(title='{#update#}') {#update#}
+      | {else}
+      button#register-section-block-btn.btn.btn-primary(title='{#save#}') {#save#}
+      | {/if}
+  script#register-section-block-data(type='application/json').
+    {
+      "is_logged": {if $IS_MEMBER_LOGGED_IN}true{else}false{/if}
+    }

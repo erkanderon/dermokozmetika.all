@@ -1,0 +1,14 @@
+.block.block-attached.block-categories.block-cover.block-extended.block-fluid
+    .block-content
+        .block-header
+            .container
+                .block-title.h2 {$BLOCK_TITLE}
+        .block-body
+            .container
+                .row
+                    | {foreach $CATEGORIES as $item}
+                    | {if $item.ID != 74 && $item.ID != 144 && $item.ID != 450 && $item.ID != 809}
+                    .col-lg-3.col-md-4.col-sm-6
+                        a.btn(href='{$item.URL}', title='{$item.TITLE}') {$item.TITLE}
+                    | {/if}
+                    | {/foreach}

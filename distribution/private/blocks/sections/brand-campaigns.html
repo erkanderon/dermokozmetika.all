@@ -1,0 +1,25 @@
+
+<div class="block block-brand-campaigns block-section load" id="brand-campaigns-section-block" html-if="CAMPAIGN_LIST">
+  <div class="block-content">
+    <div class="block-body">
+      <div class="swiper">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" html-repeat="item in CAMPAIGN_LIST">
+              <div class="card">
+                <div class="card-block">
+                  <div class="align-items-center row">{literal}
+                    <div class="col col-auto hidden-sm-down"><img class="card-img swiper-lazy" alt="{{item.TITLE}}" data-src="//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg" height="64" src="//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/placeholder.gif" width="64"/></div>
+                    <div class="col">
+                      <div class="card-title"><small><strong>{{item.TITLE}}</strong></small></div><small class="card-text">{{item.DESCRIPTION}}</small>
+                    </div>{/literal}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

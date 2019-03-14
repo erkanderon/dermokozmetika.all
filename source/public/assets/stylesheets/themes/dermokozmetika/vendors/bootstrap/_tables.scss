@@ -1,0 +1,12 @@
+.table {
+  border-bottom: $table-border-width solid $table-border-color;
+
+  th { font-weight: $font-weight-semi-bold; }
+
+  thead th {
+    border-bottom-width: 0;
+    border-top-width: 0;
+  }
+
+  &-hover tbody tr { cursor: pointer; }
+}

@@ -1,0 +1,21 @@
+.block-categories.block-cover {
+  @include block-variant($gray-lightest, $gray-lightest);
+  .btn {
+    @extend .btn-block, .btn-lg;
+    background-color: $white;
+    font-weight: normal;
+  }
+  @each $key, $value in $grid-gutter-widths {
+    @include media-breakpoint-only($key) {
+      .row {
+        margin: - $value * .5;
+        [class*='col-'] {
+          padding: $value * .5 / 2;
+        }
+      }
+    }
+  }
+  .block-content {
+    padding-top: $block-spacer-y * 6;
+  }
+}

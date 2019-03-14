@@ -1,0 +1,60 @@
+.swiper {
+  position: relative;
+
+  &-link {
+    background: transparent no-repeat center;
+    background-size: contain;
+
+    border: 0;
+    color: transparent;
+    display: block;
+    font: 0/0 a;
+    text-shadow: none;
+  }
+
+  &-lazy {
+    &,
+    &-lg,
+    &-md,
+    &-sm,
+    &-xl,
+    &-xs {
+      opacity: 0;
+      transition: opacity .25s, visibility .25s linear;
+      visibility: hidden;
+    }
+
+    &-lg,
+    &-md,
+    &-sm,
+    &-xl,
+    &-xs { display: none; }
+
+    &-lg {
+      @media (max-width: 1280px) and (min-width: 961px) { display: block; }
+    }
+
+    &-md {
+      @media (max-width: 960px) and (min-width: 721px) { display: block; }
+    }
+
+    &-sm {
+      @media (max-width: 720px) and (min-width: 481px) { display: block; }
+    }
+
+    &-xl {
+      @media (min-width: 1281px) { display: block; }
+    }
+
+    &-xs {
+      @media (max-width: 480px) { display: block; }
+    }
+
+    &-loaded {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &-container-autoheight &-slide { height: 100%; }
+}

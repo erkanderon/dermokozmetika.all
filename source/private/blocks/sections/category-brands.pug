@@ -1,0 +1,10 @@
+#category-brands-section-block.block.block-category-brands.block-section
+    .block-content
+        .block-body
+            .swiper
+                .swiper-container
+                    .swiper-wrapper
+                        | {foreach $BRAND_LIST as $item}
+                        .swiper-slide
+                            a.swiper-lazy.swiper-link(data-background='/Data/Markalar/{$item.ID}.jpg', href="{$item.NAME|lower|regex_replace:'/[^a-z0-9-\\s]+/':''|replace:' ':'-'}", lang='en', title='{$item.NAME}') {$item.NAME}
+                        | {/foreach}

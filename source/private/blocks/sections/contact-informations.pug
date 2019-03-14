@@ -1,0 +1,42 @@
+.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3.text-center {$BLOCK_TITLE}
+    .block-body
+      dl.row.text-sm-left
+        | {if $ILETISIM_FIRMA}
+        dt.col-sm-6.text-sm-right {#firma_ad#}
+        dd.col-sm-6 {$ILETISIM_FIRMA}
+        | {/if}
+        | {if $ILETISIM_IL && $ILETISIM_ILCE && $ILETISIM_ULKE}
+        dt.col-sm-6.text-sm-right {#adres#}
+        dd.col-sm-6 {$ILETISIM_ILCE}/{$ILETISIM_IL}, {$ILETISIM_ULKE}
+        | {/if}
+        | {if $ILETISIM_TEL}
+        dt.col-sm-6.text-sm-right {#tel#}
+        dd.col-sm-6 {$ILETISIM_TEL}
+        | {/if}
+        | {if $ILETISIM_FAX}
+        dt.col-sm-6.text-sm-right {#fax#}
+        dd.col-sm-6 {$ILETISIM_FAX}
+        | {/if}
+        | {if $ILETISIM_FIRMA_ADRES_KONTROL}
+        dt.col-sm-6.text-sm-right {#iletisim_firma_adres#}
+        dd.col-sm-6 {$ILETISIM_FIRMA_ADRES}
+        | {/if}
+        | {if $ILETISIM_EPOSTA}
+        dt.col-sm-6.text-sm-right {#e_posta#}
+        dd.col-sm-6 {$ILETISIM_EPOSTA}
+        | {/if}
+        | {if $ILETISIM_VERGI_DAIRESI}
+        dt.col-sm-6.text-sm-right {#vergi_dairesi#}
+        dd.col-sm-6 {$ILETISIM_VERGI_DAIRESI}
+        | {/if}
+        | {if $ILETISIM_VERGI_NUMARASI}
+        dt.col-sm-6.text-sm-right {#vergi_numarasi#}
+        dd.col-sm-6 {$ILETISIM_VERGI_NUMARASI}
+        | {/if}
+        | {if $ILETISIM_YETKILI}
+        dt.col-sm-6.text-sm-right {#yetkili_kisi#}
+        dd.col-sm-6 {$ILETISIM_YETKILI}
+        | {/if}

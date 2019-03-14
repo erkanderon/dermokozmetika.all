@@ -1,0 +1,120 @@
+@import 'mixins';
+@import 'variables';
+
+.ribbon {
+  border: $ribbon-border-width solid transparent;
+  display: inline-block;
+  font-weight: $ribbon-font-weight;
+  line-height: $ribbon-line-height;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  @include ribbon-size(
+    $ribbon-border-radius,
+    $font-size-base,
+    $ribbon-padding-x,
+    $ribbon-padding-y
+  );
+
+  &-lg {
+    @include ribbon-size(
+      $ribbon-border-radius-lg,
+      $font-size-lg,
+      $ribbon-padding-x-lg,
+      $ribbon-padding-y-lg
+    );
+  }
+
+  &-sm {
+    @include ribbon-size(
+      $ribbon-border-radius-sm,
+      $font-size-sm,
+      $ribbon-padding-x-sm,
+      $ribbon-padding-y-sm
+    );
+  }
+
+  &-pill {
+    @include border-radius($ribbon-pill-border-radius);
+
+    padding-right: $ribbon-pill-padding-x;
+    padding-left: $ribbon-pill-padding-x;
+  }
+
+  &-danger {
+    @include ribbon-variant(
+      $ribbon-danger-bg,
+      $ribbon-danger-border,
+      $ribbon-danger-color
+    );
+  }
+
+  &-default {
+    @include ribbon-variant(
+      $ribbon-default-bg,
+      $ribbon-default-border,
+      $ribbon-default-color
+    );
+  }
+
+  &-info {
+    @include ribbon-variant(
+      $ribbon-info-bg,
+      $ribbon-info-border,
+      $ribbon-info-color
+    );
+  }
+
+  &-primary {
+    @include ribbon-variant(
+      $ribbon-primary-bg,
+      $ribbon-primary-border,
+      $ribbon-primary-color
+    );
+  }
+
+  &-success {
+    @include ribbon-variant(
+      $ribbon-success-bg,
+      $ribbon-success-border,
+      $ribbon-success-color
+    );
+  }
+
+  &-warning {
+    @include ribbon-variant(
+      $ribbon-warning-bg,
+      $ribbon-warning-border,
+      $ribbon-warning-color
+    );
+  }
+
+  &-outline {
+    &-danger {
+      @include ribbon-outline-variant($ribbon-danger-bg);
+    }
+
+    &-default {
+      @include ribbon-outline-variant($ribbon-default-bg);
+    }
+
+    &-info {
+      @include ribbon-outline-variant($ribbon-info-bg);
+    }
+
+    &-primary {
+      @include ribbon-outline-variant($ribbon-primary-bg);
+    }
+
+    &-success {
+      @include ribbon-outline-variant($ribbon-success-bg);
+    }
+
+    &-warning {
+      @include ribbon-outline-variant($ribbon-warning-bg);
+    }
+  }
+
+  &:empty { display: none; }
+}

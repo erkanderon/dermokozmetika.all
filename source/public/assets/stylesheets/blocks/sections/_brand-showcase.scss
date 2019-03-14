@@ -1,0 +1,27 @@
+.block-brand-showcase.block-section {
+  @include align-center;
+  .list-inline {
+    margin: -.5rem;
+    &-link {
+      @include size(5rem, 2.5rem);
+      @include text-hide;
+      @include transition;
+
+      background: no-repeat center;
+      background-size: contain;
+
+      display: block;
+      filter: grayscale(100%);
+      opacity: .5;
+
+      @include hover-focus {
+        filter: none;
+        opacity: 1;
+      }
+
+      &.bg-lazy { background-image: url('#{$media-path}/middles/brand-list/lazy.gif'); }
+    }
+
+    &-item { margin: .5rem; }
+  }
+}

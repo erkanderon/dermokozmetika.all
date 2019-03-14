@@ -1,0 +1,19 @@
+.pagination {
+  display: block;
+  margin: - $spacer-x / 4;
+
+  .page {
+    &-link {
+      margin-left: 0;
+    }
+
+    &-item {
+      display: inline-block;
+      margin: $spacer-x / 4;
+    }
+  }
+
+  &:not(&-sm) {
+    font-size: $font-size-lg;
+  }
+}

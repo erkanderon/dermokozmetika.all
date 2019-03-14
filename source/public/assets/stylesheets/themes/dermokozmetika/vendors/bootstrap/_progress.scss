@@ -1,0 +1,14 @@
+.progress {
+  font-weight: $font-weight-semi-bold;
+
+  &-bar-animated {
+    @keyframes progress-bar-animated {
+      0%, 100% { opacity: .75; }
+      0% { background-position: $progress-height 0; }
+      75% { opacity: 1; }
+      100% { background-position: 0 0; }
+    }
+
+    animation: progress-bar-animated $progress-bar-animation-timing;
+  }
+}

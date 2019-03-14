@@ -1,0 +1,20 @@
+#newsletter-cover-block.block.block-cover.block-extended.block-fixed-bottom.block-fluid.block-newsletter
+    .block-content
+        .block-body
+            button.close(type='button')
+                span.fa.fa-close
+                | &nbsp;Kapat
+            .container
+                .block-row.row
+                    .col.col-left
+                        .block-title.h2 {$BLOCK_TITLE}
+                        p.block-subtitle Yeni ürünlerimiz, özel tekliflerimiz, heyecan verici haberler ve daha pek çok konuda anlık güncellemeler alın.
+                    .col.col-right
+                        form
+                            .form-row.row
+                                .col.col-left
+                                    .form-group
+                                        input.form-control(name='email', placeholder='E-posta adresinizi giriniz', required='', type='email')
+                                .col.col-right
+                                    button.btn Abone ol
+                            small.form-text E-posta adresinizi asla başkasıyla paylaşmayacağız.

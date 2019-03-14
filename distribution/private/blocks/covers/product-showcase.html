@@ -1,0 +1,49 @@
+{if $HEADER == 1}
+<div class="block block-cover" id="product-showcase-cover-block">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="block-title h2">{$BLOCK_TITLE}</div>
+    </div>
+    <div class="block-body">
+      <div class="product-showcase-cover-block-swiper swiper swiper-outside-navigation swiper-outside-pagination" id="product-showcase-cover-block-{$BLOCK_ID}-swiper">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {/if}
+            {if $LOOP == 1}
+            <div class="swiper-slide"><a class="catalog" href="{$P.URL}" title="{$P.TITLE}">
+                <div class="catalog-showcase-top">{if $IS_LAZY_LOAD_ACTIVE}<img class="catalog-img-top swiper-lazy" alt="{$P.TITLE}" data-src="{$P.IMAGE.MEDIUM}" height="500" src="{$LAZY_LOAD_LOADING_IMAGE}" title="{$P.TITLE}" width="500"/>{else}<img class="catalog-img-top" alt="{$P.TITLE}" height="500" src="{$P.IMAGE.MEDIUM}" title="{$P.TITLE}" width="500"/>{/if}</div>
+                <div class="catalog-block">{if $DISPLAY_BRAND}
+                  <div class="catalog-title h6" lang="en">{$P.BRAND}</div>{/if}
+                  <div class="catalog-subtitle h5">{$P.TITLE|lower|replace:($P.BRAND|cat:" "|lower):""|ucfirst}</div>
+                  <p class="catalog-text">
+                    {if $P.DISPLAY_VAT}
+                    {$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_SELL vat = $P.VAT}
+                    {else}
+                    {$P.TARGET_CURRENCY}&nbsp;{format price = $P.PRICE_SELL}&nbsp;+&nbsp;{#kdv#}
+                    {/if}
+                    {if $P.DISCOUNT_PERCENT > 0 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+                    &nbsp;
+                    <del>{$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_NOT_DISCOUNTED vat = $P.VAT}</del>{/if}
+                  </p>{if ($IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT) || $P.BRAND_ID == 350 || ($P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100) || ($P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE) || !$P.IN_STOCK || $P.S1 || $P.S2 || $P.S3}
+                  <div class="ribbon-group">{if $IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT}<span class="ribbon ribbon-outline-primary">{#new#}</span>{/if}
+                    {if $P.BRAND_ID == 350}<span class="ribbon ribbon-outline-default">Tester</span>{/if}
+                    {if $P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100}<span class="ribbon ribbon-outline-primary">Kargo bedava</span>{/if}
+                    {if $P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}<span class="ribbon ribbon-outline-danger"><span class="ion-arrow-graph-down-right"></span>&nbsp;{#discounted#}</span>{/if}
+                    {if !$P.IN_STOCK}<span class="ribbon ribbon-default">{#out_of_stock#}</span>{/if}
+                    {if $P.S1}<span class="ribbon ribbon-outline-warning">3 al 2 öde</span>{/if}
+                    {if $P.S2}<span class="ribbon ribbon-outline-info">Şanslı marka</span>{/if}
+                    {if $P.S3}<span class="ribbon ribbon-outline-primary">1+1</span>{/if}
+                  </div>{/if}
+                  {if $IS_COMMENT_RATING_ACTIVE && $P.COMMENT_RANK >= 50}
+                  <div class="catalog-review">{if $P.COMMENT_RANK < 60 && $P.COMMENT_RANK >= 50}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span>{elseif $P.COMMENT_RANK < 70 && $P.COMMENT_RANK >= 60}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span><span class="ion-ios-star-outline"></span>{elseif $P.COMMENT_RANK < 80 && $P.COMMENT_RANK >= 70}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span><span class="ion-ios-star-outline"></span>{elseif $P.COMMENT_RANK < 90 && $P.COMMENT_RANK >= 80}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-outline"></span>{elseif $P.COMMENT_RANK < 100 && $P.COMMENT_RANK >= 90}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-ios-star-half"></span><span class="ion-ios-star-half-outline"></span>{elseif $P.COMMENT_RANK == 100}<span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span><span class="ion-star"></span>{/if}</div>{/if}
+                </div></a></div>{/if}
+            {if $FOOTER == 1}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </div>
+</div>{/if}

@@ -1,0 +1,67 @@
+@mixin font-face(
+  $extensions,
+  $font-family,
+  $font-style,
+  $font-weight,
+  $path
+) {
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype'
+  );
+
+  $src: null;
+
+  $suffixes: (
+    eot: '?',
+    svg: '#' + str-replace(
+      $font-family,
+      ' ',
+      '_'
+    )
+  );
+
+  @each $value in $extensions {
+    $src: append(
+      $src,
+      url(
+        quote(
+          $path + '.' + if(
+            map-has-key(
+              $suffixes,
+              $value
+            ),
+            $value + map-get(
+              $suffixes,
+              $value
+            ),
+            $value
+          )
+        )
+      ) format(
+        quote(
+          if(
+            map-has-key(
+              $formats,
+              $value
+            ),
+            map-get(
+              $formats,
+              $value
+            ),
+            $value
+          )
+        )
+      ),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($font-family);
+    font-style: $font-style;
+    font-weight: $font-weight;
+
+    src: $src;
+  }
+}

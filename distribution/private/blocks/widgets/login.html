@@ -1,0 +1,60 @@
+
+<div class="block block-login block-widget" id="login-widget-block">
+  <div class="block-content">{if $IS_MEMBER_LOGGED_IN}
+    <div class="block-header load" id="login-widget-block-div">{literal}
+      <div class="h4 block-title">Merhaba&nbsp;{{firstname}}</div>
+      <div class="h6 block-subtitle"><span data-i18n="[html]not-#firstname#-#lastname#" data-i18n-options="{ &quot;firstname&quot;: &quot;{{firstname}}&quot;, &quot;lastname&quot;: &quot;{{lastname}}&quot; }"></span>{/literal}
+        &nbsp;<a class="text-underline" id="login-widget-block-a" href="#" title="{#logout#}">{#logout#}</a>
+      </div>
+    </div>
+    <div class="block-body"><a class="block-link collapsed" data-i18n="[title]account-settings" data-toggle="collapse" href="#login-widget-block-account-settings-collapse">
+        <div class="h6 block-subtitle" data-i18n="account-settings"></div></a>
+      <div class="collapse" id="login-widget-block-account-settings-collapse">
+        <nav class="flex-column menu"><a class="menu-link" href="/{$PAGE_LINK.MEMBER_PERSONAL_INFO}" title="{#personal_informations#}">{#personal_informations#}</a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_ADDRESS_LIST}" title="{#adddress_info#}">{#adddress_info#}</a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}" title="{#change_password#}">{#change_password#}</a></nav>
+      </div>
+    </div>
+    <div class="block-body"><a class="block-link collapsed" data-toggle="collapse" href="#login-widget-block-orders-collapse" title="{#orders#}">
+        <div class="h6 block-subtitle">{#orders#}</div></a>
+      <div class="collapse" id="login-widget-block-orders-collapse">
+        <nav class="flex-column menu"><a class="menu-link" href="/{$PAGE_LINK.MEMBER_ORDERS}" title="{#orders#}">{#orders#}</a><a class="menu-link" data-i18n="[title]order-tracking;order-tracking" href="/{$PAGE_LINK.ORDER_FOLLOW}"></a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}" title="{#money_order_notificiation#}">{#money_order_notificiation#}</a></nav>
+      </div>
+    </div>
+    <div class="block-body"><a class="block-link collapsed" data-i18n="[title]offers-and-vouchers" data-toggle="collapse" href="#login-widget-block-offers-and-vouchers-collapse">
+        <div class="h6 block-subtitle" data-i18n="offers-and-vouchers"></div></a>
+      <div class="collapse" id="login-widget-block-offers-and-vouchers-collapse">
+        <nav class="flex-column menu"><a class="menu-link" href="/{$PAGE_LINK.MEMBER_GIFT_CHECK}" title="{#gift_coupons#}">{#gift_coupons#}</a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_COMMENT_POINT}" title="{#points#}">{#points#}</a></nav>
+      </div>
+    </div>
+    <div class="block-body"><a class="block-link collapsed" data-i18n="[title]lists" data-toggle="collapse" href="#login-widget-block-lists-collapse">
+        <div class="h6 block-subtitle" data-i18n="lists"></div></a>
+      <div class="collapse" id="login-widget-block-lists-collapse">
+        <nav class="flex-column menu"><a class="menu-link" href="/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}" title="{#price_alert#}">{#price_alert#}</a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}" title="{#stock_alert#}">{#stock_alert#}</a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_SHOPPING_LIST}" title="{#shopping_list#}">{#shopping_list#}</a></nav>
+      </div>
+    </div>
+    <div class="block-body"><a class="block-link collapsed" data-i18n="[title]support" data-toggle="collapse" href="#login-widget-block-support-collapse">
+        <div class="h6 block-subtitle" data-i18n="support"></div></a>
+      <div class="collapse" id="login-widget-block-support-collapse">
+        <nav class="flex-column menu"><a class="menu-link" data-i18n="[title]contact;contact" href="/{$PAGE_LINK.CONTACT}"></a><a class="menu-link" data-i18n="[title]customer-service;customer-service" href="/{$PAGE_LINK.CUSTOMER_SERVICE}"></a><a class="menu-link" href="/{$PAGE_LINK.MEMBER_MESSAGES}" title="{#messages#}">{#messages#}</a></nav>
+      </div>
+    </div>{else}
+    <div class="block-header">
+      <div class="h4 block-title">{$BLOCK_TITLE}</div>
+    </div>
+    <form class="block-body" id="login-widget-block-form">
+      <div class="form-group">
+        <label class="form-control-label" for="login-widget-block-email-address-input">{#email#}</label>
+        <input class="form-control form-control-lg" id="login-widget-block-email-address-input" autofocus="" data-i18n="[placeholder]enter-your-email-address" name="email_address" required="" type="email"/>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="login-widget-block-password-input">{#password#}</label>
+        <input class="form-control form-control-lg" id="login-widget-block-password-input" data-i18n="[placeholder]enter-your-password" minlength="6" name="password" required="" type="password"/><small class="form-text text-md-right"><a class="text-muted" href="/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}" title="{#forgot_password#}">{#forgot_password#}</a></small>
+      </div>
+      <div class="form-check">
+        <label class="custom-checkbox custom-control">
+          <input class="custom-control-input" type="checkbox"/><span class="custom-control-indicator"></span><span class="custom-control-description">{#remember_me#}</span>
+        </label>
+      </div>
+      <button class="block-link btn" id="login-widget-block-btn" title="Giriş yap">Giriş yap</button>
+    </form>{/if}
+  </div>
+</div>

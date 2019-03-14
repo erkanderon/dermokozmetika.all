@@ -1,0 +1,93 @@
+.block-cover.block-grid-showcase {
+  $grid-gutter-widths: $grid-gutter-widths;
+
+  @if $enable-grid-classes {
+    @each $key, $value in $grid-gutter-widths {
+      $grid-gutter-widths: map-set(
+        $grid-gutter-widths,
+        $key,
+        $value / 2
+      );
+    }
+  }
+
+  .card {
+    border-width: $card-border-width * 0;
+
+    &-title {
+      @include text-truncate;
+
+      @if $enable-hover-media-query {
+        @include transition;
+      }
+
+      background-color: rgba($card-bg, .75);
+      margin-top: auto;
+      padding: $card-spacer-y * .5 $card-spacer-x * .5;
+    }
+
+    &-link {
+      @include text-truncate;
+
+      @if $enable-hover-media-query {
+        @include transition;
+      }
+
+      background-color: rgba($card-bg, .75);
+
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semi-bold;
+
+      letter-spacing: 1.125px;
+      line-height: $line-height-sm;
+      margin: $card-spacer-x * .375 $card-spacer-x * .375 $card-spacer-x * .375 auto;
+      padding: $card-spacer-y * .375 $card-spacer-x * .75;
+      text-transform: uppercase;
+    }
+
+    &-img {
+      @include img-fluid;
+
+      &-overlay {
+        padding: $card-img-overlay-padding * 0;
+      }
+    }
+
+    @include hover-focus {
+      .card {
+        &-title,
+        &-link {
+          background-color: $card-bg;
+        }
+      }
+    }
+  }
+
+  @if $enable-grid-classes {
+    .row {
+      @include make-row($grid-gutter-widths);
+
+      [class*='col-'] {
+        @include make-gutters($grid-gutter-widths);
+      }
+    }
+
+    @each $key, $value in $grid-gutter-widths {
+      @include media-breakpoint-only($key) {
+        .row {
+          margin-bottom: $value / -2;
+          margin-top: $value / -2;
+
+          [class*='col-'] {
+            padding-bottom: $value / 2;
+            padding-top: $value / 2;
+          }
+        }
+
+        .block-body {
+          padding: $value;
+        }
+      }
+    }
+  }
+}

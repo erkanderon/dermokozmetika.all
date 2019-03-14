@@ -1,0 +1,20 @@
+| {if $DISPLAY_FACEBOOK || $DISPLAY_TWITTER}
+.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3 {$BLOCK_TITLE}
+    .block-body
+      p.block-text(data-i18n='for-faster-checkout-login-or-register-using-your-social-account-with-one-click-dont-worry-we-would-never-share-any-of-your-data-or-post-anything-on-your-behalf')
+    .block-footer
+      .btn-inline-group
+        | {if $DISPLAY_FACEBOOK}
+        a.block-link.btn.btn-facebook.btn-lg.px-6(href='/srv/service/social/facebook/login', rel='nofollow', title='{#login_facebook#}')
+          span.fa.fa-facebook-square.fa-fw
+          | &nbsp;{#login_facebook#}
+        | {/if}
+        | {if $DISPLAY_TWITTER}
+        a.block-link.btn.btn-lg.btn-twitter.px-6(href='/srv/service/social/twitter/login', rel='nofollow', title='{#login_twitter#}')
+          span.fa.fa-fw.fa-twitter-square
+          | &nbsp;{#login_twitter#}
+        | {/if}
+| {/if}

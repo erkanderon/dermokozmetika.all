@@ -1,0 +1,46 @@
+#coupons-section-block.block.block-coupons.block-section.load
+  .block-content
+    .block-header
+      .block-title.h3 {#gift_coupons#}
+    .block-body
+      table.table(html-if='COPUON_LIST.length')
+        thead.thead-default
+          tr
+            th.table-code {#coupon_code#}
+            th.table-description {#description#}
+            th.table-type {#coupon_type#}
+            th.table-minimum-price {#coupon_min_price#}
+            th.table-amount {#coupon_amount#}
+            th.table-date {#coupon_date#}
+        tbody
+          tr(html-class='item.IS_USED ? "table-danger" : "table-success"', html-repeat='item in COPUON_LIST')
+            td.table-code
+              code {{item.CODE}}
+            td.table-description
+              | {{item.DESCRIPTION}}
+              dl.row
+                dt.col.col-type {#coupon_type#}
+                dd.col.col-type {{item.APPLICATION_AREA}}
+                dt.col.col-minimum-price {#coupon_min_price#}
+                dd.col.col-minimum-price {{CURRENCY}}&nbsp;{{item.PRICE_MIN_LIMIT}}
+                dt.col.col-amount {#coupon_amount#}
+                dd.col.col-amount
+                  span(html-if='item.PERCENT_TYPE > 0') {{CURRENCY}}&nbsp;
+                  span(html-if='item.PERCENT_TYPE < 1') %
+                  | {{item.PERCENT_VALUE}}
+                dt.col.col-date {#coupon_date#}
+                dd.col.col-date
+                  | {{item.START_DATE}}
+                  br
+                  | {{item.FINISH_DATE}}
+            td.table-type {{item.APPLICATION_AREA}}
+            td.table-minimum-price {{CURRENCY}}&nbsp;{{item.PRICE_MIN_LIMIT}}
+            td.table-amount
+              span(html-if='item.PERCENT_TYPE > 0') {{CURRENCY}}&nbsp;
+              span(html-if='item.PERCENT_TYPE < 1') %
+              | {{item.PERCENT_VALUE}}
+            td.table-date
+              | {{item.START_DATE}}
+              br
+              | {{item.FINISH_DATE}}
+      .alert.alert-warning(data-i18n='you-dont-have-any-defined-a-coupon-code-to-your-account', html-if='!COPUON_LIST.length')

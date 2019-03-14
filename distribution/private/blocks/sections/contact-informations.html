@@ -1,0 +1,38 @@
+
+<div class="block block-section">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="block-title h3 text-center">{$BLOCK_TITLE}</div>
+    </div>
+    <div class="block-body">
+      <dl class="row text-sm-left">{if $ILETISIM_FIRMA}
+        <dt class="col-sm-6 text-sm-right">{#firma_ad#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_FIRMA}</dd>{/if}
+        {if $ILETISIM_IL && $ILETISIM_ILCE && $ILETISIM_ULKE}
+        <dt class="col-sm-6 text-sm-right">{#adres#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_ILCE}/{$ILETISIM_IL}, {$ILETISIM_ULKE}</dd>{/if}
+        {if $ILETISIM_TEL}
+        <dt class="col-sm-6 text-sm-right">{#tel#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_TEL}</dd>{/if}
+        {if $ILETISIM_FAX}
+        <dt class="col-sm-6 text-sm-right">{#fax#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_FAX}</dd>{/if}
+        {if $ILETISIM_FIRMA_ADRES_KONTROL}
+        <dt class="col-sm-6 text-sm-right">{#iletisim_firma_adres#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_FIRMA_ADRES}</dd>{/if}
+        {if $ILETISIM_EPOSTA}
+        <dt class="col-sm-6 text-sm-right">{#e_posta#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_EPOSTA}</dd>{/if}
+        {if $ILETISIM_VERGI_DAIRESI}
+        <dt class="col-sm-6 text-sm-right">{#vergi_dairesi#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_VERGI_DAIRESI}</dd>{/if}
+        {if $ILETISIM_VERGI_NUMARASI}
+        <dt class="col-sm-6 text-sm-right">{#vergi_numarasi#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_VERGI_NUMARASI}</dd>{/if}
+        {if $ILETISIM_YETKILI}
+        <dt class="col-sm-6 text-sm-right">{#yetkili_kisi#}</dt>
+        <dd class="col-sm-6">{$ILETISIM_YETKILI}</dd>{/if}
+      </dl>
+    </div>
+  </div>
+</div>

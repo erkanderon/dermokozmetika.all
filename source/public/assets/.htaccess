@@ -1,0 +1,18 @@
+<ifModule mod_headers.c>
+    Header set Connection keep-alive
+	Header set Access-Control-Allow-Origin *
+
+	<FilesMatch "\.(json|svg|gz)$">
+		Header append Vary: Accept-Encoding
+  	</FilesMatch>
+</ifModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^(.*)\.[\d]+\.(css|js|json)$ $1.$2 [L]
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType application/json "access plus 1 year"
+</IfModule>

@@ -1,0 +1,77 @@
+#orders-section-block.block.block-orders.block-section.load
+  .block-content
+    .block-header
+      .block-title.h3 Geçmiş siparişlerim
+    .block-body
+      table.table.table-orders
+        thead
+          tr
+            th.table-details Detay
+            th.table-id Sipariş numarası
+            th.table-date Tarih
+            th.table-price Fiyat
+            th.table-status Durum
+            th.table-actions
+        tbody
+          tr(html-repeat='order in ORDERS')
+            td.table-details
+              | {{order.ORDER_NUMBER}}
+              dl.row.row-details
+                dt.col.col-date Tarih
+                dd.col.col-date(html-html='order.DATE')
+                dt.col.col-price Tutar
+                dd.col.col-price {{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}
+                dt.col.col-status Durum
+                dd.col.col-status {{order.STATUS_TEXT}}
+            td.table-id {{order.ORDER_NUMBER}}
+            td.table-date(html-html='order.DATE')
+            td.table-price {{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}
+            td.table-status {{order.STATUS_TEXT}}
+            td.table-actions
+              button.btn(data-target='#orders-section-block-{{order.ID}}-modal', data-toggle='modal', title='Detay', type='button') Detay
+      .modal.fade(html-repeat='order in ORDERS', id='orders-section-block-{{order.ID}}-modal')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              .modal-title.h3 Sipariş detayı (\#{{order.ORDER_NUMBER}})
+              button.close(data-dismiss='modal', title='Kapat', type='button') × Kapat
+            .modal-body.modal-body-informations
+              .row.row-informations
+                .col.col-address-informations
+                  .h5 Adres bilgileri
+                  dl.row
+                    dt.col-12 Teslimat adresi
+                    dd.col-12 {{order.DELIVERY_ADDRESS}}
+                    dt.col-12 Fatura adresi
+                    dd.col-12 {{order.INVOICE_ADDRESS}}
+                .col.col-order-informations
+                  .h5 Sipariş bilgileri
+                  dl.row
+                    dt.col-12 Sipariş numarası
+                    dd.col-12 {{order.ORDER_NUMBER}}
+                    dt.col-12 Tarih
+                    dd.col-12(html-html='order.DATE')
+                    dt.col-12 Ödeme şekli
+                    dd.col-12 {{order.PAYMENT_METHOD}}
+            .modal-body.modal-body-products
+              table.table.table-products
+                tbody
+                  tr(html-repeat='product in order.PRODUCT_LIST')
+                    td.table-product-image
+                      a(href='{{product.URL}}', title='{{product.TITLE}}')
+                        img.img-thumbnail(alt='{{product.TITLE}}', src='{{product.IMAGE}}', title='{{product.TITLE}}')
+                    td.table-product-title
+                      | {{product.TITLE}}
+                      br
+                      small.text-muted {{product.COUNT}} adet
+                    td.table-product-price(html-if='product.PRICE_SELL > 0') {{product.CURRENCY}}&nbsp;{{product.PRICE_SELL}}
+                    td.table-product-price(html-if='product.PRICE_SELL == 0') Hediye
+            .modal-body.modal-body-totals
+              dl.row.row-totals
+                dt.col.col-shipping-fee Kargo ücreti
+                dd.col.col-shipping-fee {{order.CURRENCY}}&nbsp;{{order.KARGOFIYAT}}
+                dt.col.col-service-fee Servis bedeli
+                dd.col.col-service-fee {{order.CURRENCY}}&nbsp;{{order.SERVISFIYAT}}
+                dt.col.col-total Toplam
+                dd.col.col-total {{order.CURRENCY}}&nbsp;{{order.TOTAL_PRICE}}
+      .alert(html-if='TOTAL < 1') {#no_orders#}

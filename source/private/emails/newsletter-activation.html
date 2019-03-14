@@ -1,0 +1,246 @@
+{if $IS_MAIL_TITLE}
+{#activation_email_title#}
+{else}
+<!DOCTYPE html>
+<html lang="tr-TR" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1,width=device-width" name="viewport">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="x-apple-disable-message-reformatting">
+    <!--[if mso]>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <style type="text/css">
+      {literal}
+      ::selection {
+        background: #F5F5F5;
+      }
+      
+      a {
+        text-decoration: none;
+      }
+      
+      div, td, th, .column {
+        font-family: sans-serif;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+        
+        line-height: 24px;
+        
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+      
+      img {
+        border: 0;
+        display: block;
+        height: auto;
+        -ms-interpolation-mode: bicubic;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      
+      table {
+        border-collapse: collapse;
+      }
+  
+      .spacer {
+        overflow: hidden;
+      }
+      
+      .row {
+        margin: 0 auto;
+        width: 720px;
+      }
+      
+      .row .row {
+        width: 100%;
+      }
+  
+      #outlook a {
+        padding: 0;
+      }
+      
+      @media only screen and (max-width: 720px) {
+        img {
+          height: auto !important;
+          width: 100% !important;
+        }
+        
+        .column {
+          box-sizing: border-box !important;
+          display: inline-block !important;
+          line-height: inherit !important;
+          width: 100% !important;
+          word-break: break-all !important;
+        }
+    
+        .divider th {
+          height: 65px !important;
+        }
+    
+        .spacer {
+          font-size: 100% !important;
+          height: 32px !important;
+          line-height: 100% !important;
+        }
+        
+        .row {
+          width: 90% !important;
+        }
+        
+        .row .row {
+          width: 100% !important;
+        }
+        
+        .wrapper {
+          min-width: 100% !important;
+        }
+    
+        .mobile-center {
+          display: table !important;
+          float: none !important;
+      
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+    
+        .mobile-left {
+          float: none !important;
+          margin: 0 !important;
+        }
+    
+        .mobile-padding-top {
+          padding-top: 16px !important;
+        }
+      }
+      {/literal}
+    </style>
+  </head>
+  <body bgcolor="#F5F5F5">
+    <table align="center" bgcolor="#F5F5F5" cellpadding="0" cellspacing="0" class="wrapper" style="min-width: 720px;" width="100%">
+      <tr>
+        <td>
+          <table align="center" cellpadding="0" cellspacing="0" class="row">
+            <tr>
+              <td class="spacer" height="64" style="font-size: 64px; line-height: 64px; mso-line-height-rule: exactly;">&nbsp;</td>
+            </tr>
+            <tr>
+              <th class="column" style="padding-left: 32px; padding-right: 32px; text-align: left;" width="656">
+                <a href="https://www.dermokozmetika.com.tr" style="text-decoration: none;" target="_blank">
+                  <img alt="Dermokozmetika" class="mobile-center" src="https://assets.dermokozmetika.com.tr/images/logo-horizontal-dark.png" style="border: 0; max-width: 240px; width: 100%;" width="240">
+                </a>
+              </th>
+            </tr>
+            <tr>
+              <td class="spacer" height="32" style="font-size: 32px; line-height: 32px; mso-line-height-rule: exactly;">&nbsp;</td>
+            </tr>
+          </table>
+          <table align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="row">
+            <tr>
+              <td class="spacer" height="64" style="font-size: 64px; line-height: 64px; mso-line-height-rule: exactly;">&nbsp;</td>
+            </tr>
+            <tr>
+              <th class="column" style="font-weight: normal; padding-left: 32px; padding-right: 32px; text-align: left;" width="656">
+                <div style="color: #3A3A3A; font-size: 22.78125px; font-weight: bold; line-height: 29.09165625px; margin-bottom: 16px;">Merhaba,</div>
+                <div style="color: #3A3A3A; font-size: 16px; line-height: 24px; margin-bottom: 32px;">{#activation_email_message#}</div>
+                <table align="center" bgcolor="#F5F5F5" cellpadding="0" cellspacing="0" style="margin: 0 auto; word-break: break-all;" width="100%">
+                  <tr>
+                    <th style="font-size: 16px; font-weight: normal; line-height: 24px; padding: 16px 24px; text-align: left;">
+                      <a href="{$ACTIVATION_URL}" style="color: #EC407A; text-decoration: none;" target="_blank">{$ACTIVATION_URL}</a>
+                    </th>
+                  </tr>
+                </table>
+                <div style="color: #BEBEBE; font-size: 14px; line-height: 22.498px; margin-top: 32px;">
+                  Bu e-posta sistem tarafından otomatik olarak oluşturulmuştur. Lütfen bu e-postayı yanıtlamayınız. <a href="https://www.dermokozmetika.com.tr" style="color: #848484; text-decoration: none;" target="_blank">Dermokozmetika.com.tr</a> ile ilgili her türlü soru, görüş ve önerileriniz için <a href="https://www.dermokozmetika.com.tr/iletisim.xhtml" style="color: #848484; text-decoration: none;" target="_blank">buraya</a> tıklayabilirsiniz.
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td class="spacer" height="64" style="font-size: 64px; line-height: 64px; mso-line-height-rule: exactly;">&nbsp;</td>
+            </tr>
+          </table>
+          <table align="center" cellpadding="0" cellspacing="0" class="row">
+            <tr>
+              <th class="column" style="padding-left: 32px; padding-right: 32px;" width="656">
+                <table align="center" cellpadding="0" cellspacing="0" class="row">
+                  <tr>
+                    <td class="spacer" height="32" style="font-size: 32px; line-height: 32px; mso-line-height-rule: exactly;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <th class="column" style="color: #777777; font-size: 14px; font-weight: normal; line-height: 22.498px; text-align: left;">
+                      Müşteri hizmetleri temsilcilerimizle görüşmek için <strong>09.00-17.00</strong> saatleri arasında <a href="tel:+908508408400" style="color: #3A3A3A; text-decoration: none;" target="_blank"><strong>TR +90 (850) 840 84 00</strong></a> numaralı çağrı merkezimizi arayabilirsiniz ya da <a href="mailto:musterihizmetleri@dermokozmetika.com.tr" style="color: #3A3A3A; text-decoration: none;" target="_blank"><strong>musterihizmetleri@dermokozmetika.com.tr</strong></a> adresine e-posta göndererek destek alabilirsiniz.
+                    </th>
+                  </tr>
+                </table>
+                <table align="center" cellpadding="0" cellspacing="0" class="divider row" width="100%">
+                  <tr>
+                    <th height="65">
+                      <div style="border-top: 1px solid #E5E5E5; font-size: 0; line-height: 0; mso-line-height-rule: exactly;">&nbsp;</div>
+                    </th>
+                  </tr>
+                </table>
+                <table align="center" cellpadding="0" cellspacing="0" class="row">
+                  <tr>
+                    <th class="column" style="color: #BEBEBE; font-size: 14px; font-weight: normal; line-height: 22.498px; text-align: left;" width="454">
+                      Telif hakkı &copy; 2013 - 2017 Dermokozmetika™. Tüm hakları saklıdır.
+                      <br>
+                      <a href="https:/www.dermokozmetika.com.tr/kosullar-ve-sartlar.shtm" style="color: #848484; text-decoration: none;" target="_blank">Koşullar &amp; Şartlar</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.dermokozmetika.com.tr/gizlilik-ve-guvenlik-politikasi.shtm" style="color: #848484; text-decoration: none;" target="_blank">Gizlilik &amp; Güvenlik</a>
+                    </th>
+                    <th class="column mobile-padding-top" width="202">
+                      <table align="right" cellpadding="4" cellspacing="0" class="mobile-left">
+                        <tr>
+                          <td style="padding-left: 0;">
+                            <a href="https://www.facebook.com/dermokozmetika" style="text-decoration: none;" target="_blank">
+                              <img alt="Facebook" src="https://assets.dermokozmetika.com.tr/images/facebook-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                          <td>
+                            <a href="https://plus.google.com/+Dermokozmetika/posts" style="text-decoration: none;" target="_blank">
+                              <img alt="Google+" src="https://assets.dermokozmetika.com.tr/images/googleplus-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                          <td>
+                            <a href="https://instagram.com/dermokozmetika" style="text-decoration: none;" target="_blank">
+                              <img alt="Instagram" src="https://assets.dermokozmetika.com.tr/images/instagram-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                          <td>
+                            <a href="https://www.pinterest.com/dermokozmetika/" style="text-decoration: none;" target="_blank">
+                              <img alt="Pinterest" src="https://assets.dermokozmetika.com.tr/images/pinterest-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                          <td>
+                            <a href="https://twitter.com/dermo_kozmetika" style="text-decoration: none;" target="_blank">
+                              <img alt="Twitter" src="https://assets.dermokozmetika.com.tr/images/twitter-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                          <td style="padding-right: 0;">
+                            <a href="https://www.youtube.com/channel/UCQxivSVWwpR8FBUJFrASsyg" style="text-decoration: none;" target="_blank">
+                              <img alt="Youtube" src="https://assets.dermokozmetika.com.tr/images/youtube-circle.png" style="border: 0; max-width: 27px; width: 100%;" width="27">
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="spacer" height="64" style="font-size: 64px; line-height: 64px; mso-line-height-rule: exactly;">&nbsp;</td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+{/if}

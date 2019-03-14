@@ -1,0 +1,92 @@
+.block-cover.block-newsletter {
+  @include block-inverse;
+  @include block-variant(rgba($pink, .875), rgba($pink, .875));
+  display: none;
+  .btn {
+    @extend .btn-block, .btn-primary;
+  }
+  .form {
+    &-control {
+      border-color: $btn-primary-border;
+      &-feedback {
+        display: none !important;
+      }
+    }
+    &-group {
+      margin-bottom: $form-group-margin-bottom * 0;
+    }
+    &-row {
+      @extend .no-gutters;
+      .col {
+        &-right {
+          @include media-breakpoint-down(xs) {
+            @include make-col(12);
+          }
+          @include media-breakpoint-up(sm) {
+            @include make-col(4);
+          }
+        }
+        &-left {
+          @include media-breakpoint-down(xs) {
+            @include make-col(12);
+          }
+          @include media-breakpoint-up(sm) {
+            @include make-col(8);
+          }
+        }
+      }
+    }
+  }
+  .close {
+    opacity: 1;
+    @include media-breakpoint-down(md) {
+      float: none;
+      margin-bottom: $block-spacer-y;
+    }
+    @include media-breakpoint-up(lg) {
+      margin-right: $block-spacer-y * 2;
+    }
+  }
+  .block {
+    &-title {
+      @include media-breakpoint-down(sm) {
+        font-size: $font-size-h5;
+      }
+      @include media-breakpoint-only(md) {
+        font-size: $font-size-h4;
+      }
+      @include media-breakpoint-only(lg) {
+        font-size: $font-size-h3;
+      }
+    }
+    &-row {
+      @include media-breakpoint-up(lg) {
+        text-align: left;
+      }
+      > .col {
+        &-right {
+          @include media-breakpoint-down(md) {
+            @include make-col(12);
+          }
+          @include media-breakpoint-up(xl) {
+            @include make-col-offset(1);
+          }
+        }
+        &-left {
+          @include media-breakpoint-down(md) {
+            @include make-col(12);
+            margin-bottom: $block-spacer-y;
+            margin-top: $block-spacer-y * -.5;
+          }
+        }
+      }
+    }
+    &-content {
+      padding-bottom: $block-spacer-y * 1.125;
+      padding-top: $block-spacer-y * 1.125;
+    }
+  }
+}
+.has-newsletter-cover-block #___ratingbadge_0 {
+  display: none !important;
+}

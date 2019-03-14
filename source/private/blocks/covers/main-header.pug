@@ -1,0 +1,322 @@
+| {if $PAGE_ID == 91}
+| {include file = "theme/v4/Blok/Ust/UstAlt/user_checkout-header.tpl"}
+| {else}
+#main-header-cover-block.block.block-attached.block-cover.block-fluid.block-main-header
+  | {if $PAGE_ID == 4 || $PAGE_ID == 5 || $PAGE_ID == 6 || $PAGE_ID == 7 || $PAGE_ID == 8 || $PAGE_ID == 10 || $PAGE_ID == 21 || $PAGE_ID == 22 || $PAGE_ID == 29 || $PAGE_ID == 30 || $PAGE_ID == 35 || $PAGE_ID == 36 || $PAGE_ID == 37 || $PAGE_ID == 39 || $PAGE_ID == 61 || $PAGE_ID == 64 || $PAGE_ID == 70 || $PAGE_ID == 71 || $PAGE_ID == 73 || $PAGE_ID == 74 || $PAGE_ID == 75 || $PAGE_ID == 80 || $PAGE_ID == 85 || $PAGE_ID == 86 || $PAGE_ID == 87 || $PAGE_ID == 90 || $PAGE_ID == 91 || $PAGE_ID == 92 || $PAGE_ID == 95}
+  script(type='text/javascript').
+      {literal}
+      $(window).load(function () {
+          setTimeout(function () {
+              window.$zopim || (function (d, s) {
+                  var z = $zopim = function (c) {
+                      z._.push(c)
+                  }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                  z.set = function (o) {
+                      z.set._.push(o)
+                  };
+                  z._ = [];
+                  z.set._ = [];
+                  $.async = !0;
+                  $.setAttribute("charset", "utf-8");
+                  $.src = "//v2.zopim.com/?2xPt1oHxBQ1x8T2e4lcxAPE688xNeYcd";
+                  z.t = +new Date;
+                  $.type = "text/javascript";
+                  e.parentNode.insertBefore($, e)
+              })(document, "script");
+          }, 2000);
+      });
+      {/literal}
+  | {/if}
+  | {if $PAGE_ID == 2}
+  script(type='text/javascript').
+      $('html').addClass('product-list-page');
+  | {/if}
+  | {if $PAGE_ID == 5}
+  script(type='text/javascript').
+      $('html').addClass('login-page');
+  | {/if}
+  | {if $PAGE_ID == 6}
+  script(type='text/javascript').
+      $('html').addClass('register-page');
+  | {/if}
+  | {if $PAGE_ID == 7}
+  script(type='text/javascript').
+      $('html').addClass('forgot-password-page');
+  | {/if}
+  | {if $PAGE_ID == 12}
+  script(type='text/javascript').
+      $('html').addClass('search-page');
+  | {/if}
+  | {if $PAGE_ID == 13}
+  script(type='text/javascript').
+      $('html').addClass('contact-page');
+  | {/if}
+  | {if $PAGE_ID == 30}
+  script(type='text/javascript').
+      $('html').addClass('cart-page');
+  | {/if}
+  | {if $PAGE_ID == 31}
+  script(type='text/javascript').
+      $('html').addClass('brand-product-list-page');
+  | {/if}
+  | {if $PAGE_ID == 64}
+  script(type='text/javascript').
+      $('html').addClass('login-after-cart-page');
+  | {/if}
+  .block-header
+    .container-fluid
+      #main-header-cover-block-swiper.swiper
+        .swiper-container
+          .swiper-wrapper
+            | {if $LANGUAGE}
+            | {include file = "theme/v4/Blok/Ust/UstAlt/user_main-header-privileges-$LANGUAGE.tpl"}
+            | {else}
+            | {include file = "theme/v4/Blok/Ust/UstAlt/user_main-header-privileges-tr.tpl"}
+            | {/if}
+  .block-body
+    .container-fluid
+      .no-gutters.row
+        nav.col-6.col-left.col-lg
+          ul.menu
+            li.menu-item.menu-item-bordered
+              a.menu-link(data-i18n='[title]menu', href='#main-header-cover-block-menu-mm-menu')
+                span.ion-navicon.menu-icon
+                span.menu-text(data-i18n='menu')
+            li.hidden-lg-up.menu-item
+              a.menu-link(href='#main-header-cover-block-search-mm-menu', title='{#search#}')
+                span.ion-ios-search-strong.menu-icon
+                span.menu-text {#search#}
+            li.hidden-md-down.menu-item
+              label.menu-link
+                form.input-group.main-header-cover-block-form(action='/{$PAGE_LINK.SEARCH}', autocomplete='off')
+                  span.input-group-addon
+                    span.ion-ios-search-strong.menu-icon
+                  input.form-control(name='q', placeholder='{#search#}', required='')
+                  span.input-group-addon.menu-link
+                    span.ion-ios-search-strong.menu-icon
+        .align-self-center.col-12.col-lg-auto
+          a.block-link(href='javascript:location.href=\'/\'', title='Dermokozmetika') Dermokozmetika
+        nav.col-6.col-lg.col-right
+          ul.menu
+            li.hidden-lg-up.menu-item
+              a.menu-link(href='#main-header-cover-block-account-mm-menu', title='{#account#}')
+                span.ion-android-contact.menu-icon
+                span.menu-text {#account#}
+            li.hidden-md-down.menu-item
+              .dropdown.dropdown-right
+                button.dropdown-toggle.menu-link(data-toggle='dropdown', title='{#account#}', type='button')
+                  span.ion-android-contact.menu-icon
+                  span.menu-text {#account#}
+                .dropdown-menu
+                  | {if $IS_MEMBER_LOGGED_IN}
+                  strong.dropdown-header(data-i18n='account-settings')
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PERSONAL_INFO}\'', title='{#personal_informations#}') {#personal_informations#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_ADDRESS_LIST}\'', title='{#adddress_info#}') {#adddress_info#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}\'', title='{#change_password#}') {#change_password#}
+                  button.dropdown-item.logout(title='{#logout#}', type='button') {#logout#}
+                  .dropdown-divider
+                  strong.dropdown-header {#orders#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_ORDERS}\'', title='{#orders#}') {#orders#}
+                  a.dropdown-item(data-i18n='[title]order-tracking;order-tracking', href='javascript:location.href=\'/{$PAGE_LINK.ORDER_FOLLOW}\'')
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}\'', title='{#money_order_notificiation#}') {#money_order_notificiation#}
+                  .dropdown-divider
+                  strong.dropdown-header(data-i18n='offers-and-vouchers')
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_GIFT_CHECK}\'', title='{#gift_coupons#}') {#gift_coupons#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_COMMENT_POINT}\'', title='{#points#}') {#points#}
+                  .dropdown-divider
+                  strong.dropdown-header(data-i18n='lists')
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}\'', title='{#price_alert#}') {#price_alert#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}\'', title='{#stock_alert#}') {#stock_alert#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_SHOPPING_LIST}\'', title='{#shopping_list#}') {#shopping_list#}
+                  | {else}
+                  strong.dropdown-header {#welcome#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_LOGIN}\'', title='{#member_login#}') {#member_login#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_REGISTER}\'', title='{#member_register#}') {#member_register#}
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}\'', title='{#forgot_password#}') {#forgot_password#}
+                  | {/if}
+                  .dropdown-divider
+                  strong.dropdown-header(data-i18n='support')
+                  a.dropdown-item(data-i18n='[title]contact;contact', href='javascript:location.href=\'/{$PAGE_LINK.CONTACT}\'')
+                  a.dropdown-item(data-i18n='[title]customer-service;customer-service', href='javascript:location.href=\'/{$PAGE_LINK.CUSTOMER_SERVICE}\'')
+                  a.dropdown-item(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_MESSAGES}\'', title='{#messages#}') {#messages#}
+            li.menu-item
+              a.menu-link(href='javascript:location.href=\'/{$PAGE_LINK.CART}\'', title='{#basket#}')
+                span.ion-bag.menu-icon
+                  span#main-header-cover-block-area.menu-badge
+                span.menu-text {#basket#}
+    nav#main-header-cover-block-menu-mm-menu.mm-menu.mm-offcanvas
+      ul
+        li.Divider(data-i18n='shop')
+        | {foreach $TABS as $item}
+        li
+          | {if $item.CHILDREN}
+          span {$item.NAME}
+          | {if $item.ID == 5}
+          ul(id='main-header-cover-block-mm-listview')
+            | {foreach $item.CHILDREN as $item_child}
+            li
+              a(href='{$item_child.URL}', title='{$item_child.NAME}') {$item_child.NAME}
+            | {/foreach}
+          | {else}
+          ul
+            li
+              a(href='{$item.URL}', title='{$item.NAME}')
+                strong Tüm&nbsp;{$item.NAME|lower}&nbsp;ürünleri
+            | {foreach $item.CHILDREN as $item_child}
+            li
+              | {if $item_child.CHILDREN}
+              span {$item_child.NAME}
+              ul
+                li
+                  a(href='{$item_child.URL}', title='{$item_child.NAME}')
+                    strong Tüm&nbsp;{$item_child.NAME|lower}&nbsp;ürünleri
+                | {foreach $item_child.CHILDREN as $item_child_child}
+                li
+                  | {if $item_child_child.CHILDREN}
+                  span {$item_child_child.NAME}
+                  ul
+                    li
+                      a(href='{$item_child_child.URL}', title='{$item_child_child.NAME}')
+                        strong Tüm&nbsp;{$item_child_child.NAME|lower}&nbsp;ürünleri
+                    | {foreach $item_child_child.CHILDREN as $item_child_child_child}
+                    li
+                      | {if $item_child_child_child.CHILDREN}
+                      span {$item_child_child_child.NAME}
+                      ul
+                        li
+                          a(href='{$item_child_child_child.URL}', title='{$item_child_child_child.NAME}')
+                            strong Tüm&nbsp;{$item_child_child_child.NAME|lower}&nbsp;ürünleri
+                        | {foreach $item_child_child_child.CHILDREN as $item_child_child_child_child}
+                        li
+                          a(href='{$item_child_child_child_child.URL}', target='{if $item_child_child_child_child.NEWTAB}_blank{/if}', title='{$item_child_child_child_child.NAME}') {$item_child_child_child_child.NAME}
+                        | {/foreach}
+                      | {else}
+                      a(href='{$item_child_child_child.URL}', title='{$item_child_child_child.NAME}') {$item_child_child_child.NAME}
+                      | {/if}
+                    | {/foreach}
+                  | {else}
+                  a(href='{$item_child_child.URL}', title='{$item_child_child.NAME}') {$item_child_child.NAME}
+                  | {/if}
+                | {/foreach}
+              | {else}
+              a(href='{$item_child.URL}', title='{$item_child.NAME}') {$item_child.NAME}
+              | {/if}
+            | {/foreach}
+
+          | {/if}
+          | {else}
+          a(href='{$item.URL}', title='{$item.NAME}') {$item.NAME}
+          | {/if}
+        | {/foreach}
+        li.Divider.Spacer(data-i18n='browse')
+        | {foreach $MENU1 as $item}
+        li
+          | {if $item.CHILDREN}
+          span {$item.NAME}
+          ul
+            | {foreach $item.CHILDREN as $item_child}
+            li
+              | {if $item_child.CHILDREN}
+              span {$item_child.NAME}
+              ul
+                li
+                  a(href='javascript:location.href=\'{$item_child.URL}\'', title='{$item_child.NAME}')
+                    strong Tüm&nbsp;{$item_child.NAME|lower}&nbsp;ürünleri
+                | {foreach $item_child.CHILDREN as $item_child_child}
+                li
+                  | {if $item_child_child.CHILDREN}
+                  span {$item_child_child.NAME}
+                  ul
+                    li
+                      a(href='javascript:location.href=\'{$item_child_child.URL}\'', title='{$item_child_child.NAME}')
+                        strong Tüm&nbsp;{$item_child_child.NAME|lower}&nbsp;ürünleri
+                    | {foreach $item_child_child.CHILDREN as $item_child_child_child}
+                    li
+                      | {if $item_child_child_child.CHILDREN}
+                      span {$item_child_child_child.NAME}
+                      ul
+                        li
+                          a(href='javascript:location.href=\'{$item_child_child_child.URL}\'', title='{$item_child_child_child.NAME}')
+                            strong Tüm&nbsp;{$item_child_child_child.NAME|lower}&nbsp;ürünleri
+                        | {foreach $item_child_child_child.CHILDREN as $item_child_child_child_child}
+                        li
+                          a(href='javascript:location.href=\'{$item_child_child_child_child.URL}\'', target='{if $item_child_child_child_child.NEWTAB}_blank{/if}', title='{$item_child_child_child_child.NAME}') {$item_child_child_child_child.NAME}
+                        | {/foreach}
+                      | {else}
+                      a(href='javascript:location.href=\'{$item_child_child_child.URL}\'', title='{$item_child_child_child.NAME}') {$item_child_child_child.NAME}
+                      | {/if}
+                    | {/foreach}
+                  | {else}
+                  a(href='javascript:location.href=\'{$item_child_child.URL}\'', title='{$item_child_child.NAME}') {$item_child_child.NAME}
+                  | {/if}
+                | {/foreach}
+              | {else}
+              a(href='javascript:location.href=\'{$item_child.URL}\'', title='{$item_child.NAME}') {$item_child.NAME}
+              | {/if}
+            | {/foreach}
+          | {else}
+          a(href='javascript:location.href=\'{$item.URL}\'', title='{$item.NAME}') {$item.NAME}
+          | {/if}
+        | {/foreach}
+    nav#main-header-cover-block-account-mm-menu.mm-menu.mm-offcanvas
+      ul
+        | {if $IS_MEMBER_LOGGED_IN}
+        li.Divider(data-i18n='account-settings')
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PERSONAL_INFO}\'', title='{#personal_informations#}') {#personal_informations#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_ADDRESS_LIST}\'', title='{#adddress_info#}') {#adddress_info#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}\'', title='{#change_password#}') {#change_password#}
+        li
+          a.logout(href='#', title='{#logout#}') {#logout#}
+        li.Divider.Spacer {#orders#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_ORDERS}\'', title='{#orders#}') {#orders#}
+        li
+          a(data-i18n='[title]order-tracking;order-tracking', href='javascript:location.href=\'/{$PAGE_LINK.ORDER_FOLLOW}\'')
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}\'', title='{#money_order_notificiation#}') {#money_order_notificiation#}
+        li.Divider.Spacer(data-i18n='offers-and-vouchers')
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_GIFT_CHECK}\'', title='{#gift_coupons#}') {#gift_coupons#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_COMMENT_POINT}\'', title='{#points#}') {#points#}
+        li.Divider.Spacer(data-i18n='lists')
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}\'', title='{#price_alert#}') {#price_alert#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}\'', title='{#stock_alert#}') {#stock_alert#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_SHOPPING_LIST}\'', title='{#shopping_list#}') {#shopping_list#}
+        | {else}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_LOGIN}\'', title='{#member_login#}') {#member_login#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_REGISTER}\'', title='{#member_register#}') {#member_register#}
+        li
+          a(href='javascript:location.href=\'/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}\'', title='{#forgot_password#}') {#forgot_password#}
+        | {/if}
+        li.Divider.Spacer(data-i18n='support')
+        li
+          a(data-i18n='[title]contact;contact', href='javascript:location.href=\'/{$PAGE_LINK.CONTACT}\'')
+        li
+          a(data-i18n='[title]customer-service;customer-service', href='javascript:location.href=\'/{$PAGE_LINK.CUSTOMER_SERVICE}\'')
+        li
+          a(href='/{$PAGE_LINK.MEMBER_MESSAGES}', title='{#messages#}') {#messages#}
+    #main-header-cover-block-search-mm-menu.align-center.mm-menu.mm-offcanvas
+      div
+        form.main-header-cover-block-form(action='/{$PAGE_LINK.SEARCH}', autocomplete='off')
+          .form-group.mb-2
+            input.form-control.form-control-lg(name='q', placeholder='{#search_placeholder#}', required='')
+          small.form-text(data-i18n='find-your-product-with-fast-search-enter-some-keyword-such-as-#keywords-etc')
+  script#main-header-cover-block-data(type='application/json').
+    {
+      "account_mmenu": {
+        "navbar": { "title": "{#account#}" }
+      },
+      "menu_mmenu": {
+        "navbar": { "title": "{#categories#}" }
+      }
+    }
+| {/if}

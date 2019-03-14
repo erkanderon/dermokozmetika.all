@@ -1,0 +1,112 @@
+| {if $HEADER == 1}
+#product-showcase-cover-block.block.block-cover
+  .block-content
+    .block-header
+      .block-title.h2 {$BLOCK_TITLE}
+    .block-body
+      .product-showcase-cover-block-swiper.swiper.swiper-outside-navigation.swiper-outside-pagination(id='product-showcase-cover-block-{$BLOCK_ID}-swiper')
+        .swiper-container
+          .swiper-wrapper
+            | {/if}
+            | {if $LOOP == 1}
+            .swiper-slide
+              a.catalog(href='{$P.URL}', title='{$P.TITLE}')
+                .catalog-showcase-top
+                  | {if $IS_LAZY_LOAD_ACTIVE}
+                  img.catalog-img-top.swiper-lazy(alt='{$P.TITLE}', data-src='{$P.IMAGE.MEDIUM}', height='500', src='{$LAZY_LOAD_LOADING_IMAGE}', title='{$P.TITLE}', width='500')
+                  | {else}
+                  img.catalog-img-top(alt='{$P.TITLE}', height='500', src='{$P.IMAGE.MEDIUM}', title='{$P.TITLE}', width='500')
+                  | {/if}
+                .catalog-block
+                  | {if $DISPLAY_BRAND}
+                  .catalog-title.h6(lang='en') {$P.BRAND}
+                  | {/if}
+                  .catalog-subtitle.h5 {$P.TITLE|lower|replace:($P.BRAND|cat:" "|lower):""|ucfirst}
+                  p.catalog-text
+                    | {if $P.DISPLAY_VAT}
+                    | {$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_SELL vat = $P.VAT}
+                    | {else}
+                    | {$P.TARGET_CURRENCY}&nbsp;{format price = $P.PRICE_SELL}&nbsp;+&nbsp;{#kdv#}
+                    | {/if}
+                    | {if $P.DISCOUNT_PERCENT > 0 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+                    | &nbsp;
+                    del {$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_NOT_DISCOUNTED vat = $P.VAT}
+                    | {/if}
+                  | {if ($IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT) || $P.BRAND_ID == 350 || ($P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100) || ($P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE) || !$P.IN_STOCK || $P.S1 || $P.S2 || $P.S3}
+                  .ribbon-group
+                    | {if $IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT}
+                    span.ribbon.ribbon-outline-primary {#new#}
+                    | {/if}
+                    | {if $P.BRAND_ID == 350}
+                    span.ribbon.ribbon-outline-default Tester
+                    | {/if}
+                    | {if $P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100}
+                    span.ribbon.ribbon-outline-primary Kargo bedava
+                    | {/if}
+                    | {if $P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+                    span.ribbon.ribbon-outline-danger
+                      span.ion-arrow-graph-down-right
+                      | &nbsp;{#discounted#}
+                    | {/if}
+                    | {if !$P.IN_STOCK}
+                    span.ribbon.ribbon-default {#out_of_stock#}
+                    | {/if}
+                    | {if $P.S1}
+                    span.ribbon.ribbon-outline-warning 3 al 2 öde
+                    | {/if}
+                    | {if $P.S2}
+                    span.ribbon.ribbon-outline-info Şanslı marka
+                    | {/if}
+                    | {if $P.S3}
+                    span.ribbon.ribbon-outline-primary 1+1
+                    | {/if}
+                  | {/if}
+                  | {if $IS_COMMENT_RATING_ACTIVE && $P.COMMENT_RANK >= 50}
+                  .catalog-review
+                    | {if $P.COMMENT_RANK < 60 && $P.COMMENT_RANK >= 50}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-ios-star-half
+                    span.ion-ios-star-half-outline
+                    span.ion-ios-star-outline
+                    span.ion-ios-star-outline
+                    | {elseif $P.COMMENT_RANK < 70 && $P.COMMENT_RANK >= 60}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-ios-star-outline
+                    span.ion-ios-star-outline
+                    | {elseif $P.COMMENT_RANK < 80 && $P.COMMENT_RANK >= 70}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-ios-star-half
+                    span.ion-ios-star-half-outline
+                    span.ion-ios-star-outline
+                    | {elseif $P.COMMENT_RANK < 90 && $P.COMMENT_RANK >= 80}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-ios-star-outline
+                    | {elseif $P.COMMENT_RANK < 100 && $P.COMMENT_RANK >= 90}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-ios-star-half
+                    span.ion-ios-star-half-outline
+                    | {elseif $P.COMMENT_RANK == 100}
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    span.ion-star
+                    | {/if}
+                  | {/if}
+            | {/if}
+            | {if $FOOTER == 1}
+          .swiper-pagination
+        .swiper-button-prev
+        .swiper-button-next
+| {/if}

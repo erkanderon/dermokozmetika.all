@@ -1,0 +1,13 @@
+#brand-list-widget-block.block.block-brand-list.block-widget
+  .block-content
+    .block-header
+      .block-title.h4 {$BLOCK_TITLE}
+    .block-body
+      form#brand-list-widget-block-form.input-group(action='/{$PAGE_LINK.SEARCH}', autocomplete='off')
+        input#brand-list-widget-block-input.form-control(data-i18n='[placeholder]search-a-brand', data-list='#brand-list-widget-block-menu', name='q', required='')
+        label.input-group-addon(for='brand-list-widget-block-input')
+          i.fa.fa-search
+      nav#brand-list-widget-block-menu.menu
+        | {foreach $BRAND_LIST as $item}
+        a.menu-link(href='{$item.URL}', lang='en', title='{$item.NAME}') {$item.NAME}
+        | {/foreach}

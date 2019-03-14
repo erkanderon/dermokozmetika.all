@@ -1,0 +1,121 @@
+.block-orders.block-section {
+  .btn {
+    @include button-size(
+      $btn-padding-y-sm,
+      $btn-padding-x-sm,
+      $font-size-sm,
+      $btn-border-radius-sm
+    );
+
+    @include button-variant(
+      $btn-secondary-color,
+      $btn-secondary-bg,
+      $btn-secondary-border
+    );
+  }
+
+  .alert {
+    @include alert-variant(
+      $alert-warning-bg,
+      $alert-warning-border,
+      $alert-warning-text
+    );
+  }
+
+  .row {
+    &-totals {
+      .col {
+        @include make-col(6);
+      }
+
+      dd.col {
+        text-align: right;
+      }
+
+      dt.col {
+        text-align: left;
+      }
+    }
+
+    &-details {
+      margin-top: $spacer-y;
+
+      .col {
+        @include make-col(12);
+
+        &-price,
+        &-date {
+          @include media-breakpoint-up(lg) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    @include align-left;
+
+    &-header {
+      justify-content: space-between !important;
+    }
+  }
+
+  .table {
+    &-product {
+      &-price {
+        font-weight: bold;
+        text-align: right;
+      }
+
+      &-image {
+        width: 10rem;
+      }
+    }
+
+    &-actions {
+      text-align: right;
+    }
+
+    &-status,
+    &-id {
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
+    }
+
+    &-price,
+    &-date {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
+    }
+
+    &-details {
+      text-align: left;
+
+      @include media-breakpoint-up(xl) {
+        display: none;
+      }
+    }
+
+    &-orders {
+      @extend .table-hover;
+
+      text-align: center;
+      white-space: nowrap;
+
+      br {
+        display: none;
+      }
+
+      thead {
+        @extend .thead-default;
+
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
+      }
+    }
+  }
+}

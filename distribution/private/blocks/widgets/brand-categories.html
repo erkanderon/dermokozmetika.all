@@ -1,0 +1,11 @@
+{if $CATEGORY_LIST}
+<div class="block block-widget" id="brand-categories-widget-block">
+  <div class="block-content">
+    <div class="block-header">
+      <div class="block-title h4">{$BLOCK_TITLE}</div>
+    </div>
+    <div class="block-body">
+      <nav class="flex-column menu" id="brand-categories-widget-block-menu">{foreach $CATEGORY_LIST as $item}<a class="menu-link" href="/{$item.URL}" title="{$item.NAME}">{$item.NAME}</a>{/foreach}</nav>
+    </div>
+  </div>
+</div>{/if}

@@ -1,0 +1,23 @@
+{
+  "authors": [
+    "Ersoy Filinte <ersoy.filinte@gmail.com>"
+  ],
+  "description": "",
+  "directory": "source/assets/vendors",
+  "homepage": "http://www.dermokozmetika.com.tr",
+  "license": "MIT",
+  "main": "",
+  "name": "www.dermokozmetika.com.tr",
+  "version": "0.1.0",
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "seiyria-bootstrap-slider": "^9.8.1",
+    "flag-icon-css": "^2.8.0",
+    "font-awesome": "^4.7.0",
+    "Ionicons": "ionicons#^2.0.1",
+    "jQuery.mmenu": "^6.1.6",
+    "noty": "^3.1.2",
+    "perfect-scrollbar": "^0.8.1",
+    "swiper": "^3.4.2"
+  }
+}

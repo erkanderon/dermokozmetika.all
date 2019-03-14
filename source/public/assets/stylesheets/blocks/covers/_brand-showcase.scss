@@ -1,0 +1,25 @@
+.block-brand-showcase.block-cover {
+  .swiper-link {
+    @if $enable-hover-media-query {
+      filter: grayscale(100%);
+      opacity: .75;
+    }
+
+    padding-top: 33.333%;
+
+    &.swiper-lazy-loaded {
+      @if $enable-hover-media-query {
+        @include transition;
+      }
+
+      @include hover-focus {
+        filter: none;
+        opacity: 1;
+      }
+    }
+  }
+
+  .block-link {
+    @extend .btn-primary;
+  }
+}

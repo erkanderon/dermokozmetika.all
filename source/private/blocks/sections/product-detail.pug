@@ -1,0 +1,280 @@
+#product-detail-section-block.block.block-product-detail.block-section
+  .mb-8.row
+    .col-lg-5.col-xl-7.mb-8.mb-lg-0
+      .block-content
+        img.block-img.img-lazy(
+          alt='{$P.IMAGE.TITLE}'
+          data-src='{$P.IMAGE.BIG}'
+          src='{$LAZY_LOAD_LOADING_IMAGE}'
+          title='{$P.IMAGE.TITLE}'
+        )
+    .col-lg-6.col-xl-5.offset-lg-1.offset-xl-0
+      .block-content
+        .block-header
+          .block-title
+            .row
+              .col-md
+                a.h1(
+                  href='/{$P.BRAND_URL}'
+                  lang='en'
+                  title='{$P.BRAND}'
+                ) {$P.BRAND}
+              | {if $IS_COMMENT_RATE_ACTIVE && $P.COMMENT_RANK >= 50}
+              .col.col-auto.text-pink
+                | {if $P.COMMENT_RANK < 60 && $P.COMMENT_RANK >= 50}
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                span.ion-ios-star-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 70 && $P.COMMENT_RANK >= 60}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 80 && $P.COMMENT_RANK >= 70}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 90 && $P.COMMENT_RANK >= 80}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 100 && $P.COMMENT_RANK >= 90}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                | {elseif $P.COMMENT_RANK == 100}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                | {/if}
+                | &nbsp;
+                small.text-muted ({$COMMENT_COUNT})
+              | {/if}
+          h1.block-subtitle.h2 {$P.TITLE|replace:$P.BRAND:""}
+          h2.h5.block-subtitle.text-gray-dark {$P.SHORT_DESCRIPTION}
+          .mt-2.ribbon-group
+            | {if $P.BRAND_ID == 350}
+            span.ribbon.ribbon-default Tester
+            | {/if}
+            | {if $P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100}
+            span.ribbon.ribbon-outline-primary Kargo bedava
+            | {/if}
+            | {if $P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+            span.ribbon.ribbon-outline-danger
+              span.ion-flash
+              | &nbsp;{#discounted#}
+            | {/if}
+            | {if $P.IS_NEW_PRODUCT}
+            span.ribbon.ribbon-outline-primary {#new#}
+            | {/if}
+            | {if $P.S1}
+            span.ribbon.ribbon-outline-warning.ribbon-clickable 3 al 2 öde
+            | {/if}
+            | {if $P.S2}
+            span.ribbon.ribbon-outline-info.ribbon-clickable Şanslı marka
+            | {/if}
+            | {if $P.S3}
+            span.ribbon.ribbon-outline-primary 1+1
+            | {/if}
+            span.ribbon.ribbon-outline-success.ribbon-clickable Hediyeni sen seç
+        .block-body
+          p(class='{if $P.IS_DISCOUNT_ACTIVE}block-text h2 text-danger{else}block-text h2{/if}')
+            | {$P.TARGET_CURRENCY}&nbsp;
+            | {if $P.DISPLAY_VAT}
+            | {vat price = $P.PRICE_SELL vat = $P.VAT}
+            | {else}
+            | {format price = $P.PRICE_SELL}&nbsp;+&nbsp;{#kdv#}
+            | {/if}
+            | {if $P.IS_DISCOUNT_ACTIVE}
+            | &nbsp;
+            del.ml-3.text-muted
+              | {$P.TARGET_CURRENCY}&nbsp;
+              | {if $P.DISPLAY_VAT}
+              | {vat price = $P.PRICE_NOT_DISCOUNTED vat = $P.VAT}
+              | {else}
+              | {format price = $P.PRICE_NOT_DISCOUNTED}
+              | {/if}
+            | {/if}
+          ul.text-left
+            | {if $P.IS_DISCOUNT_ACTIVE}
+            li
+              | Bu ürünü alırsanız
+              | &nbsp;
+              strong {vat price = ($P.PRICE_NOT_DISCOUNTED - $P.PRICE_SELL) vat = $P.VAT}&nbsp;{$P.TARGET_CURRENCY}
+              | &nbsp;daha uyguna almış olacaksınız.
+            | {/if}
+            li
+              | Bu ürünü
+              | {if $smarty.now|date_format:"%A" == "Saturday"}
+              | şimdi alırsanız&nbsp;
+              strong pazartesi
+              | {elseif $smarty.now|date_format:"%A" == "Sunday"}
+              | şimdi alırsanız&nbsp;
+              strong yarın
+              | {elseif $smarty.now|date_format:"%H%M" < "1500"}
+              strong {15 - ($smarty.now|date_format:"%H" + 1)}&nbsp;saat&nbsp;{60 - ($smarty.now|date_format:"%M")}&nbsp;dakika
+              | &nbsp;içinde alırsanız&nbsp;
+              strong bugün
+              | {else}
+              strong {38 - ($smarty.now|date_format:"%H")}&nbsp;saat&nbsp;{60 - ($smarty.now|date_format:"%M")}&nbsp;dakika
+              | &nbsp;içinde alırsanız&nbsp;
+              strong {if $smarty.now|date_format:"%A" == "Friday"}pazartesi{else}yarın{/if}
+              | {/if}
+              | &nbsp;kargoda.
+            | {if ($P.PRICE_SELL - $P.PRICE_MONEY_ORDER) > 0}
+            li
+              | Bu ürünü havale ile alırsanız
+              | &nbsp;
+              strong {vat price = ($P.PRICE_SELL - $P.PRICE_MONEY_ORDER) vat = $P.VAT}&nbsp;{$P.TARGET_CURRENCY}
+              | &nbsp;daha uyguna almış olacaksınız.
+            | {/if}
+        | {if $IS_ADD_TO_CART_VISIBLE}
+        .block-footer
+          | {if $P.IN_STOCK}
+          .m--1.row
+            form#product-detail-section-block-form.col-md-5.p-1
+              input(
+                name='productId'
+                type='hidden'
+                value='{$P.ID}'
+              )
+              input(
+                name='quantity'
+                type='hidden'
+                value='1'
+              )
+              button.btn.btn-block.btn-lg.btn-success(title='{#add_to_cart#}') {#add_to_cart#}
+          | {else}
+          button.btn.btn-lg.btn-primary(disabled='', type='button') Tükendi
+          | {/if}
+        | {/if}
+  .row.mb-8
+    .col-lg-7
+      .block-content
+        #product-detail-section-block-campaigns-area.block-content.load
+          ul.nav.nav-tabs
+            li.nav-item
+              a.nav-link.active(
+              data-toggle='tab'
+              href='#product-detail-section-block-offers-and-vouchers-tab'
+              html-if='CAMPAIGN_LIST'
+              title='Ürüne özel teklifler'
+              ) Ürüne özel teklifler
+            li.nav-item
+              a.nav-link(
+              data-toggle='tab'
+              href='#product-detail-section-block-gifts-tab'
+              html-class='!CAMPAIGN_LIST ? "active" : ""'
+              ) Sepette hediye ürünler
+          .tab-content
+            #product-detail-section-block-offers-and-vouchers-tab.tab-pane.fade.show.active(html-if='CAMPAIGN_LIST')
+              #product-detail-section-block-offers-and-vouchers-swiper.swiper.swiper-outside-pagination
+                .swiper-container
+                  .swiper-wrapper
+                    .swiper-slide(html-repeat='item in CAMPAIGN_LIST')
+                      .card.card-campaign
+                        .card-block
+                          .align-items-center.row
+                            | {literal}
+                            .col.col-auto.hidden-sm-down
+                              img.card-img.swiper-lazy(
+                              alt='{{item.TITLE}}'
+                              data-src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg'
+                              height='120'
+                              src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/placeholder.gif'
+                              title='{{item.TITLE}}'
+                              width='120'
+                              )
+                            .col
+                              p.card-title.mb-2
+                                strong {{item.TITLE}}
+                              p.card-text {{item.DESCRIPTION}}
+                            | {/literal}
+                  .swiper-pagination
+            #product-detail-section-block-gifts-tab.tab-pane(html-class='!CAMPAIGN_LIST ? "fade show active" : "fade"')
+              #product-detail-section-block-gifts-swiper.swiper.swiper-outside-pagination
+                .swiper-container
+                  .swiper-wrapper {include file = "theme/v4/Blok/UrunDetay/Orta/user_product-detail-gifts.tpl"}
+                  .swiper-pagination
+  .row
+    | {if $P.DETAIL != '' || $P.ADDITIONAL_FIELD_1}
+    .col-lg-5.col-xl-7.mb-8.mb-lg-0
+      .block-content
+        .block-header
+          .block-title.h2 {#tab_product_features#}
+        | {if $P.DETAIL != ''}
+        .block-body
+          .product-detail {$P.DETAIL}
+        | {/if}
+        | {if $P.ADDITIONAL_FIELD_1}
+        .block-body
+          .h6 Sergilendiği kategoriler
+          ul
+            | {foreach $P.ADDITIONAL_FIELD_1|json_decode as $item name = categories}
+            li
+              a(href!='/{$item->slug}', title!='{$item->title}', style='text-decoration: underline;') {$item->title}
+            | {/foreach}
+        | {/if}
+    | {/if}
+    #product-detail-section-block-comments-area.col-lg-6.col-xl-5.load.offset-lg-1.offset-xl-0
+  #product-detail-section-block-add-to-cart-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          .h3.modal-title Ürün alışveriş sepetinize eklendi.
+          button.close(data-dismiss='modal', type='button')
+            span.fa.fa-close
+        .modal-body
+          a(href='/{$P.BRAND_URL}', title='{$P.BRAND}')
+            strong {$P.BRAND}
+          | &nbsp;marka&nbsp;
+          strong {$P.TITLE}
+          | &nbsp;isimli üründen&nbsp;
+          strong 1 adet
+          | &nbsp;sepetinize eklendi.
+        .modal-footer
+          button.btn.btn-primary(data-dismiss='modal', title='Alışverişe devam et', type='button') Alışverişe devam et
+          a.btn.btn-success(href='/sepet.xhtml') Sepeti görüntüle
+  script#product-detail-section-block-data(type='application/json').
+    { "id": "{$P.ID}" }
+  script(type='application/ld+json').
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": "{$P.TITLE}",
+      "image": ["{$P.IMAGE.BIG}"],
+      "description": "{$P.DETAIL|strip_tags|replace:"\"":"'"}",
+      "sku": "{$P.PRODUCT_CODE}",
+      "mpn": "{$P.SUPPLIER_PRODUCT_CODE}",
+      "gtin13": "{$P.BARCODE}",
+      "brand": {
+        "@type": "Thing",
+        "name": "{$P.BRAND}"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{$P.COMMENT_RANK / 20}",
+        "reviewCount": "{$COMMENT_COUNT}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "TRY",
+        "price": "{vat price = $P.PRICE_SELL vat = $P.VAT integer = true}",
+        "itemCondition": "http://schema.org/NewCondition",
+        "availability": "http://schema.org/InStock"
+      }
+    }

@@ -1,0 +1,13 @@
+.block.block-section
+  form.block-content
+    .block-header
+      .block-title.h3 {$BLOCK_TITLE}
+    .block-body
+      .form-group
+        label.form-control-label(data-i18n='order-number', for='order-tracking-section-block-order-number-input')
+        input#order-tracking-section-block-order-number-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-order-number', name='order', required='', value='{if $ORDER_NUMBER}{$ORDER_NUMBER}{/if}')
+      .form-group
+        label.form-control-label(for='order-tracking-section-block-email-address-input') {#email#}
+        input#order-tracking-section-block-email-address-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-email-address', name='mail', required='', type='email', value='{if $ORDER_MAIL}{$ORDER_MAIL}{/if}')
+    .block-footer
+      button.block-link.btn.btn-lg.btn-primary(title='{#goster#}') {#goster#}

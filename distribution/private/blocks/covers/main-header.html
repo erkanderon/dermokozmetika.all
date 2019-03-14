@@ -1,0 +1,199 @@
+
+{if $PAGE_ID == 91}
+{include file = "theme/v4/Blok/Ust/UstAlt/user_checkout-header.tpl"}
+{else}
+<div class="block block-attached block-cover block-fluid block-main-header" id="main-header-cover-block">{if $PAGE_ID == 4 || $PAGE_ID == 5 || $PAGE_ID == 6 || $PAGE_ID == 7 || $PAGE_ID == 8 || $PAGE_ID == 10 || $PAGE_ID == 21 || $PAGE_ID == 22 || $PAGE_ID == 29 || $PAGE_ID == 30 || $PAGE_ID == 35 || $PAGE_ID == 36 || $PAGE_ID == 37 || $PAGE_ID == 39 || $PAGE_ID == 61 || $PAGE_ID == 64 || $PAGE_ID == 70 || $PAGE_ID == 71 || $PAGE_ID == 73 || $PAGE_ID == 74 || $PAGE_ID == 75 || $PAGE_ID == 80 || $PAGE_ID == 85 || $PAGE_ID == 86 || $PAGE_ID == 87 || $PAGE_ID == 90 || $PAGE_ID == 91 || $PAGE_ID == 92 || $PAGE_ID == 95}
+  <script type="text/javascript">
+    {literal}
+    $(window).load(function () {
+        setTimeout(function () {
+            window.$zopim || (function (d, s) {
+                var z = $zopim = function (c) {
+                    z._.push(c)
+                }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+                z.set = function (o) {
+                    z.set._.push(o)
+                };
+                z._ = [];
+                z.set._ = [];
+                $.async = !0;
+                $.setAttribute("charset", "utf-8");
+                $.src = "//v2.zopim.com/?2xPt1oHxBQ1x8T2e4lcxAPE688xNeYcd";
+                z.t = +new Date;
+                $.type = "text/javascript";
+                e.parentNode.insertBefore($, e)
+            })(document, "script");
+        }, 2000);
+    });
+    {/literal}
+  </script>{/if}
+  {if $PAGE_ID == 2}
+  <script type="text/javascript">$('html').addClass('product-list-page');</script>{/if}
+  {if $PAGE_ID == 5}
+  <script type="text/javascript">$('html').addClass('login-page');</script>{/if}
+  {if $PAGE_ID == 6}
+  <script type="text/javascript">$('html').addClass('register-page');</script>{/if}
+  {if $PAGE_ID == 7}
+  <script type="text/javascript">$('html').addClass('forgot-password-page');</script>{/if}
+  {if $PAGE_ID == 12}
+  <script type="text/javascript">$('html').addClass('search-page');</script>{/if}
+  {if $PAGE_ID == 13}
+  <script type="text/javascript">$('html').addClass('contact-page');</script>{/if}
+  {if $PAGE_ID == 30}
+  <script type="text/javascript">$('html').addClass('cart-page');</script>{/if}
+  {if $PAGE_ID == 31}
+  <script type="text/javascript">$('html').addClass('brand-product-list-page');</script>{/if}
+  {if $PAGE_ID == 64}
+  <script type="text/javascript">$('html').addClass('login-after-cart-page');</script>{/if}
+  <div class="block-header">
+    <div class="container-fluid">
+      <div class="swiper" id="main-header-cover-block-swiper">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {if $LANGUAGE}
+            {include file = "theme/v4/Blok/Ust/UstAlt/user_main-header-privileges-$LANGUAGE.tpl"}
+            {else}
+            {include file = "theme/v4/Blok/Ust/UstAlt/user_main-header-privileges-tr.tpl"}
+            {/if}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block-body">
+    <div class="container-fluid">
+      <div class="no-gutters row">
+        <nav class="col-6 col-left col-lg">
+          <ul class="menu">
+            <li class="menu-item menu-item-bordered"><a class="menu-link" data-i18n="[title]menu" href="#main-header-cover-block-menu-mm-menu"><span class="ion-navicon menu-icon"></span><span class="menu-text" data-i18n="menu"></span></a></li>
+            <li class="hidden-lg-up menu-item"><a class="menu-link" href="#main-header-cover-block-search-mm-menu" title="{#search#}"><span class="ion-ios-search-strong menu-icon"></span><span class="menu-text">{#search#}</span></a></li>
+            <li class="hidden-md-down menu-item">
+              <label class="menu-link">
+                <form class="input-group main-header-cover-block-form" action="/{$PAGE_LINK.SEARCH}" autocomplete="off"><span class="input-group-addon"><span class="ion-ios-search-strong menu-icon"></span></span>
+                  <input class="form-control" name="q" placeholder="{#search#}" required=""/><span class="input-group-addon menu-link"><span class="ion-ios-search-strong menu-icon"></span></span>
+                </form>
+              </label>
+            </li>
+          </ul>
+        </nav>
+        <div class="align-self-center col-12 col-lg-auto"><a class="block-link" href="javascript:location.href='/'" title="Dermokozmetika">Dermokozmetika</a></div>
+        <nav class="col-6 col-lg col-right">
+          <ul class="menu">
+            <li class="hidden-lg-up menu-item"><a class="menu-link" href="#main-header-cover-block-account-mm-menu" title="{#account#}"><span class="ion-android-contact menu-icon"></span><span class="menu-text">{#account#}</span></a></li>
+            <li class="hidden-md-down menu-item">
+              <div class="dropdown dropdown-right">
+                <button class="dropdown-toggle menu-link" data-toggle="dropdown" title="{#account#}" type="button"><span class="ion-android-contact menu-icon"></span><span class="menu-text">{#account#}</span></button>
+                <div class="dropdown-menu">{if $IS_MEMBER_LOGGED_IN}<strong class="dropdown-header" data-i18n="account-settings"></strong><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_PERSONAL_INFO}'" title="{#personal_informations#}">{#personal_informations#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_ADDRESS_LIST}'" title="{#adddress_info#}">{#adddress_info#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}'" title="{#change_password#}">{#change_password#}</a>
+                  <button class="dropdown-item logout" title="{#logout#}" type="button">{#logout#}</button>
+                  <div class="dropdown-divider"></div><strong class="dropdown-header">{#orders#}</strong><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_ORDERS}'" title="{#orders#}">{#orders#}</a><a class="dropdown-item" data-i18n="[title]order-tracking;order-tracking" href="javascript:location.href='/{$PAGE_LINK.ORDER_FOLLOW}'"></a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}'" title="{#money_order_notificiation#}">{#money_order_notificiation#}</a>
+                  <div class="dropdown-divider"></div><strong class="dropdown-header" data-i18n="offers-and-vouchers"></strong><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_GIFT_CHECK}'" title="{#gift_coupons#}">{#gift_coupons#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_COMMENT_POINT}'" title="{#points#}">{#points#}</a>
+                  <div class="dropdown-divider"></div><strong class="dropdown-header" data-i18n="lists"></strong><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}'" title="{#price_alert#}">{#price_alert#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}'" title="{#stock_alert#}">{#stock_alert#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_SHOPPING_LIST}'" title="{#shopping_list#}">{#shopping_list#}</a>{else}<strong class="dropdown-header">{#welcome#}</strong><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_LOGIN}'" title="{#member_login#}">{#member_login#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_REGISTER}'" title="{#member_register#}">{#member_register#}</a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}'" title="{#forgot_password#}">{#forgot_password#}</a>{/if}
+                  <div class="dropdown-divider"></div><strong class="dropdown-header" data-i18n="support"></strong><a class="dropdown-item" data-i18n="[title]contact;contact" href="javascript:location.href='/{$PAGE_LINK.CONTACT}'"></a><a class="dropdown-item" data-i18n="[title]customer-service;customer-service" href="javascript:location.href='/{$PAGE_LINK.CUSTOMER_SERVICE}'"></a><a class="dropdown-item" href="javascript:location.href='/{$PAGE_LINK.MEMBER_MESSAGES}'" title="{#messages#}">{#messages#}</a>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="javascript:location.href='/{$PAGE_LINK.CART}'" title="{#basket#}"><span class="ion-bag menu-icon"><span class="menu-badge" id="main-header-cover-block-area"></span></span><span class="menu-text">{#basket#}</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <nav class="mm-menu mm-offcanvas" id="main-header-cover-block-menu-mm-menu">
+      <ul>
+        <li class="Divider" data-i18n="shop"></li>{foreach $TABS as $item}
+        <li>{if $item.CHILDREN}<span>{$item.NAME}</span>{if $item.ID == 5}
+          <ul id="main-header-cover-block-mm-listview">{foreach $item.CHILDREN as $item_child}
+            <li><a href="{$item_child.URL}" title="{$item_child.NAME}">{$item_child.NAME}</a></li>{/foreach}
+          </ul>{else}
+          <ul>
+            <li><a href="{$item.URL}" title="{$item.NAME}"><strong>Tüm&nbsp;{$item.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item.CHILDREN as $item_child}
+            <li>{if $item_child.CHILDREN}<span>{$item_child.NAME}</span>
+              <ul>
+                <li><a href="{$item_child.URL}" title="{$item_child.NAME}"><strong>Tüm&nbsp;{$item_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child.CHILDREN as $item_child_child}
+                <li>{if $item_child_child.CHILDREN}<span>{$item_child_child.NAME}</span>
+                  <ul>
+                    <li><a href="{$item_child_child.URL}" title="{$item_child_child.NAME}"><strong>Tüm&nbsp;{$item_child_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child_child.CHILDREN as $item_child_child_child}
+                    <li>{if $item_child_child_child.CHILDREN}<span>{$item_child_child_child.NAME}</span>
+                      <ul>
+                        <li><a href="{$item_child_child_child.URL}" title="{$item_child_child_child.NAME}"><strong>Tüm&nbsp;{$item_child_child_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child_child_child.CHILDREN as $item_child_child_child_child}
+                        <li><a href="{$item_child_child_child_child.URL}" target="{if $item_child_child_child_child.NEWTAB}_blank{/if}" title="{$item_child_child_child_child.NAME}">{$item_child_child_child_child.NAME}</a></li>{/foreach}
+                      </ul>{else}<a href="{$item_child_child_child.URL}" title="{$item_child_child_child.NAME}">{$item_child_child_child.NAME}</a>{/if}
+                    </li>{/foreach}
+                  </ul>{else}<a href="{$item_child_child.URL}" title="{$item_child_child.NAME}">{$item_child_child.NAME}</a>{/if}
+                </li>{/foreach}
+              </ul>{else}<a href="{$item_child.URL}" title="{$item_child.NAME}">{$item_child.NAME}</a>{/if}
+            </li>{/foreach}
+          </ul>{/if}
+          {else}<a href="{$item.URL}" title="{$item.NAME}">{$item.NAME}</a>{/if}
+        </li>{/foreach}
+        <li class="Divider Spacer" data-i18n="browse"></li>{foreach $MENU1 as $item}
+        <li>{if $item.CHILDREN}<span>{$item.NAME}</span>
+          <ul>{foreach $item.CHILDREN as $item_child}
+            <li>{if $item_child.CHILDREN}<span>{$item_child.NAME}</span>
+              <ul>
+                <li><a href="javascript:location.href='{$item_child.URL}'" title="{$item_child.NAME}"><strong>Tüm&nbsp;{$item_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child.CHILDREN as $item_child_child}
+                <li>{if $item_child_child.CHILDREN}<span>{$item_child_child.NAME}</span>
+                  <ul>
+                    <li><a href="javascript:location.href='{$item_child_child.URL}'" title="{$item_child_child.NAME}"><strong>Tüm&nbsp;{$item_child_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child_child.CHILDREN as $item_child_child_child}
+                    <li>{if $item_child_child_child.CHILDREN}<span>{$item_child_child_child.NAME}</span>
+                      <ul>
+                        <li><a href="javascript:location.href='{$item_child_child_child.URL}'" title="{$item_child_child_child.NAME}"><strong>Tüm&nbsp;{$item_child_child_child.NAME|lower}&nbsp;ürünleri</strong></a></li>{foreach $item_child_child_child.CHILDREN as $item_child_child_child_child}
+                        <li><a href="javascript:location.href='{$item_child_child_child_child.URL}'" target="{if $item_child_child_child_child.NEWTAB}_blank{/if}" title="{$item_child_child_child_child.NAME}">{$item_child_child_child_child.NAME}</a></li>{/foreach}
+                      </ul>{else}<a href="javascript:location.href='{$item_child_child_child.URL}'" title="{$item_child_child_child.NAME}">{$item_child_child_child.NAME}</a>{/if}
+                    </li>{/foreach}
+                  </ul>{else}<a href="javascript:location.href='{$item_child_child.URL}'" title="{$item_child_child.NAME}">{$item_child_child.NAME}</a>{/if}
+                </li>{/foreach}
+              </ul>{else}<a href="javascript:location.href='{$item_child.URL}'" title="{$item_child.NAME}">{$item_child.NAME}</a>{/if}
+            </li>{/foreach}
+          </ul>{else}<a href="javascript:location.href='{$item.URL}'" title="{$item.NAME}">{$item.NAME}</a>{/if}
+        </li>{/foreach}
+      </ul>
+    </nav>
+    <nav class="mm-menu mm-offcanvas" id="main-header-cover-block-account-mm-menu">
+      <ul>{if $IS_MEMBER_LOGGED_IN}
+        <li class="Divider" data-i18n="account-settings"></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_PERSONAL_INFO}'" title="{#personal_informations#}">{#personal_informations#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_ADDRESS_LIST}'" title="{#adddress_info#}">{#adddress_info#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}'" title="{#change_password#}">{#change_password#}</a></li>
+        <li><a class="logout" href="#" title="{#logout#}">{#logout#}</a></li>
+        <li class="Divider Spacer">{#orders#}</li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_ORDERS}'" title="{#orders#}">{#orders#}</a></li>
+        <li><a data-i18n="[title]order-tracking;order-tracking" href="javascript:location.href='/{$PAGE_LINK.ORDER_FOLLOW}'"></a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}'" title="{#money_order_notificiation#}">{#money_order_notificiation#}</a></li>
+        <li class="Divider Spacer" data-i18n="offers-and-vouchers"></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_GIFT_CHECK}'" title="{#gift_coupons#}">{#gift_coupons#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_COMMENT_POINT}'" title="{#points#}">{#points#}</a></li>
+        <li class="Divider Spacer" data-i18n="lists"></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}'" title="{#price_alert#}">{#price_alert#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}'" title="{#stock_alert#}">{#stock_alert#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_SHOPPING_LIST}'" title="{#shopping_list#}">{#shopping_list#}</a></li>{else}
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_LOGIN}'" title="{#member_login#}">{#member_login#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_REGISTER}'" title="{#member_register#}">{#member_register#}</a></li>
+        <li><a href="javascript:location.href='/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}'" title="{#forgot_password#}">{#forgot_password#}</a></li>{/if}
+        <li class="Divider Spacer" data-i18n="support"></li>
+        <li><a data-i18n="[title]contact;contact" href="javascript:location.href='/{$PAGE_LINK.CONTACT}'"></a></li>
+        <li><a data-i18n="[title]customer-service;customer-service" href="javascript:location.href='/{$PAGE_LINK.CUSTOMER_SERVICE}'"></a></li>
+        <li><a href="/{$PAGE_LINK.MEMBER_MESSAGES}" title="{#messages#}">{#messages#}</a></li>
+      </ul>
+    </nav>
+    <div class="align-center mm-menu mm-offcanvas" id="main-header-cover-block-search-mm-menu">
+      <div>
+        <form class="main-header-cover-block-form" action="/{$PAGE_LINK.SEARCH}" autocomplete="off">
+          <div class="form-group mb-2">
+            <input class="form-control form-control-lg" name="q" placeholder="{#search_placeholder#}" required=""/>
+          </div><small class="form-text" data-i18n="find-your-product-with-fast-search-enter-some-keyword-such-as-#keywords-etc"></small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script id="main-header-cover-block-data" type="application/json">
+    {
+      "account_mmenu": {
+        "navbar": { "title": "{#account#}" }
+      },
+      "menu_mmenu": {
+        "navbar": { "title": "{#categories#}" }
+      }
+    }
+  </script>
+  {if $IS_ADMIN_LOGGED}{debug}{/if}
+</div>{/if}

@@ -1,0 +1,21 @@
+| {if $PAGE_ID == 5}
+| {include file = "theme/v4/Blok/SiparisTakip/Orta/user_login-order-tracking.tpl"}
+| {else}
+.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3 {$BLOCK_TITLE}
+      p.block-text(data-i18n='to-track-your-order-please-enter-your-order-number-and-email-address-in-the-box-below-and-press-the-show-button-this-was-given-to-you-on-your-receipt-and-in-the-confirmation-email-you-should-have-received')
+    form.align-sm-left.block-body
+      .form-group.row
+        label.col-lg-3.col-sm-4.form-control-label(data-i18n='order-number', for='order-tracking-section-block-order-number-input')
+        .col-lg-9.col-sm-8
+          input#order-tracking-section-block-order-number-input.form-control.form-control-lg(autofocus='', data-i18n='[placeholder]enter-your-order-number')
+      .form-group.row
+        label.col-lg-3.col-sm-4.form-control-label(for='order-tracking-section-block-email-address-input') {#email#}
+        .col-lg-9.col-sm-8
+          input#order-tracking-section-block-email-address-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-email-address', type='email')
+      .form-group.row
+        .col-lg-9.col-sm-8.offset-lg-3.offset-sm-4
+          button.block-link.btn.btn-lg.btn-primary(title='{#goster#}') {#goster#}
+| {/if}

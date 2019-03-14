@@ -1,0 +1,120 @@
+.block-content
+  .block-header
+    .block-title.h2
+      | {#tab_comments#}
+      span(html-if='TOTAL')
+        | &nbsp;
+        span.font-weight-normal ({{TOTAL}})
+  .block-body(html-if='COMMENTS.length')
+    .card.card-comment(html-repeat='item in COMMENTS')
+      .card-header
+        span.text-pink(html-if!='item.RATE < 60 && item.RATE >= 50')
+          span.ion-star
+          span.ion-star
+          span.ion-ios-star-half
+          span.ion-ios-star-half-outline
+          span.ion-ios-star-outline
+          span.ion-ios-star-outline
+        span.text-pink(html-if!='item.RATE < 70 && item.RATE >= 60')
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-ios-star-outline
+          span.ion-ios-star-outline
+        span.text-pink(html-if!='item.RATE < 80 && item.RATE >= 70')
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-ios-star-half
+          span.ion-ios-star-half-outline
+          span.ion-ios-star-outline
+        span.text-pink(html-if!='item.RATE < 90 && item.RATE >= 80')
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-ios-star-outline
+        span.text-pink(html-if!='item.RATE < 100 && item.RATE >= 90')
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-ios-star-half
+          span.ion-ios-star-half-outline
+        span.text-pink(html-if='item.RANK == 100')
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-star
+          span.ion-star
+        strong(html-if='item.IS_NAME_DISPLAYED') &nbsp;{{item.NAME}}&nbsp;{{item.SURNAME}}
+          span(html-if='item.AGE > 0') &nbsp;({{item.AGE}})
+        span.text-muted(html-if='item.CITY && item.TOWN') &nbsp;{{item.TOWN}}/{{item.CITY}}
+      .card-block
+        .card-title.h5(html-if='item.TITLE') {{item.TITLE}}
+        p.card-text {{item.COMMENT}}
+  .block-body(html-if='!COMMENTS.length')
+    .alert.alert-warning {#no_comments#}
+.block-content(html-if='IS_MEMBER_LOGGED_IN')
+  .block-header
+    .block-title.h2 {#write_comment#}
+  form#product-detail-section-block-3-form.block-body
+    .form-group
+      label.form-control-label(for='product-detail-middle-block-review-form-title-input') {#comment_title#}
+      input#product-detail-middle-block-review-form-title-input.form-control.form-control-lg(
+        data-i18n='[placeholder]enter-your-review-title'
+        name='title'
+        required=''
+        type='text'
+      )
+    .form-group
+      label.form-control-label(for='product-detail-middle-block-review-form-review-input') {#comment#}
+      textarea#product-detail-middle-block-review-form-review-input.form-control.form-control-lg(
+        data-i18n='[placeholder]enter-your-review'
+        name='text'
+        required=''
+        rows='2'
+      )
+    .form-group
+      label.custom-control.custom-radio
+        input.custom-control-input(
+          name='rate'
+          type='radio'
+          value='1'
+        )
+        span.custom-control-indicator
+        span.custom-control-description {#vote_worst#}
+      label.custom-control.custom-radio
+        input.custom-control-input(
+          name='rate'
+          type='radio'
+          value='2'
+        )
+        span.custom-control-indicator
+        span.custom-control-description {#vote_soso#}
+      label.custom-control.custom-radio
+        input.custom-control-input(
+          name='rate'
+          type='radio'
+          value='3'
+        )
+        span.custom-control-indicator
+        span.custom-control-description {#vote_good#}
+      label.custom-control.custom-radio
+        input.custom-control-input(
+          name='rate'
+          type='radio'
+          value='4'
+        )
+        span.custom-control-indicator
+        span.custom-control-description {#vote_great#}
+      label.custom-control.custom-radio
+        input.custom-control-input(
+          checked=''
+          name='rate'
+          type='radio'
+          value='5'
+        )
+        span.custom-control-indicator
+        span.custom-control-description {#vote_best#}
+    button.btn.btn-lg.btn-primary(title='{#gonder_buton#}') {#gonder_buton#}

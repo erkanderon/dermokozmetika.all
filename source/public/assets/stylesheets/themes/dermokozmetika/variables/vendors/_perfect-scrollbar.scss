@@ -1,0 +1,24 @@
+// Colors
+$ps-border-radius: 0;
+
+$ps-rail-default-opacity: 1;
+$ps-rail-container-hover-opacity: $ps-rail-default-opacity;
+$ps-rail-hover-opacity: $ps-rail-container-hover-opacity;
+
+$ps-bar-bg: #f5f5f5;
+$ps-bar-container-hover-bg: #e5e5e5;
+$ps-bar-hover-bg: #3a3a3a;
+$ps-rail-hover-bg: $ps-bar-container-hover-bg;
+
+// Sizes
+$ps-scrollbar-x-rail-bottom: 0;
+$ps-scrollbar-x-rail-height: .5rem;
+$ps-scrollbar-x-bottom: $ps-scrollbar-x-rail-bottom;
+$ps-scrollbar-x-height: $ps-scrollbar-x-rail-height;
+$ps-scrollbar-x-hover-height: $ps-scrollbar-x-height;
+
+$ps-scrollbar-y-rail-right: $ps-scrollbar-x-rail-bottom;
+$ps-scrollbar-y-rail-width: $ps-scrollbar-x-rail-height;
+$ps-scrollbar-y-right: $ps-scrollbar-y-rail-right;
+$ps-scrollbar-y-width: $ps-scrollbar-y-rail-width;
+$ps-scrollbar-y-hover-width: $ps-scrollbar-y-width;

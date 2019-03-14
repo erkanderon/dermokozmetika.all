@@ -1,0 +1,253 @@
+.block-cover.block-main-header {
+  overflow: visible;
+
+  padding-left: 0;
+  padding-right: 0;
+
+  .input-group {
+    position: static;
+
+    .form-control,
+    .form-control::placeholder,
+    &-addon { color: inherit; }
+
+    .form-control,
+    &-addon {
+      background-color: transparent;
+      border-color: transparent;
+
+      padding: 0;
+    }
+
+    .form-control {
+      @include box-shadow(none);
+
+      cursor: inherit;
+      font-size: inherit;
+      text-align: left;
+      width: 49px;
+
+      + .input-group-addon {
+        align-items: flex-start;
+        background-color: $inverse-bg;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+
+        .menu-icon { margin-left: 1px; } // Bug fix
+      }
+
+      &:focus {
+        text-align: inherit;
+        text-decoration: underline;
+
+        width: 8.5rem;
+
+        &::placeholder { color: transparent; }
+
+        &, + .input-group-addon {
+          color: $inverse-color;
+          cursor: text;
+        }
+
+        + .input-group-addon {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &.form-control-danger:focus + .input-group-addon {
+        background-color: $brand-danger;
+        border-color: $brand-danger;
+      }
+    }
+  }
+
+  .menu {
+    margin: 0;
+    overflow: visible;
+
+    &-badge {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semi-bold;
+
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+
+    &-icon,
+    &-item { position: relative; }
+
+    &-link,
+    &-item { display: flex; }
+
+    &-link {
+      @include transition;
+
+      border: $border-width solid transparent;
+      cursor: pointer;
+      margin-bottom: 0;
+      min-height: 100%;
+      width: 100%;
+
+      @include hover-focus {
+        background-color: $inverse-bg;
+        border-color: $inverse-bg;
+        color: $inverse-color;
+
+        text-decoration: inherit;
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      &-badge { margin-top: -7px; }
+
+      &-icon {
+        margin-right: .75rem;
+
+        &::before { font-size: 175%; }
+
+        &.ion-navicon::before { font-size: 225%; }
+      }
+
+      &-link { align-items: center; }
+    }
+  }
+
+  .col {
+    &-right,
+    &-left { display: flex; }
+
+    &-right { justify-content: flex-end; }
+    &-left { justify-content: flex-start; }
+  }
+
+  .block {
+    &-link {
+      @include text-hide;
+
+      background: url('../images/logo-horizontal-pink.svg') no-repeat;
+      display: block;
+      margin: auto;
+
+      @include media-breakpoint-between(sm, md) {
+        @include size(
+          1.5rem * 9.379,
+          1.5rem
+        );
+
+        margin-bottom: .5rem;
+        margin-top: 1rem;
+      }
+    }
+
+    &-text,
+    &-header { margin-bottom: 0; }
+
+    &-text {
+      @include text-truncate;
+    }
+
+    &-header {
+      background-color: $gray-lightest;
+
+      padding-bottom: .5rem;
+      padding-top: .5rem;
+    }
+  }
+
+  &.fixed-block { top: 0; }
+
+  @include media-breakpoint-down(md) {
+    .menu {
+      width: 100%;
+
+      &-item { flex: 1 1 auto; }
+    }
+
+    .col {
+      &-right { order: 2; }
+      &-left { order: 1; }
+    }
+
+    .block-body {
+      padding-bottom: 0;
+      padding-top: 0;
+
+      .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    .menu {
+      &-badge { margin-top: -8px; }
+
+      &-text {
+        font-size: $font-size-xs;
+        line-height: $line-height-sm;
+        margin-top: auto;
+      }
+
+      &-icon {
+        margin-bottom: -.375rem;
+
+        &::before { font-size: 150%; }
+
+        &.ion-navicon {
+          margin-top: -.25rem;
+
+          &::before { font-size: 200%; }
+        }
+      }
+
+      &-link {
+        flex-direction: column;
+        padding: .5rem .5rem .25rem;
+      }
+    }
+
+    .block {
+      &-link {
+        @include size(
+          1.25rem * 9.379,
+          1.25rem
+        );
+
+        margin-bottom: .25rem;
+        margin-top: .75rem;
+      }
+
+      &-text {
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .menu {
+      &-link { padding: .375rem 1.25rem; }
+      &-item-bordered .menu-link:not(:hover):not(:focus) { border-color: $border-color; }
+    }
+
+    .block {
+      &-link {
+        @include size(
+          1.75rem * 9.379,
+          1.75rem
+        );
+      }
+
+      &-body {
+        padding-bottom: .75rem;
+        padding-top: .75rem;
+      }
+    }
+  }
+}

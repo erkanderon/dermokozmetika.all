@@ -1,0 +1,35 @@
+.block-cover.block-recent-blogs {
+  @include block-variant(
+    $gray-lightest,
+    $gray-lightest
+  );
+
+  .card {
+    border-width: $card-border-width * 0;
+
+    &-showcase-top {
+      padding-top: 100%;
+    }
+  }
+
+  .block {
+    &-link {
+      @extend .btn-primary;
+    }
+
+    &-subtitle {
+      @include text-hide;
+
+      background: url('../images/dermomag.png') no-repeat center;
+      background-size: contain;
+
+      height: 4.5rem;
+      margin-top: 0;
+    }
+
+    &-content {
+      padding-bottom: $block-spacer-y * 6;
+      padding-top: $block-spacer-y * 6;
+    }
+  }
+}

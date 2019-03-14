@@ -1,0 +1,11 @@
+| {if $CATEGORY_LIST}
+#brand-categories-widget-block.block.block-widget
+  .block-content
+    .block-header
+      .block-title.h4 {$BLOCK_TITLE}
+    .block-body
+      nav#brand-categories-widget-block-menu.flex-column.menu
+        | {foreach $CATEGORY_LIST as $item}
+        a.menu-link(href='/{$item.URL}', title='{$item.NAME}') {$item.NAME}
+        | {/foreach}
+| {/if}

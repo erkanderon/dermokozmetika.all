@@ -1,0 +1,32 @@
+.block.block-attached.block-cover
+  .block-body
+    nav.breadcrumb
+      a.breadcrumb-item(href='/', title='Dermokozmetika') Dermokozmetika
+      | {foreach $NAVIGATION_LIST as $item name = breadcrumb}
+      | {if $smarty.foreach.breadcrumb.last}
+      span.active.breadcrumb-item {$item.TITLE}
+      | {else}
+      a.breadcrumb-item(href='/{$item.LINK}', title='{$item.TITLE}') {$item.TITLE}
+      | {/if}
+      | {/foreach}
+  script(type='application/ld+json').
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@id": "{$SITE}",
+          "@type": "ListItem",
+          "item": { "name": "Dermokozmetika" },
+          "position": 1
+        }
+        {foreach $NAVIGATION_LIST as $item name = breadcrumb}
+        , {
+          "@id": "{$SITE}{$item.LINK}",
+          "@type": "ListItem",
+          "item": { "name": "{$item.TITLE}" },
+          "position": {$smarty.foreach.breadcrumb.iteration + 1}
+        }
+        {/foreach}
+      ]
+    }

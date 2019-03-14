@@ -1,0 +1,16 @@
+#interactive-showcase-cover-block.block.block-attached.block-cover.block-extended.block-fluid.block-interactive-showcase
+  #interactive-showcase-cover-block-swiper.swiper
+    .swiper-container
+      .swiper-wrapper
+        | {if $LANGUAGE}
+        | {include file = "theme/v4/Blok/InteraktifVitrin/UstAlt/user_interactive-showcase-$LANGUAGE.tpl"}
+        | {else}
+        | {include file = "theme/v4/Blok/InteraktifVitrin/UstAlt/user_interactive-showcase-tr.tpl"}
+        | {/if}
+      .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+  script#interactive-showcase-cover-block-data(type='application/json').
+    {
+      "swiper": { "autoplay": "{$SHOWCASE_TRANSITION_PERIOD}" }
+    }

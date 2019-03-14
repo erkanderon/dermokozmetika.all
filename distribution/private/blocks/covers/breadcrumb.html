@@ -1,0 +1,31 @@
+
+<div class="block block-attached block-cover">
+  <div class="block-body">
+    <nav class="breadcrumb"><a class="breadcrumb-item" href="/" title="Dermokozmetika">Dermokozmetika</a>{foreach $NAVIGATION_LIST as $item name = breadcrumb}
+      {if $smarty.foreach.breadcrumb.last}<span class="active breadcrumb-item">{$item.TITLE}</span>{else}<a class="breadcrumb-item" href="/{$item.LINK}" title="{$item.TITLE}">{$item.TITLE}</a>{/if}
+      {/foreach}
+    </nav>
+  </div>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@id": "{$SITE}",
+          "@type": "ListItem",
+          "item": { "name": "Dermokozmetika" },
+          "position": 1
+        }
+        {foreach $NAVIGATION_LIST as $item name = breadcrumb}
+        , {
+          "@id": "{$SITE}{$item.LINK}",
+          "@type": "ListItem",
+          "item": { "name": "{$item.TITLE}" },
+          "position": {$smarty.foreach.breadcrumb.iteration + 1}
+        }
+        {/foreach}
+      ]
+    }
+  </script>
+</div>

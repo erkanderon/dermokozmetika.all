@@ -1,0 +1,72 @@
+@mixin block-variant(
+  $background-color,
+  $border-color
+) {
+  border-color: $border-color !important;
+
+  .block {
+    &-footer,
+    &-header {
+      background-color: inherit;
+    }
+
+    &-content {
+      background-color: $background-color;
+      border-color: inherit;
+    }
+  }
+
+  > .block {
+    &-footer,
+    &-header {
+      background-color: $background-color !important;
+    }
+
+    &-body {
+      background-color: $background-color;
+    }
+  }
+}
+
+@mixin block-inverse {
+  color: rgba($block-inverse-color, .75);
+
+  .block {
+    &-link {
+      color: inherit;
+
+      @include hover-focus {
+        color: $block-inverse-color;
+      }
+    }
+
+    &-subtitle,
+    &-title {
+      color: $block-inverse-color;
+    }
+
+    &-footer,
+    &-header {
+      border-color: rgba($block-inverse-color, .25);
+    }
+  }
+}
+
+@mixin block-outline-variant($value) {
+  background-color: transparent !important;
+  border-color: $value !important;
+
+  z-index: 1;
+
+  .block {
+    &-footer,
+    &-header {
+      background-color: inherit;
+    }
+
+    &-content {
+      background-color: transparent;
+      border-color: inherit;
+    }
+  }
+}

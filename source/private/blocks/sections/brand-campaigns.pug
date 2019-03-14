@@ -1,0 +1,19 @@
+#brand-campaigns-section-block.block.block-brand-campaigns.block-section.load(html-if='CAMPAIGN_LIST')
+    .block-content
+        .block-body
+            .swiper
+                .swiper-container
+                    .swiper-wrapper
+                        .swiper-slide(html-repeat='item in CAMPAIGN_LIST')
+                            .card
+                                .card-block
+                                    .align-items-center.row
+                                        | {literal}
+                                        .col.col-auto.hidden-sm-down
+                                            img.card-img.swiper-lazy(alt='{{item.TITLE}}', data-src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/{{item.ID}}.jpg', height='64', src='//media.dermokozmetika.com.tr/tr/blocks/sections/campaigns/thumbnails/placeholder.gif', width='64')
+                                        .col
+                                            .card-title
+                                                small
+                                                    strong {{item.TITLE}}
+                                            small.card-text {{item.DESCRIPTION}}
+                                        | {/literal}

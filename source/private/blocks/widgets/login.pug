@@ -1,0 +1,69 @@
+#login-widget-block.block.block-login.block-widget
+  .block-content
+    | {if $IS_MEMBER_LOGGED_IN}
+    #login-widget-block-div.block-header.load
+      | {literal}
+      .h4.block-title Merhaba&nbsp;{{firstname}}
+      .h6.block-subtitle
+        span(data-i18n='[html]not-#firstname#-#lastname#', data-i18n-options='{ "firstname": "{{firstname}}", "lastname": "{{lastname}}" }')
+        | {/literal}
+        | &nbsp;
+        a#login-widget-block-a.text-underline(href='#', title='{#logout#}') {#logout#}
+    .block-body
+      a.block-link.collapsed(data-i18n='[title]account-settings', data-toggle='collapse', href='#login-widget-block-account-settings-collapse')
+        .h6.block-subtitle(data-i18n='account-settings')
+      #login-widget-block-account-settings-collapse.collapse
+        nav.flex-column.menu
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_PERSONAL_INFO}', title='{#personal_informations#}') {#personal_informations#}
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_ADDRESS_LIST}', title='{#adddress_info#}') {#adddress_info#}
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_PASSWORD_CHANGE}', title='{#change_password#}') {#change_password#}
+    .block-body
+      a.block-link.collapsed(data-toggle='collapse', href='#login-widget-block-orders-collapse', title='{#orders#}')
+        .h6.block-subtitle {#orders#}
+      #login-widget-block-orders-collapse.collapse
+        nav.flex-column.menu
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_ORDERS}', title='{#orders#}') {#orders#}
+          a.menu-link(data-i18n='[title]order-tracking;order-tracking', href='/{$PAGE_LINK.ORDER_FOLLOW}')
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_MONEY_ORDER_NOTIFICATION}', title='{#money_order_notificiation#}') {#money_order_notificiation#}
+    .block-body
+      a.block-link.collapsed(data-i18n='[title]offers-and-vouchers', data-toggle='collapse', href='#login-widget-block-offers-and-vouchers-collapse')
+        .h6.block-subtitle(data-i18n='offers-and-vouchers')
+      #login-widget-block-offers-and-vouchers-collapse.collapse
+        nav.flex-column.menu
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_GIFT_CHECK}', title='{#gift_coupons#}') {#gift_coupons#}
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_COMMENT_POINT}', title='{#points#}') {#points#}
+    .block-body
+      a.block-link.collapsed(data-i18n='[title]lists', data-toggle='collapse', href='#login-widget-block-lists-collapse')
+        .h6.block-subtitle(data-i18n='lists')
+      #login-widget-block-lists-collapse.collapse
+        nav.flex-column.menu
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_PRICE_ALERT_LIST}', title='{#price_alert#}') {#price_alert#}
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_STOCK_ALERT_LIST}', title='{#stock_alert#}') {#stock_alert#}
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_SHOPPING_LIST}', title='{#shopping_list#}') {#shopping_list#}
+    .block-body
+      a.block-link.collapsed(data-i18n='[title]support', data-toggle='collapse', href='#login-widget-block-support-collapse')
+        .h6.block-subtitle(data-i18n='support')
+      #login-widget-block-support-collapse.collapse
+        nav.flex-column.menu
+          a.menu-link(data-i18n='[title]contact;contact', href='/{$PAGE_LINK.CONTACT}')
+          a.menu-link(data-i18n='[title]customer-service;customer-service', href='/{$PAGE_LINK.CUSTOMER_SERVICE}')
+          a.menu-link(href='/{$PAGE_LINK.MEMBER_MESSAGES}', title='{#messages#}') {#messages#}
+    | {else}
+    .block-header
+      .h4.block-title {$BLOCK_TITLE}
+    form#login-widget-block-form.block-body
+      .form-group
+        label.form-control-label(for='login-widget-block-email-address-input') {#email#}
+        input#login-widget-block-email-address-input.form-control.form-control-lg(autofocus='', data-i18n='[placeholder]enter-your-email-address', name='email_address', required='', type='email')
+      .form-group
+        label.form-control-label(for='login-widget-block-password-input') {#password#}
+        input#login-widget-block-password-input.form-control.form-control-lg(data-i18n='[placeholder]enter-your-password', minlength='6', name='password', required='', type='password')
+        small.form-text.text-md-right
+          a.text-muted(href='/{$PAGE_LINK.MEMBER_PASSWORD_REMINDER}', title='{#forgot_password#}') {#forgot_password#}
+      .form-check
+        label.custom-checkbox.custom-control
+          input.custom-control-input(type='checkbox')
+          span.custom-control-indicator
+          span.custom-control-description {#remember_me#}
+      button#login-widget-block-btn.block-link.btn(title='Giriş yap') Giriş yap
+    | {/if}

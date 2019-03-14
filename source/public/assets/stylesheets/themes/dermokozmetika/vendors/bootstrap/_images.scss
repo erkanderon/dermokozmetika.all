@@ -1,0 +1,26 @@
+.img {
+  &-fluid {
+    @include img-fluid;
+  }
+
+  @each $key in map-keys($grid-breakpoints) {
+    &-lazy-#{$key} {
+      display: none;
+
+      @include media-breakpoint-only($key) {
+        display: block;
+      }
+    }
+  }
+}
+
+.figure {
+  &-caption {
+    font-family: $font-family-serif;
+    font-style: italic;
+  }
+
+  &-img {
+    margin-bottom: $spacer-y / 4;
+  }
+}

@@ -1,0 +1,15 @@
+.block-campaign-showcase.block-widget .swiper {
+  @extend .swiper-outside-pagination;
+
+  &-link {
+    $value: 120%;
+
+    @each $key in map-keys($grid-breakpoints) {
+      @include media-breakpoint-up($key) {
+        padding-top: $value;
+      }
+
+      $value: $value + 20%;
+    }
+  }
+}

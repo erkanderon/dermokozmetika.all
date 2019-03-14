@@ -1,0 +1,82 @@
+.block-campaigns.block-section .card {
+  border-width: 0;
+
+  &-link {
+    @extend .btn-primary;
+
+    padding-left: map-get(map-get($spacers, 4), x);
+    padding-right: map-get(map-get($spacers, 4), x);
+  }
+
+  &-text,
+  &-title {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+
+    display: block;
+    display: -webkit-box;
+    display: -moz-box;
+
+    overflow: hidden;
+  }
+
+  &-text {
+    font-size: $font-size-sm;
+
+    -webkit-line-clamp: 5;
+    line-height: $line-height-sm;
+
+    max-height: 5 * $font-size-sm * $line-height-sm;
+  }
+
+  &-title {
+    -webkit-line-clamp: 3;
+    margin-bottom: $card-spacer-y * .5;
+    max-height: 3 * $font-size-h4 * $headings-line-height;
+  }
+
+  &-block {
+    flex: none;
+    padding: map-get(map-get($spacers, 0), x);
+  }
+
+  &-img {
+    @extend .img-fluid;
+
+    width: 100%;
+
+    &-overlay {
+      background-color: $white;
+      display: flex;
+      flex-direction: column;
+      margin: map-get(map-get($spacers, 8), x);
+      pointer-events: none;
+
+      @include media-breakpoint-only(lg) {
+        width: calc(65% - #{map-get(map-get($spacers, 8), x)});
+      }
+
+      @include media-breakpoint-only(md) {
+        text-align: center;
+      }
+
+      @include media-breakpoint-only(sm) {
+        width: calc(65% - #{map-get(map-get($spacers, 8), x)});
+      }
+
+      @include media-breakpoint-only(xl) {
+        width: calc(50% - #{map-get(map-get($spacers, 8), x)});
+      }
+
+      @include media-breakpoint-only(xs) {
+        margin-left: auto;
+        margin-right: auto;
+
+        width: calc(75% - #{map-get(map-get($spacers, 8), x)});
+      }
+
+      a,
+      button { pointer-events: all; }
+    }
+  }
+}

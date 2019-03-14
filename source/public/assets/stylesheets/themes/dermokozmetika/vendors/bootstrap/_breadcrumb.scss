@@ -1,0 +1,9 @@
+nav.breadcrumb {
+  font-size: 0;
+
+  .breadcrumb-item {
+    @include float-none;
+
+    font-size: $font-size-base;
+  }
+}

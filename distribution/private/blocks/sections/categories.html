@@ -1,0 +1,29 @@
+
+{include file="theme/v4/Blok/UrunlerKategori/Orta/user_categories-data.tpl" assign="data"}
+{foreach $data|json_decode as $item key = key}
+{if $key == $NAVIGATION_LIST[2].ID}
+{$brand_categories = $item}
+{/if}
+{/foreach}
+{if (!$NAVIGATION_LIST[2] && $CATEGORY_LIST) || $brand_categories}
+<div class="block block-attached block-categories block-section">
+  <div class="block-content">
+    <div class="block-body">
+      <nav class="hidden-xs-down menu">
+        {if !$NAVIGATION_LIST[2]}
+        {foreach $CATEGORY_LIST as $item}<a class="menu-link" href="{$item.URL}" title="{$item.NAME}">{$item.NAME}</a>{/foreach}
+        {/if}
+        {foreach $brand_categories as $item}<a class="menu-link" href="{$item->slug}" title="{$item->name}">{$item->name}</a>{/foreach}
+      </nav>
+      <div class="dropdown hidden-sm-up">
+        <button class="btn btn-block btn-outline-primary dropdown-toggle" data-toggle="dropdown">Alt kategoriler</button>
+        <div class="dropdown-menu text-center w-100">
+          {if !$NAVIGATION_LIST[2]}
+          {foreach $CATEGORY_LIST as $item}<a class="dropdown-item" href="{$item.URL}" title="{$item.NAME}">{$item.NAME}</a>{/foreach}
+          {/if}
+          {foreach $brand_categories as $item}<a class="dropdown-item" href="{$item->slug}" title="{$item->name}">{$item->name}</a>{/foreach}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>{/if}

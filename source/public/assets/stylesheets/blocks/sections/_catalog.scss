@@ -1,0 +1,13 @@
+.block-catalog.block-section {
+  .input-group {
+    &-addon { border-color: transparent; }
+  }
+  .btn-scroll {
+    @extend .btn-link;
+    bottom: 54px;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    z-index: $zindex-fixed
+  }
+}

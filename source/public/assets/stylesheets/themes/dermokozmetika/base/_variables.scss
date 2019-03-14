@@ -1,0 +1,23 @@
+$font-weight-semi-bold: 500;
+
+$border-color: #e5e5e5;
+$border-radius-pill: 1rem;
+
+$secondary-bg: #f5f5f5;
+$secondary-color: #777;
+
+$brand-secondary: #777;
+$media-path: '//media.dermokozmetika.com.tr';
+
+@import '../variables/vendors/bootstrap';
+@import '../variables/vendors/flag-icon-css';
+@import '../variables/vendors/font-awesome';
+@import '../variables/vendors/Ionicons';
+@import '../variables/vendors/jQuery.mmenu';
+@import '../variables/vendors/perfect-scrollbar';
+@import '../variables/vendors/seiyria-bootstrap-slider';
+
+@import '../variables/components/block';
+@import '../variables/components/catalog';
+@import '../variables/components/menu';
+@import '../variables/components/ribbon';

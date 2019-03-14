@@ -1,0 +1,8 @@
+.popover {
+  &-content > :last-child { margin-bottom: 0; }
+
+  &-bottom,
+  &-right {
+    @include box-shadow(-.125rem .125rem .125rem 0 rgba($inverse-bg, .1));
+  }
+}

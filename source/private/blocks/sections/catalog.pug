@@ -1,0 +1,219 @@
+| {if $HEADER == 1}
+#catalog-section-block.block.block-catalog.block-section
+  .block-content
+    .block-body
+      | {if $TOTAL > 0}
+      .align-items-center.row
+        | {if $IS_FILTER_PANEL_ACTIVE}
+        .col-6.col-md-auto.hidden-md-up
+          a.btn.btn-block.btn-primary(
+            href='#filters-widget-block-mm-menu'
+            title='{#filter#}'
+          )
+            span.fa.fa-filter
+            | &nbsp;{#filter#}
+        | {/if}
+        .col.font-weight-bold.hidden-sm-down.text-left {$TOTAL}&nbsp;ürün
+        .col-6.col-md-auto
+          .input-group
+            label.hidden-sm-down.input-group-addon(for='catalog-section-block-select') {#sort#}
+            select#catalog-section-block-select.custom-select
+              | {if $SORT_TYPE == 0}
+              option(
+                selected=''
+                value='0'
+              ) {#order_by_default#}
+              | {else}
+              option(value='0') {#order_by_default#}
+              | {/if}
+              | {if $SORT_TYPE == 8}
+              option(
+                selected=''
+                value='8'
+              ) {#order_by_score#}
+              | {else}
+              option(value='8') {#order_by_score#}
+              | {/if}
+              | {if $SORT_TYPE == 7}
+              option(
+                selected=''
+                value='7'
+              ) {#order_by_random#}
+              | {else}
+              option(value='7') {#order_by_random#}
+              | {/if}
+              | {if $SORT_TYPE == 1}
+              option(
+                selected=''
+                value='1'
+              ) {#order_by_alphabetical_asc#}
+              | {else}
+              option(value='1') {#order_by_alphabetical_asc#}
+              | {/if}
+              | {if $SORT_TYPE == 2}
+              option(
+                selected=''
+                value='2'
+              ) {#order_by_alphabetical_desc#}
+              | {else}
+              option(value='2') {#order_by_alphabetical_desc#}
+              | {/if}
+              | {if $SORT_TYPE == 3}
+              option(
+                selected=''
+                value='3'
+              ) {#order_by_newest#}
+              | {else}
+              option(value='3') {#order_by_newest#}
+              | {/if}
+              | {if $SORT_TYPE == 4}
+              option(
+                selected=''
+                value='4'
+              ) {#order_by_oldest#}
+              | {else}
+              option(value='4') {#order_by_oldest#}
+              | {/if}
+              | {if $SORT_TYPE == 5}
+              option(
+                selected=''
+                value='5'
+              ) {#order_by_price_asc#}
+              | {else}
+              option(value='5') {#order_by_price_asc#}
+              | {/if}
+              | {if $SORT_TYPE == 6}
+              option(
+                selected=''
+                value='6'
+              ) {#order_by_price_desc#}
+              | {else}
+              option(value='6') {#order_by_price_desc#}
+              | {/if}
+      | {/if}
+      .my--4.row
+        | {/if}
+        | {if $LOOP == 1}
+        .col-6.col-lg-4.col-xl-3.py-4
+          a.catalog(
+            href='{$P.URL}'
+            title='{$P.TITLE}'
+          )
+            .catalog-showcase-top
+              | {if $IS_LAZY_LOAD_ACTIVE}
+              img.catalog-img-top.img-lazy(
+                alt='{$P.TITLE}'
+                data-src='{$P.IMAGE.MEDIUM}'
+                height='500'
+                src='{$LAZY_LOAD_LOADING_IMAGE}'
+                title='{$P.TITLE}'
+                width='500'
+              )
+              | {else}
+              img.catalog-img-top(
+                alt='{$P.TITLE}'
+                height='500'
+                src='{$P.IMAGE.MEDIUM}'
+                title='{$P.TITLE}'
+                width='500'
+              )
+              | {/if}
+            .catalog-block
+              | {if $DISPLAY_BRAND}
+              p.catalog-title.h6(lang='en') {$P.BRAND}
+              | {/if}
+              .catalog-subtitle.h3 {$P.TITLE|lower|replace:($P.BRAND|cat:" "|lower):""|ucfirst}
+              p.catalog-text
+                | {if $P.DISPLAY_VAT}
+                | {$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_SELL vat = $P.VAT}
+                | {else}
+                | {$P.TARGET_CURRENCY}&nbsp;{format price = $P.PRICE_SELL}&nbsp;+&nbsp;{#kdv#}
+                | {/if}
+                | {if $P.DISCOUNT_PERCENT > 0 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+                | &nbsp;
+                del {$P.TARGET_CURRENCY}&nbsp;{vat price = $P.PRICE_NOT_DISCOUNTED vat = $P.VAT}
+                | {/if}
+              | {if ($IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT) || $P.BRAND_ID == 350 || ($P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100) || ($P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE) || !$P.IN_STOCK || $P.S1 || $P.S2 || $P.S3}
+              .ribbon-group
+                | {if $IS_AUTO_NEW_PRODUCT || $P.IS_NEW_PRODUCT}
+                span.ribbon.ribbon-outline-primary {#new#}
+                | {/if}
+                | {if $P.BRAND_ID == 350}
+                span.ribbon.ribbon-outline-default Tester
+                | {/if}
+                | {if $P.CBM == 0 || $P.PRICE_SELL * (1 + $P.VAT / 100) >= 100}
+                span.ribbon.ribbon-outline-primary Kargo bedava
+                | {/if}
+                | {if $P.DISCOUNT_PERCENT >= 40 && $P.IS_DISPLAY_DISCOUNTED_ACTIVE}
+                span.ribbon.ribbon-outline-danger
+                  span.ion-arrow-graph-down-right
+                  | &nbsp;{#discounted#}
+                | {/if}
+                | {if !$P.IN_STOCK}
+                span.ribbon.ribbon-default {#out_of_stock#}
+                | {/if}
+                | {if $P.S1}
+                span.ribbon.ribbon-outline-warning 3 al 2 öde
+                | {/if}
+                | {if $P.S2}
+                span.ribbon.ribbon-outline-info Şanslı marka
+                | {/if}
+                | {if $P.S3}
+                span.ribbon.ribbon-outline-primary 1+1
+                | {/if}
+              | {/if}
+              | {if $IS_COMMENT_RATING_ACTIVE && $P.COMMENT_RANK >= 50}
+              .catalog-review
+                | {if $P.COMMENT_RANK < 60 && $P.COMMENT_RANK >= 50}
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                span.ion-ios-star-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 70 && $P.COMMENT_RANK >= 60}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 80 && $P.COMMENT_RANK >= 70}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 90 && $P.COMMENT_RANK >= 80}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-outline
+                | {elseif $P.COMMENT_RANK < 100 && $P.COMMENT_RANK >= 90}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-ios-star-half
+                span.ion-ios-star-half-outline
+                | {elseif $P.COMMENT_RANK == 100}
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                span.ion-star
+                | {/if}
+              | {/if}
+        | {/if}
+        | {if $FOOTER == 1}
+      | {if $TOTAL > 0}
+      ul#catalog-section-block-pagination.pagination.mt-16.justify-content-center {$PAGINATION}
+      button.btn.btn-scroll#catalog-section-block-button(type='button')
+        span.fa.fa-2x.fa-angle-up
+      | {/if}
+  script#catalog-section-block-data(type='application/json').
+    {
+      "title": "{if $PAGE_ID == 2}{$CATEGORY_NAME}{elseif $PAGE_ID == 12}{$ARAMA_KELIMESI}{else}{$NAVIGATION_LIST.0.TITLE}{/if}"
+    }
+| {/if}

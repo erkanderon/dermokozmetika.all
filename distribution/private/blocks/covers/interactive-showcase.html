@@ -1,0 +1,22 @@
+
+<div class="block block-attached block-cover block-extended block-fluid block-interactive-showcase" id="interactive-showcase-cover-block">
+  <div class="swiper" id="interactive-showcase-cover-block-swiper">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {if $LANGUAGE}
+        {include file = "theme/v4/Blok/InteraktifVitrin/UstAlt/user_interactive-showcase-$LANGUAGE.tpl"}
+        {else}
+        {include file = "theme/v4/Blok/InteraktifVitrin/UstAlt/user_interactive-showcase-tr.tpl"}
+        {/if}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+  <script id="interactive-showcase-cover-block-data" type="application/json">
+    {
+      "swiper": { "autoplay": "{$SHOWCASE_TRANSITION_PERIOD}" }
+    }
+  </script>
+</div>

@@ -1,0 +1,48 @@
+#contact-form-section-block.block.block-section
+  .block-content
+    .block-header
+      .block-title.h3.text-center {$BLOCK_TITLE}
+    .block-body
+      form#contact-form-section-block-form
+        | {if $Departman}
+        .form-group
+          label.form-control-label(for='contact-form-section-block-department-select') {#depertman#}
+          select#contact-form-section-block-department-select.custom-select.form-control(name='DepartmanId', required='')
+            option(disabled='', selected='') Departman seçiniz
+            | {foreach $Departman as $item}
+            option(value='{$item.id}') {$item.Ad}
+            | {/foreach}
+        | {/if}
+        .form-group
+          label.form-control-label(for='contact-form-section-block-firstname-input') {#adiniz#}
+          input#contact-form-section-block-firstname-input.form-control(name='Ad', placeholder='Adınızı yazınız', required='')
+        .form-group
+          label.form-control-label(for='contact-form-section-block-lastname-input') {#soyadiniz#}
+          input#contact-form-section-block-lastname-input.form-control(name='Soyad', placeholder='Soyadınızı yazınız', required='')
+        .form-group
+          label.form-control-label(for='contact-form-section-block-email-address-input') {#epostaniz#}
+          input#contact-form-section-block-email-address-input.form-control(name='EPosta', placeholder='E-posta adresinizi yazınız', required='', type='email')
+        .form-group
+          label.form-control-label(for='contact-form-section-block-phone-number-input') {#telofonunuz#}
+          input#contact-form-section-block-phone-number-input.form-control(name='Cep', placeholder='Telefon numaranızı yazınız', required='', type='tel')
+        .form-group
+          label.form-control-label(for='contact-form-section-block-message-textarea') {#mesajiniz#}
+          textarea#contact-form-section-block-message-textarea.form-control(name='Mesaj', placeholder='Mesajınızı yazınız', required='')
+        | {if $GuvenlikGoster}
+        .form-group
+          label.form-control-label(for='contact-form-section-block-security-code-input') {#guvenlik_kod#}
+          .input-group
+            label.input-group-addon(for='contact-form-section-block-security-code-input')
+              img(height='29', src='SecCode.php')
+            input#contact-form-section-block-security-code-input.form-control(autocomplete='off', name='security_code', placeholder='Kodu giriniz', required='')
+        | {/if}
+        | {if $GUVENCE_ONAY_AKTIF}
+        .form-check
+          label.custom-checkbox.custom-control
+            input.custom-control-input(name='privacy_policy', required='', type='checkbox')
+            span.custom-control-indicator
+            span.custom-control-description
+              a(href='/?B=Sayfalar&SayfaId=2', target='_blank') {#gizlilik_link#}
+              | &nbsp;{#gizlilik_okudum#}
+        | {/if}
+        button#contact-form-section-block-btn.btn.btn-primary(title='{#gonder#}') {#gonder#}
